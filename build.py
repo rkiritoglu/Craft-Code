@@ -18,6 +18,14 @@ PUBLIC_DIR = ROOT_DIR / "public"
 DIST_DIR = ROOT_DIR / "dist"
 TEMPLATES_DIR = ROOT_DIR / "templates"
 
+BASE_PATH = os.environ.get("BASE_PATH", "").rstrip("/")
+if not BASE_PATH and os.environ.get("GITHUB_ACTIONS") == "true":
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if repo and "/" in repo:
+        repo_name = repo.split("/")[1]
+        if not repo_name.endswith(".github.io"):
+            BASE_PATH = f"/{repo_name}"
+
 def parse_markdown(text):
     frontmatter = {}
     content = text
