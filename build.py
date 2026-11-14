@@ -173,10 +173,10 @@ def build_site(include_drafts=True):
     if PUBLIC_DIR.exists():
         shutil.copytree(PUBLIC_DIR, DIST_DIR, dirs_exist_ok=True)
 
-    base_tpl = (TEMPLATES_DIR / "base.html").read_text(encoding="utf-8")
-    index_tpl = (TEMPLATES_DIR / "index.html").read_text(encoding="utf-8")
-    article_tpl = (TEMPLATES_DIR / "article.html").read_text(encoding="utf-8")
-    studio_tpl = (TEMPLATES_DIR / "studio.html").read_text(encoding="utf-8")
+    base_tpl = (TEMPLATES_DIR / "base.html").read_text(encoding="utf-8").replace("{{BASE_PATH}}", BASE_PATH)
+    index_tpl = (TEMPLATES_DIR / "index.html").read_text(encoding="utf-8").replace("{{BASE_PATH}}", BASE_PATH)
+    article_tpl = (TEMPLATES_DIR / "article.html").read_text(encoding="utf-8").replace("{{BASE_PATH}}", BASE_PATH)
+    studio_tpl = (TEMPLATES_DIR / "studio.html").read_text(encoding="utf-8").replace("{{BASE_PATH}}", BASE_PATH)
 
     search_dirs = [CONTENT_DIR / "published"]
     if include_drafts:
@@ -272,11 +272,16 @@ def build_site(include_drafts=True):
     <span class="lang-en" style="display:none;">Published</span>
   </span>'''
 
+        cover_img = art["cover_image"]
+        if cover_img.startswith("/") and BASE_PATH and not cover_img.startswith(f"{BASE_PATH}/"):
+            cover_img = f"{BASE_PATH}{cover_img}"
+
         body = article_tpl
         replacements = {
             "{{SLUG}}": slug,
             "{{DATE}}": str(art["date"]),
-            "{{COVER_IMAGE}}": art["cover_image"],
+            "{{COVER_IMAGE}}": cover_img,
+            "{{BASE_PATH}}": BASE_PATH,
             "{{DRAFT_BANNER}}": draft_banner_html,
             "{{PUBLISH_TOOLBAR_BTN}}": publish_toolbar_btn,
             "{{TITLE_TR}}": tr_data.get("title", ""),
@@ -311,7 +316,7 @@ def build_site(include_drafts=True):
         # Redirects for /tr/ and /en/
         for p_sub in [DIST_DIR / "tr" / "yazilar", DIST_DIR / "en" / "articles"]:
             p_sub.mkdir(parents=True, exist_ok=True)
-            r_html = f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/yazi/{slug}.html"></head><body><script>window.location.replace("/yazi/{slug}.html");</script></body></html>'
+            r_html = f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url={BASE_PATH}/yazi/{slug}.html"></head><body><script>window.location.replace("{BASE_PATH}/yazi/{slug}.html");</script></body></html>'
             (p_sub / f"{slug}.html").write_text(r_html, encoding="utf-8")
 
     # Render Unified Index Page
@@ -320,11 +325,14 @@ def build_site(include_drafts=True):
         slug = art["slug"]
         tr_data = art.get("tr", {})
         en_data = art.get("en", {})
-        url = f"/yazi/{slug}.html"
+        url = f"{BASE_PATH}/yazi/{slug}.html"
+        card_img = art["cover_image"]
+        if card_img.startswith("/") and BASE_PATH and not card_img.startswith(f"{BASE_PATH}/"):
+            card_img = f"{BASE_PATH}{card_img}"
 
         card = f'''<article class="article-card">
           <a href="{url}" class="card-image-wrap">
-            <img src="{art['cover_image']}" alt="{tr_data.get('title', '')}" loading="lazy"/>
+            <img src="{card_img}" alt="{tr_data.get('title', '')}" loading="lazy"/>
           </a>
           <div class="card-content">
             <div class="card-meta">
@@ -395,18 +403,19 @@ def build_site(include_drafts=True):
             status_txt = "● YAYINDA"
             pub_btn = f'<button class="action-btn" onclick="unpublishArticle(\'{slug}\')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>'
 
+        art_url = f"{BASE_PATH}/yazi/{slug}.html"
         row = f'''<tr>
           <td>
-            <a href="/yazi/{slug}.html" style="text-decoration:none; color:inherit;">
+            <a href="{art_url}" style="text-decoration:none; color:inherit;">
               <strong>{tr_data.get('title', slug)}</strong>
             </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/{slug}.html</small>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">{art_url}</small>
           </td>
           <td><span class="status-badge {status_cls}">{status_txt}</span></td>
           <td>{art['date']}</td>
           <td>
             <div class="actions-cell">
-              <a class="action-btn" href="/yazi/{slug}.html">👁️ Aç</a>
+              <a class="action-btn" href="{art_url}">👁️ Aç</a>
               {pub_btn}
               <button class="action-btn delete" onclick="deleteArticle('{slug}', '{title_escaped}')">🗑️ Sil</button>
             </div>
