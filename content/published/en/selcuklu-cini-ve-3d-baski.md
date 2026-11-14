@@ -1,17 +1,17 @@
 ---
-title: "The Breath of the Reed: Calligraphic Geometry and Robotic Scribes"
-subtitle: "Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-mak..."
-summary: "Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri."
-slug: "hat-sanati-ve-robotik-kaligrafi"
+title: "Parametric Faience: Seljuk Girih Geometry and Robotic Clay Fabrication"
+subtitle: "Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D serami..."
+summary: "Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D seramik ekstrüzyonu ile yeniden doğuşu."
+slug: "selcuklu-cini-ve-3d-baski"
 date: "2026-11-14"
 author: "Craft&Code Editorial Desk"
-tags: ["Hat Sanatı", "Contemporary Art", "Generative Code", "New Media"]
-cover_image: "/images/kintsugi-glitch-cover.jpg"
-cover_caption: "Conceptual Artwork: Curatorial studio exploration of The Breath of the Reed: Calligraphic Geometry and Robotic Scribes."
+tags: ["Mimari Çini", "Contemporary Art", "Generative Code", "New Media"]
+cover_image: "/images/selcuklu-cini-cover.jpg"
+cover_caption: "Conceptual Artwork: Curatorial studio exploration of Parametric Faience: Seljuk Girih Geometry and Robotic Clay Fabrication."
 cover_credit: "Visual: Craft&Code / AI & Curatorial Concept Synthesis"
-draft: true
+draft: false
 ---
-Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.
+Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D seramik ekstrüzyonu ile yeniden doğuşu.
 
 ## 1. The Ancient Syntax: Material and Bodily Memory
 Every ancient craft represents the vanguard material intelligence of its epoch. In negotiating with material resistance, the artisan executes an intimate epistemic inquiry.
@@ -26,7 +26,7 @@ When bodily craft knowledge encounters computational abstraction, neither tradit
 :::
 
 ## 3. Curated Case Studies
-Aklâm-ı Sitte nokta matematiği, Sougwen Chung (Drawing Operations), AxiDraw generatif kodlama.
+Peter Lu (Harvard Science 2007 araştırması), Ronald Rael & 3D kil basımı, parametrik cepheler.
 
 ## 4. Critical Synthesis
 This convergence between craft and code urges us never to divorce future computational paradigms from primordial tactile intelligence.

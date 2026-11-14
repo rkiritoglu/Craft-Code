@@ -1,9 +1,10 @@
 {
   "covered_slugs": [
-    "dokuma-tezgahindan-koda",
-    "from-looms-to-code",
-    "ebru-ve-sivi-algoritmalar",
     "hat-sanati-ve-robotik-kaligrafi",
+    "ebru-ve-sivi-algoritmalar",
+    "selcuklu-cini-ve-3d-baski",
+    "from-looms-to-code",
+    "dokuma-tezgahindan-koda",
     "kintsugi-ve-dijital-kusur"
   ],
   "covered_keywords": [
@@ -13,8 +14,8 @@
     "tekstil"
   ],
   "active_proposals": [
-    "selcuklu-cini-3d",
-    "cam-ve-raymarching",
-    "kundekari-robotik-ahsap"
+    "kok-boya-biyohesaplama",
+    "dovme-bakir-ses",
+    "cam-ve-raymarching"
   ]
 }

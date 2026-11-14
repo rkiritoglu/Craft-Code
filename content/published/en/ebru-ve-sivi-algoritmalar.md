@@ -9,7 +9,7 @@ tags: ['Ebru', 'Generative Art', 'Fluid Dynamics', 'New Media']
 cover_image: "/images/ebru-cover.jpg"
 cover_caption: "Conceptual Artwork: Traditional ox-gall ebru currents converging with computational vector flow fields and particle simulations."
 cover_credit: "Visual: Craft&Code / AI & Curatorial Concept Synthesis"
-draft: true
+draft: false
 ---
 Ebru (paper marbling) stands as a profound Eastern rebuttal to the Western myth of the solitary artistic genius conquering a passive canvas. When the Ebru master approaches the basin, they do not dictate every swirl. Instead, they calibrate viscosity with gum tragacanth, tune surface tension with bovine gall, and flick horsehair brushes. The emergent composition is calculated in real time by fluid dynamics.
 

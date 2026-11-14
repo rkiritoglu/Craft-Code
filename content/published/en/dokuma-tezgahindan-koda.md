@@ -9,7 +9,7 @@ tags: ["Weaving", "Generative Art", "Textiles", "New Media", "Jacquard"]
 cover_image: "/images/weaving-and-code-cover.jpg"
 cover_caption: "Conceptual Installation: Hand-spun Anatolian wool threads on a traditional wooden loom transitioning into optical fibers and generative pixel matrices."
 cover_credit: "Visual: Craft&Code / AI & Curatorial Concept Synthesis"
-draft: true
+draft: false
 ---
 
 In contemporary digital culture, "code" is commonly conceived as an invisible, immaterial, and disembodied language operating silently behind glass screens. Yet the earliest programmable machines and algorithmic structures did not emerge in Silicon Valley labs; they germinated in rustic workshops on wooden looms, guided by the tactile cadence of wool fibers, cotton warps, and the rhythmic movements of the human body.

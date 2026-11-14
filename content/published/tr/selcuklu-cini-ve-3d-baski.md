@@ -1,17 +1,17 @@
 ---
-title: "Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi"
-subtitle: "Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-mak..."
-summary: "Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri."
-slug: "hat-sanati-ve-robotik-kaligrafi"
+title: "Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil"
+subtitle: "Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D serami..."
+summary: "Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D seramik ekstrüzyonu ile yeniden doğuşu."
+slug: "selcuklu-cini-ve-3d-baski"
 date: "2026-11-14"
 author: "Craft&Code Araştırma Masası"
-tags: ["Hat Sanatı", "Çağdaş Sanat", "Generatif Kod", "Yeni Medya"]
-cover_image: "/images/kintsugi-glitch-cover.jpg"
-cover_caption: "Kavramsal Eser: Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi üzerine küratöryel stüdyo araştırması."
+tags: ["Mimari Çini", "Çağdaş Sanat", "Generatif Kod", "Yeni Medya"]
+cover_image: "/images/selcuklu-cini-cover.jpg"
+cover_caption: "Kavramsal Eser: Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil üzerine küratöryel stüdyo araştırması."
 cover_credit: "Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı"
-draft: true
+draft: false
 ---
-Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.
+Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D seramik ekstrüzyonu ile yeniden doğuşu.
 
 ## 1. Kadim Sözdizimi: Malzemenin ve Bedenin Hafızası
 Her kadim zanaat, kendi çağının en ileri malzeme teknolojisi ve ontolojik bilgi sistemidir. Ustanın eli malzemeye değerken, fiziksel dünyanın kurallarıyla doğrudan bir müzakere yürütür.
@@ -26,7 +26,7 @@ Zanaatın bedensel sabrı ile kodun sonsuz soyutlama yeteneği karşılaştığ�
 :::
 
 ## 3. Vaka İncelemeleri
-Aklâm-ı Sitte nokta matematiği, Sougwen Chung (Drawing Operations), AxiDraw generatif kodlama.
+Peter Lu (Harvard Science 2007 araştırması), Ronald Rael & 3D kil basımı, parametrik cepheler.
 
 ## 4. Eleştirel Sentez
 Zanaat ile kodun bu kesişimi, bize geleceğin teknolojisini tasarlarken kadim el bilgisini unutmamamız gerektiğini fısıldar.
