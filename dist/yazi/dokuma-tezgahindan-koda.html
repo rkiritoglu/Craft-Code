@@ -38,16 +38,15 @@
 
   <main>
     <article class="post" data-slug="dokuma-tezgahindan-koda">
-  <div class="draft-banner">
-    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.6rem;">
-      <div>
-        <span class="lang-tr"><strong>⚠️ TASLAK ÖNİZLEME MODU</strong> — Bu yazı henüz internette canlıda değildir. İnceleyip düzenleyebilir veya doğrudan yayına alabilirsiniz.</span>
-        <span class="lang-en" style="display:none;"><strong>⚠️ DRAFT PREVIEW MODE</strong> — This piece is not yet live. You can review, edit or publish it.</span>
-      </div>
-      <button class="editor-btn primary" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#fff; border-color:#047857; padding:0.4rem 0.85rem; font-size:0.82rem; cursor:pointer;">
-        <span>🚀</span> <span class="lang-tr">Bu Yazıyı Yayına Al</span><span class="lang-en" style="display:none;">Publish This Article</span>
-      </button>
+  <div style="background:#ecfdf5; border-bottom:1px solid #a7f3d0; padding:0.5rem 1.5rem; font-size:0.8rem; color:#065f46; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <span class="lang-tr"><strong>● YAYINDA</strong> — Bu makale Craft&Code editoryal arşivinde canlıdır.</span>
+      <span class="lang-en" style="display:none;"><strong>● PUBLISHED</strong> — This article is live in the Craft&Code editorial archive.</span>
     </div>
+    <button onclick="unpublishCurrentArticle('dokuma-tezgahindan-koda')" style="background:none; border:none; color:#047857; font-size:0.75rem; text-decoration:underline; cursor:pointer;">
+      <span class="lang-tr">Taslağa Geri Al</span>
+      <span class="lang-en" style="display:none;">Revert to Draft</span>
+    </button>
   </div>
 
   <!-- Turkish Version Header -->
@@ -260,11 +259,11 @@
     <span class="lang-en" style="display:none;">Save</span>
   </button>
 
-  <button class="editor-btn" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#ffffff; border-color:#047857;">
-    <span>🚀</span>
-    <span class="lang-tr">Yayına Al</span>
-    <span class="lang-en" style="display:none;">Publish</span>
-  </button>
+  <span style="font-size:0.75rem; color:#047857; font-weight:600; padding:0.35rem 0.6rem; display:inline-flex; align-items:center; gap:0.25rem;">
+    <span>●</span>
+    <span class="lang-tr">Yayında</span>
+    <span class="lang-en" style="display:none;">Published</span>
+  </span>
 </div>
 
 <script>
@@ -383,6 +382,12 @@
   }
 
   function saveAllChanges() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     var slug = document.querySelector('article.post').getAttribute('data-slug');
     var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
 
@@ -426,13 +431,22 @@
   }
 
   function publishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
     fetch('/api/studio/publish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug: slug })
     })
-    .then(function(res) { return res.json(); })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
     .then(function(data) {
       if (data.ok) {
         showToast('🚀 Yazı başarıyla yayına alındı!');
@@ -441,17 +455,26 @@
         alert('Hata: ' + data.error);
       }
     })
-    .catch(function(err) { alert('Hata: ' + err); });
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
   }
 
   function unpublishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
     fetch('/api/studio/unpublish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug: slug })
     })
-    .then(function(res) { return res.json(); })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
     .then(function(data) {
       if (data.ok) {
         showToast('↩️ Yazı tekrar taslağa alındı.');
@@ -460,7 +483,7 @@
         alert('Hata: ' + data.error);
       }
     })
-    .catch(function(err) { alert('Hata: ' + err); });
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
   }
 
   // Only display editor controls to the author (localhost or admin)

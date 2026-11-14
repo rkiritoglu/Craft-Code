@@ -258,6 +258,12 @@
   }
 
   function saveAllChanges() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     var slug = document.querySelector('article.post').getAttribute('data-slug');
     var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
 
@@ -301,13 +307,22 @@
   }
 
   function publishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
     fetch('/api/studio/publish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug: slug })
     })
-    .then(function(res) { return res.json(); })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
     .then(function(data) {
       if (data.ok) {
         showToast('🚀 Yazı başarıyla yayına alındı!');
@@ -316,17 +331,26 @@
         alert('Hata: ' + data.error);
       }
     })
-    .catch(function(err) { alert('Hata: ' + err); });
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
   }
 
   function unpublishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      return;
+    }
+
     if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
     fetch('/api/studio/unpublish', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug: slug })
     })
-    .then(function(res) { return res.json(); })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
     .then(function(data) {
       if (data.ok) {
         showToast('↩️ Yazı tekrar taslağa alındı.');
@@ -335,7 +359,7 @@
         alert('Hata: ' + data.error);
       }
     })
-    .catch(function(err) { alert('Hata: ' + err); });
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
   }
 
   // Only display editor controls to the author (localhost or admin)

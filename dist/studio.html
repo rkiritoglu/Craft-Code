@@ -331,8 +331,13 @@
         <p>Yapay zekâ tarafından hazırlanan konu önerilerini onaylayabilir, yeni konular keşfedebilir ve yayın geçmişine göre tekrara düşmeyen özgün içerikler üretebilirsiniz.</p>
       </div>
       <div>
-        <span class="studio-badge">● CANLI YEREL STÜDYO</span>
+        <span class="studio-badge" id="studio-badge-label">● CANLI YEREL STÜDYO</span>
       </div>
+    </div>
+
+    <!-- Notice if viewed on remote GitHub Pages -->
+    <div id="remote-studio-notice" style="display:none; background:#fef3c7; border:1px solid #f59e0b; border-radius:6px; padding:0.85rem 1.25rem; margin-bottom:1.5rem; color:#92400e; font-size:0.88rem; line-height:1.5;">
+      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8080/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8080/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
     </div>
 
     <!-- Section 1: AI Topic Proposals with Refresh Button -->
@@ -418,12 +423,12 @@
             </a><br>
             <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/dokuma-tezgahindan-koda.html</small>
           </td>
-          <td><span class="status-badge draft">TASLAK</span></td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
               <a class="action-btn" href="/Craft-Code/yazi/dokuma-tezgahindan-koda.html">👁️ Aç</a>
-              <button class="action-btn publish" onclick="publishArticle('dokuma-tezgahindan-koda')">🚀 Yayına Al</button>
+              <button class="action-btn" onclick="unpublishArticle('dokuma-tezgahindan-koda')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
               <button class="action-btn delete" onclick="deleteArticle('dokuma-tezgahindan-koda', 'Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri')">🗑️ Sil</button>
             </div>
           </td>
@@ -435,12 +440,12 @@
             </a><br>
             <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/kintsugi-ve-dijital-kusur.html</small>
           </td>
-          <td><span class="status-badge draft">TASLAK</span></td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
               <a class="action-btn" href="/Craft-Code/yazi/kintsugi-ve-dijital-kusur.html">👁️ Aç</a>
-              <button class="action-btn publish" onclick="publishArticle('kintsugi-ve-dijital-kusur')">🚀 Yayına Al</button>
+              <button class="action-btn" onclick="unpublishArticle('kintsugi-ve-dijital-kusur')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
               <button class="action-btn delete" onclick="deleteArticle('kintsugi-ve-dijital-kusur', 'Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı')">🗑️ Sil</button>
             </div>
           </td>
@@ -452,12 +457,12 @@
             </a><br>
             <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/ebru-ve-sivi-algoritmalar.html</small>
           </td>
-          <td><span class="status-badge draft">TASLAK</span></td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
               <a class="action-btn" href="/Craft-Code/yazi/ebru-ve-sivi-algoritmalar.html">👁️ Aç</a>
-              <button class="action-btn publish" onclick="publishArticle('ebru-ve-sivi-algoritmalar')">🚀 Yayına Al</button>
+              <button class="action-btn" onclick="unpublishArticle('ebru-ve-sivi-algoritmalar')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
               <button class="action-btn delete" onclick="deleteArticle('ebru-ve-sivi-algoritmalar', 'Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar')">🗑️ Sil</button>
             </div>
           </td>
@@ -469,12 +474,12 @@
             </a><br>
             <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
           </td>
-          <td><span class="status-badge draft">TASLAK</span></td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
               <a class="action-btn" href="/Craft-Code/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
-              <button class="action-btn publish" onclick="publishArticle('hat-sanati-ve-robotik-kaligrafi')">🚀 Yayına Al</button>
+              <button class="action-btn" onclick="unpublishArticle('hat-sanati-ve-robotik-kaligrafi')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
               <button class="action-btn delete" onclick="deleteArticle('hat-sanati-ve-robotik-kaligrafi', 'Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi')">🗑️ Sil</button>
             </div>
           </td>
@@ -640,8 +645,15 @@
     // Master Authentication Gate
     // On localhost, access is automatically granted with zero friction
     var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    if (!isLocalhost && sessionStorage.getItem('craft_studio_auth') !== 'granted') {
-      document.getElementById('auth-gate-modal').style.display = 'flex';
+    if (!isLocalhost) {
+      var badge = document.getElementById('studio-badge-label');
+      if (badge) badge.innerText = '☁️ GITHUB PAGES ÖNİZLEME';
+      var notice = document.getElementById('remote-studio-notice');
+      if (notice) notice.style.display = 'block';
+
+      if (sessionStorage.getItem('craft_studio_auth') !== 'granted') {
+        document.getElementById('auth-gate-modal').style.display = 'flex';
+      }
     }
 
     function verifyStudioAuth() {

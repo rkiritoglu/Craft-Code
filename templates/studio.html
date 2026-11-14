@@ -331,8 +331,13 @@
         <p>Yapay zekâ tarafından hazırlanan konu önerilerini onaylayabilir, yeni konular keşfedebilir ve yayın geçmişine göre tekrara düşmeyen özgün içerikler üretebilirsiniz.</p>
       </div>
       <div>
-        <span class="studio-badge">● CANLI YEREL STÜDYO</span>
+        <span class="studio-badge" id="studio-badge-label">● CANLI YEREL STÜDYO</span>
       </div>
+    </div>
+
+    <!-- Notice if viewed on remote GitHub Pages -->
+    <div id="remote-studio-notice" style="display:none; background:#fef3c7; border:1px solid #f59e0b; border-radius:6px; padding:0.85rem 1.25rem; margin-bottom:1.5rem; color:#92400e; font-size:0.88rem; line-height:1.5;">
+      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8080/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8080/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
     </div>
 
     <!-- Section 1: AI Topic Proposals with Refresh Button -->
@@ -526,8 +531,15 @@
     // Master Authentication Gate
     // On localhost, access is automatically granted with zero friction
     var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    if (!isLocalhost && sessionStorage.getItem('craft_studio_auth') !== 'granted') {
-      document.getElementById('auth-gate-modal').style.display = 'flex';
+    if (!isLocalhost) {
+      var badge = document.getElementById('studio-badge-label');
+      if (badge) badge.innerText = '☁️ GITHUB PAGES ÖNİZLEME';
+      var notice = document.getElementById('remote-studio-notice');
+      if (notice) notice.style.display = 'block';
+
+      if (sessionStorage.getItem('craft_studio_auth') !== 'granted') {
+        document.getElementById('auth-gate-modal').style.display = 'flex';
+      }
     }
 
     function verifyStudioAuth() {
