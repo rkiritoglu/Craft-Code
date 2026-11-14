@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editoryal Stüdyo — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    .studio-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+    .studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .studio-header h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .studio-header p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+    .studio-badge {
+      background: var(--highlight-bg);
+      border: 1px solid var(--border-strong);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .section-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0;
+    }
+    .btn-refresh-topics {
+      background: var(--bg-surface);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.5rem 0.9rem;
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-refresh-topics:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .memory-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: -0.75rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+    @media (min-width: 860px) {
+      .topics-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .topic-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .topic-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    .topic-card .card-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .topic-card .category-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-digital);
+      background: rgba(35, 93, 114, 0.08);
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .btn-dismiss-topic {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.2rem;
+      line-height: 1;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    .btn-dismiss-topic:hover {
+      color: #dc2626;
+      background: rgba(220, 38, 38, 0.08);
+    }
+    .topic-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .topic-card p.thesis {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .topic-card .detail-box {
+      background: var(--bg-surface);
+      border-left: 2px solid var(--accent);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      line-height: 1.45;
+    }
+    .topic-card button.btn-approve {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1rem;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease;
+    }
+    .topic-card button.btn-approve:hover {
+      background: var(--accent-hover);
+    }
+    .articles-table-wrap {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+    table.articles-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    table.articles-table th {
+      background: var(--bg-surface);
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    table.articles-table td {
+      padding: 1.2rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .status-badge.draft {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .status-badge.published {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .actions-cell {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      padding: 0.4rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+    }
+    .action-btn:hover {
+      background: var(--border-subtle);
+      color: var(--accent);
+    }
+    .action-btn.publish {
+      background: #047857;
+      color: #ffffff;
+      border-color: #047857;
+    }
+    .action-btn.publish:hover {
+      background: #065f46;
+      color: #ffffff;
+    }
+    .action-btn.delete {
+      background: #fff;
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+    .action-btn.delete:hover {
+      background: #fee2e2;
+      color: #991b1b;
+      border-color: #f87171;
+    }
+    /* Loading overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem;
+    }
+    .loading-overlay.active {
+      display: flex;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Editoryal Yönetim Stüdyosu</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="/" class="action-btn" style="padding:0.4rem 0.8rem;">← Siteye Dön / View Site</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="studio-container">
+    
+    <div class="studio-header">
+      <div>
+        <h1>Editoryal Araştırma & Onay Masası</h1>
+        <p>Yapay zekâ tarafından hazırlanan konu önerilerini onaylayabilir, yeni konular keşfedebilir ve yayın geçmişine göre tekrara düşmeyen özgün içerikler üretebilirsiniz.</p>
+      </div>
+      <div>
+        <span class="studio-badge">● CANLI YEREL STÜDYO</span>
+      </div>
+    </div>
+
+    <!-- Section 1: AI Topic Proposals with Refresh Button -->
+    <div class="section-header-bar">
+      <h2 class="section-title">💡 Onayınızı Bekleyen Konu Önerileri</h2>
+      <button class="btn-refresh-topics" id="btn-refresh-topics" onclick="refreshTopics()">
+        <span>🔄</span>
+        <span>Yeni Konu Önerileri Keşfet (AI)</span>
+      </button>
+    </div>
+    <div class="memory-note">
+      🧠 Editoryal Hafıza Aktif: Yayınlanan ve yazılan konular taranmakta, aynı zanaat disiplinleri elenerek daima yeni ve keşfedilmemiş alanlar önerilmektedir.
+    </div>
+
+    <div class="topics-grid" id="topics-grid-container">
+      <div class="topic-card" id="card-cam-ve-raymarching">
+          <div>
+            <div class="card-top-bar">
+              <span class="category-pill">Cam Zanaatı & Shader Kodları</span>
+              <button class="btn-dismiss-topic" onclick="dismissTopic('card-cam-ve-raymarching')" title="Bu öneriyi kaldır">✕</button>
+            </div>
+            <h3>Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</h3>
+            <p class="thesis">1000 derecede eriyen silika camının yerçekimi ve nefesle şekillenmesi ile bilgisayar grafiklerindeki foton haritalama ve caustics shader simülasyonları.</p>
+            <div class="detail-box">
+              <strong>Vakalar:</strong> Murano ustaları, Neri Oxman (MIT Glass 3D printing), GLSL gerçek zamanlı optik shader'lar.
+            </div>
+          </div>
+          <button class="btn-approve" onclick="approveTopic('cam-ve-raymarching', 'Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)')">
+            <span>🚀</span> Bu Konuyu Onayla & Üret
+          </button>
+        </div>
+<div class="topic-card" id="card-kundekari-robotik-ahsap">
+          <div>
+            <div class="card-top-bar">
+              <span class="category-pill">Ahşap Kündekâri & Dijital Eklemler</span>
+              <button class="btn-dismiss-topic" onclick="dismissTopic('card-kundekari-robotik-ahsap')" title="Bu öneriyi kaldır">✕</button>
+            </div>
+            <h3>Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri</h3>
+            <p class="thesis">Tutkal ve çivi kullanmadan ahşabın nefes almasını sağlayan zıvanalı kündekâri zanaatı; parametrik robotik ahşap strüktürleri ve tolerans algoritmalarıyla canlanıyor.</p>
+            <div class="detail-box">
+              <strong>Vakalar:</strong> Tarihi ahşap cami minberleri, Gramazio Kohler Research (ETH Zürih), 7 eksenli robotik ahşap frezeleme.
+            </div>
+          </div>
+          <button class="btn-approve" onclick="approveTopic('kundekari-robotik-ahsap', 'Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri')">
+            <span>🚀</span> Bu Konuyu Onayla & Üret
+          </button>
+        </div>
+<div class="topic-card" id="card-dovme-bakir-ses">
+          <div>
+            <div class="card-top-bar">
+              <span class="category-pill">Bakır Zanaatı & Ses Heykelleri</span>
+              <button class="btn-dismiss-topic" onclick="dismissTopic('card-dovme-bakir-ses')" title="Bu öneriyi kaldır">✕</button>
+            </div>
+            <h3>Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans</h3>
+            <p class="thesis">Bakır levhayı çekiç vuruşlarının ritmiyle sertleştirip form verme zanaatı; fiziksel modelleme sentezi ve mikrotonal rezonans frekanslarıyla çalışan ses heykelleriyle kesişiyor.</p>
+            <div class="detail-box">
+              <strong>Vakalar:</strong> Kazancılar Çarşısı çekiç poliritimleri, Harry Bertoia ses heykelleri, MaxMSP fiziksel akustik simülasyonları.
+            </div>
+          </div>
+          <button class="btn-approve" onclick="approveTopic('dovme-bakir-ses', 'Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans')">
+            <span>🚀</span> Bu Konuyu Onayla & Üret
+          </button>
+        </div>
+    </div>
+
+    <!-- Section 2: Articles Table with Delete Button -->
+    <h2 class="section-title">📚 Yazı Masası (Taslaklar ve Yayındakiler)</h2>
+    <div class="articles-table-wrap">
+      <table class="articles-table">
+        <thead>
+          <tr>
+            <th>Makale Başlığı</th>
+            <th>Durum</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+          </tr>
+        </thead>
+        <tbody id="articles-tbody">
+          <tr>
+          <td>
+            <a href="/yazi/dokuma-tezgahindan-koda.html" style="text-decoration:none; color:inherit;">
+              <strong>Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/dokuma-tezgahindan-koda.html</small>
+          </td>
+          <td><span class="status-badge draft">TASLAK</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/dokuma-tezgahindan-koda.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('dokuma-tezgahindan-koda')">🚀 Yayına Al</button>
+              <button class="action-btn delete" onclick="deleteArticle('dokuma-tezgahindan-koda', 'Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/kintsugi-ve-dijital-kusur.html" style="text-decoration:none; color:inherit;">
+              <strong>Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/kintsugi-ve-dijital-kusur.html</small>
+          </td>
+          <td><span class="status-badge draft">TASLAK</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/kintsugi-ve-dijital-kusur.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('kintsugi-ve-dijital-kusur')">🚀 Yayına Al</button>
+              <button class="action-btn delete" onclick="deleteArticle('kintsugi-ve-dijital-kusur', 'Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/ebru-ve-sivi-algoritmalar.html" style="text-decoration:none; color:inherit;">
+              <strong>Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/ebru-ve-sivi-algoritmalar.html</small>
+          </td>
+          <td><span class="status-badge draft">TASLAK</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/ebru-ve-sivi-algoritmalar.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('ebru-ve-sivi-algoritmalar')">🚀 Yayına Al</button>
+              <button class="action-btn delete" onclick="deleteArticle('ebru-ve-sivi-algoritmalar', 'Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" style="text-decoration:none; color:inherit;">
+              <strong>Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
+          </td>
+          <td><span class="status-badge draft">TASLAK</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('hat-sanati-ve-robotik-kaligrafi')">🚀 Yayına Al</button>
+              <button class="action-btn delete" onclick="deleteArticle('hat-sanati-ve-robotik-kaligrafi', 'Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <div id="loading-content">
+      <h2 id="loading-title">Yapay Zekâ Araştırması Başlatıldı...</h2>
+      <p id="loading-desc" style="max-width:500px; color:#cbd5e1; margin-top:0.75rem;">Web arşivleri taranıyor, kavramsal görsel bağlanıyor ve çift dilli makale inşa ediliyor. Lütfen bekleyin...</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast-msg"></div>
+
+  <script>
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(function() { toast.style.display = 'none'; }, 3500);
+    }
+
+    function dismissTopic(cardId) {
+      if (confirm('Bu konu önerisini listeden kaldırmak istiyor musunuz?')) {
+        var card = document.getElementById(cardId);
+        if (card) {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          setTimeout(function() { card.remove(); }, 300);
+          showToast('Konu önerisi kaldırıldı.');
+        }
+      }
+    }
+
+    function refreshTopics() {
+      var btn = document.getElementById('btn-refresh-topics');
+      btn.innerHTML = '<span>⏳</span><span>Hafıza Taranıyor...</span>';
+      btn.disabled = true;
+
+      fetch('/api/studio/refresh-proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({})
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
+        btn.disabled = false;
+        if (data.ok) {
+          showToast('✨ 3 Yeni ve keşfedilmemiş konu önerisi masanıza getirildi!');
+          setTimeout(function() { window.location.reload(); }, 600);
+        } else {
+          alert('Hata: ' + data.error);
+        }
+      })
+      .catch(function(err) {
+        btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
+        btn.disabled = false;
+        console.error(err);
+        window.location.reload();
+      });
+    }
+
+    function approveTopic(topicKey, topicName) {
+      var overlay = document.getElementById('loading-overlay');
+      var content = document.getElementById('loading-content');
+      overlay.classList.add('active');
+      document.getElementById('loading-title').innerText = '"' + topicName + '" Hazırlanıyor...';
+
+      fetch('/api/studio/generate-topic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic_key: topicKey })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          content.innerHTML = '<h2 style="color:#a7f3d0; margin-bottom:1rem;">🎉 Makale Başarıyla Hazırlandı!</h2>' +
+            '<p style="color:#e2e8f0; margin-bottom:1.5rem;">Türkçe ve İngilizce taslaklar oluşturuldu, görsel bağlandı.</p>' +
+            '<a href="' + data.url + '" class="action-btn publish" style="font-size:1rem; padding:0.7rem 1.4rem;">👉 Taslağı Hemen İncele</a>';
+          setTimeout(function() {
+            window.location.href = data.url;
+          }, 1500);
+        } else {
+          alert('Hata oluştu: ' + (data.error || 'Bilinmeyen hata'));
+          overlay.classList.remove('active');
+        }
+      })
+      .catch(function(err) {
+        console.error(err);
+        window.location.reload();
+      });
+    }
+
+    function publishArticle(slug) {
+      if (!confirm('Bu taslağı onaylayıp yayına almak istiyor musunuz?')) return;
+
+      fetch('/api/studio/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          showToast('🚀 Makale başarıyla yayına alındı!');
+          setTimeout(function() { window.location.reload(); }, 600);
+        } else {
+          alert('Hata: ' + data.error);
+        }
+      });
+    }
+
+    function unpublishArticle(slug) {
+      if (!confirm('Bu yazıyı yayından çekip taslak moduna almak istiyor musunuz?')) return;
+
+      fetch('/api/studio/unpublish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          showToast('↩️ Yazı tekrar taslak moduna alındı.');
+          setTimeout(function() { window.location.reload(); }, 600);
+        } else {
+          alert('Hata: ' + data.error);
+        }
+      });
+    }
+
+    function deleteArticle(slug, title) {
+      var confirmMsg = '"' + (title || slug) + '" başlıklı yazıyı tamamen silmek istediğinizden emin misiniz?';
+      if (!confirm(confirmMsg)) return;
+
+      fetch('/api/studio/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          showToast('🗑️ Yazı başarıyla silindi.');
+          setTimeout(function() { window.location.reload(); }, 600);
+        } else {
+          alert('Silme hatası: ' + (data.error || 'Bilinmeyen hata'));
+        }
+      })
+      .catch(function(err) {
+        alert('Sunucu hatası: ' + err);
+      });
+    }
+  </script>
+
+</body>
+</html>

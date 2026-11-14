@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Art, Craft & Computational Inquiries</span>
+      </div>
+
+      <nav class="main-nav">
+        <!-- Quick Studio Access -->
+        <a href="/studio.html" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem;">
+          <span>⚡</span>
+          <span>Stüdyo</span>
+        </a>
+
+        <!-- In-Browser Instant Language Toggle -->
+        <div class="lang-toggle-btn" onclick="toggleLanguage()" title="Dili Değiştir / Switch Language">
+          <span class="opt active" id="btn-tr">TR</span>
+          <span class="opt" id="btn-en">EN</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="post" data-slug="hat-sanati-ve-robotik-kaligrafi">
+  <div class="draft-banner">
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.6rem;">
+      <div>
+        <span class="lang-tr"><strong>⚠️ TASLAK ÖNİZLEME MODU</strong> — Bu yazı henüz internette canlıda değildir. İnceleyip düzenleyebilir veya doğrudan yayına alabilirsiniz.</span>
+        <span class="lang-en" style="display:none;"><strong>⚠️ DRAFT PREVIEW MODE</strong> — This piece is not yet live. You can review, edit or publish it.</span>
+      </div>
+      <button class="editor-btn primary" onclick="publishCurrentArticle('hat-sanati-ve-robotik-kaligrafi')" style="background:#047857; color:#fff; border-color:#047857; padding:0.4rem 0.85rem; font-size:0.82rem; cursor:pointer;">
+        <span>🚀</span> <span class="lang-tr">Bu Yazıyı Yayına Al</span><span class="lang-en" style="display:none;">Publish This Article</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">2 dk</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Hat Sanatı</span> <span class="tag">#Çağdaş Sanat</span> <span class="tag">#Generatif Kod</span> <span class="tag">#Yeni Medya</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-mak...</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>Craft&Code Araştırma Masası</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">2 min read</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Hat Sanatı</span> <span class="tag">#Contemporary Art</span> <span class="tag">#Generative Code</span> <span class="tag">#New Media</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">The Breath of the Reed: Calligraphic Geometry and Robotic Scribes</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-mak...</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>Craft&Code Editorial Desk</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button class="img-change-trigger" onclick="openImageModal()">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="/images/kintsugi-glitch-cover.jpg" alt="Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">Kavramsal Eser: Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi üzerine küratöryel stüdyo araştırması.</strong>
+          <span class="credit editable" id="tr-credit">Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">Conceptual Artwork: Curatorial studio exploration of The Breath of the Reed: Calligraphic Geometry and Robotic Scribes.</strong>
+          <span class="credit editable" id="en-credit">Visual: Craft&Code / AI & Curatorial Concept Synthesis</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    <p>Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.</p>
+<h2>1. Kadim Sözdizimi: Malzemenin ve Bedenin Hafızası</h2>
+<p>Her kadim zanaat, kendi çağının en ileri malzeme teknolojisi ve ontolojik bilgi sistemidir. Ustanın eli malzemeye değerken, fiziksel dünyanın kurallarıyla doğrudan bir müzakere yürütür.</p>
+<blockquote><p>"Zanaatkâr, eylemi esnasında maddeyle sürekli ve samimi bir diyalog kurar; onu boyunduruk altına almaz, onun direncini dinler."</p><cite>— Richard Sennett, The Craftsman</cite></blockquote>
+<h2>2. Sayısal Dönüşüm ve Algoritmik Müdahale</h2>
+<p>Çağdaş yeni medya sanatçıları ve yaratıcı kodlayıcılar, bu geleneksel disiplini müzelik bir nostalji olmaktan çıkarıp, güncel algoritmik sistemlerin (generatif kod, yapay zekâ, robotik üretim) eleştirel bir aynası olarak kullanmaktadır.</p>
+<div class="curatorial-box"><span class="badge">Küratöryel Not</span>
+<p>Zanaatın bedensel sabrı ile kodun sonsuz soyutlama yeteneği karşılaştığında; ne gelenek geride kalır ne de teknoloji tek başına hükmeder. Ortaya çıkan form, insan hafızasının hibrit bir manifestosudur.</p>
+</div>
+<h2>3. Vaka İncelemeleri</h2>
+<p>Aklâm-ı Sitte nokta matematiği, Sougwen Chung (Drawing Operations), AxiDraw generatif kodlama.</p>
+<h2>4. Eleştirel Sentez</h2>
+<p>Zanaat ile kodun bu kesişimi, bize geleceğin teknolojisini tasarlarken kadim el bilgisini unutmamamız gerektiğini fısıldar.</p>
+<p>---</p>
+<h3>Kaynakça ve İleri Okumalar</h3>
+<ol>
+<li><strong>Sennett, Richard.</strong> <em>The Craftsman</em>. Yale University Press, 2008.</li>
+<li><strong>Ingold, Tim.</strong> <em>Making: Anthropology, Archaeology, Art and Architecture</em>. Routledge, 2013.</li>
+<li><strong>Craft&Code Araştırma Arşivi</strong>, 2026.</li>
+</ol>
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    <p>Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.</p>
+<h2>1. The Ancient Syntax: Material and Bodily Memory</h2>
+<p>Every ancient craft represents the vanguard material intelligence of its epoch. In negotiating with material resistance, the artisan executes an intimate epistemic inquiry.</p>
+<blockquote><p>"The craftsman conducts a continuous and candid dialogue with matter; they do not subdue it, but heed its intrinsic resistance."</p><cite>— Richard Sennett, The Craftsman</cite></blockquote>
+<h2>2. Computational Transitions & Algorithmic Intervention</h2>
+<p>Contemporary new media artists and creative coders emancipate traditional craft from ethnographic sentimentality, harnessing its structural logic as a critical mirror against algorithmic hegemony.</p>
+<div class="curatorial-box"><span class="badge">Curatorial Note</span>
+<p>When bodily craft knowledge encounters computational abstraction, neither tradition nor code remains static; the emergent form is a hybrid manifesto of human consciousness.</p>
+</div>
+<h2>3. Curated Case Studies</h2>
+<p>Aklâm-ı Sitte nokta matematiği, Sougwen Chung (Drawing Operations), AxiDraw generatif kodlama.</p>
+<h2>4. Critical Synthesis</h2>
+<p>This convergence between craft and code urges us never to divorce future computational paradigms from primordial tactile intelligence.</p>
+<p>---</p>
+<h3>Bibliography & References</h3>
+<ol>
+<li><strong>Sennett, Richard.</strong> <em>The Craftsman</em>. Yale University Press, 2008.</li>
+<li><strong>Ingold, Tim.</strong> <em>Making: Anthropology, Archaeology, Art and Architecture</em>. Routledge, 2013.</li>
+<li><strong>Craft&Code Editorial Archive</strong>, 2026.</li>
+</ol>
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/kintsugi-glitch-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar -->
+<div class="editor-toolbar">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  <button class="editor-btn" onclick="publishCurrentArticle('hat-sanati-ve-robotik-kaligrafi')" style="background:#047857; color:#ffffff; border-color:#047857;">
+    <span>🚀</span>
+    <span class="lang-tr">Yayına Al</span>
+    <span class="lang-en" style="display:none;">Publish</span>
+  </button>
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Craft&Code</strong> — Kadim Zanaat & Çağdaş Sanat Araştırmaları
+      </div>
+      <div>
+        <span class="lang-tr">Geleneksel ile güncelin kesiştiği bağımsız araştırma yayını.</span>
+        <span class="lang-en" style="display:none;">An independent publication at the intersection of craft and computation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-msg">✅ Değişiklikler başarıyla kaydedildi!</div>
+
+  <script>
+    var currentLang = localStorage.getItem('craft_code_lang') || 'tr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('craft_code_lang', lang);
+      
+      document.querySelectorAll('.lang-tr').forEach(function(el) {
+        el.style.display = (lang === 'tr') ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = (lang === 'en') ? '' : 'none';
+      });
+
+      var btnTr = document.getElementById('btn-tr');
+      var btnEn = document.getElementById('btn-en');
+      if (btnTr && btnEn) {
+        if (lang === 'tr') {
+          btnTr.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnTr.classList.remove('active');
+        }
+      }
+      document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLang);
+    });
+  </script>
+
+</body>
+</html>

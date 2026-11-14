@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Art, Craft & Computational Inquiries</span>
+      </div>
+
+      <nav class="main-nav">
+        <!-- Quick Studio Access -->
+        <a href="/studio.html" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem;">
+          <span>⚡</span>
+          <span>Stüdyo</span>
+        </a>
+
+        <!-- In-Browser Instant Language Toggle -->
+        <div class="lang-toggle-btn" onclick="toggleLanguage()" title="Dili Değiştir / Switch Language">
+          <span class="opt active" id="btn-tr">TR</span>
+          <span class="opt" id="btn-en">EN</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="post" data-slug="dokuma-tezgahindan-koda">
+  <div class="draft-banner">
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.6rem;">
+      <div>
+        <span class="lang-tr"><strong>⚠️ TASLAK ÖNİZLEME MODU</strong> — Bu yazı henüz internette canlıda değildir. İnceleyip düzenleyebilir veya doğrudan yayına alabilirsiniz.</span>
+        <span class="lang-en" style="display:none;"><strong>⚠️ DRAFT PREVIEW MODE</strong> — This piece is not yet live. You can review, edit or publish it.</span>
+      </div>
+      <button class="editor-btn primary" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#fff; border-color:#047857; padding:0.4rem 0.85rem; font-size:0.82rem; cursor:pointer;">
+        <span>🚀</span> <span class="lang-tr">Bu Yazıyı Yayına Al</span><span class="lang-en" style="display:none;">Publish This Article</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">5 dk</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Dokuma</span> <span class="tag">#Generatif Sanat</span> <span class="tag">#Tekstil</span> <span class="tag">#Yeni Medya</span> <span class="tag">#Jacquard</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">Jakarlı tezgâhtan çağdaş enstalasyona; çözgü ve atkının ikili kodu (0 ve 1), Ebru Kurbak’ın işlemeli bilgisayarı ve Phillip Stearns’ün dokunmuş pikselleri.</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>Craft&Code Araştırma Masası</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">5 min read</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Weaving</span> <span class="tag">#Generative Art</span> <span class="tag">#Textiles</span> <span class="tag">#New Media</span> <span class="tag">#Jacquard</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">From Punch Cards to Algorithms: The Loom and the Ancient Roots of Generative Art</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">From the Jacquard mechanism to contemporary installation; the binary syntax of warp and weft (0 and 1), Ebru Kurbak’s embroidered computer, and Phillip Stearns’ woven pixels.</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>Craft&Code Editorial Desk</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button class="img-change-trigger" onclick="openImageModal()">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="/images/weaving-and-code-cover.jpg" alt="Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">Kavramsal Enstalasyon: Geleneksel ahşap tezgâhtaki el dokuması yün ipliklerin optik fiberlere ve pikselli generatif matrise dönüşümü.</strong>
+          <span class="credit editable" id="tr-credit">Görsel: Craft&Code / Yapay Zekâ ve Küratöryel Konsept Tasarımı</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">Conceptual Installation: Hand-spun Anatolian wool threads on a traditional wooden loom transitioning into optical fibers and generative pixel matrices.</strong>
+          <span class="credit editable" id="en-credit">Visual: Craft&Code / AI & Curatorial Concept Synthesis</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    <p>Günümüz dijital kültüründe "kod", ekranların arkasında görünmezce işleyen, soyut ve maddesiz bir dil olarak algılanır. Oysa bilinen ilk algoritmik sistemler ve programlanabilir yapılar silikon vadilerinde değil; taşra atölyelerindeki ahşap tezgâhlarda, yün liflerinin, pamuk çözgülerinin ve insan bedeninin ritminde filizlenmiştir.</p>
+<p>Zanaat ile hesaplamalı sanat arasındaki bu organik süreklilik, modernizmin zanaatı "geleneksel/arkaik", yazılımı ise "fütüristik" olarak ayıran yapay hiyerarşisini kökten sarsmaktadır.</p>
+<h2>1. İlk İkili Sistem: Çözgü, Atkı ve Delikli Kartlar</h2>
+<p>Dokuma, özü itibarıyla saf bir ikili mantıktır (binary logic). Bir kumaş yüzeyi oluşturulurken dikey duran her bir çözgü (warp) ipliği, yatay geçen atkı (weft) ipliğine göre yalnızca iki olasılıktan birine sahip olabilir: <strong>Yukarıda (1) veya Aşağıda (0)</strong>.</p>
+<p>1804 yılında Joseph Marie Jacquard, ipek kumaş üretiminde insan gücünü ve tekrar eden desen hatalarını aşmak için delikli kart sistemini icat ettiğinde, farkında olmadan ilk donanımsal programlama mimarisini kurmuştu. Karttaki delik iğnenin geçmesine izin veriyor (1), deliğin olmaması ise iğneyi durduruyordu (0).</p>
+<blockquote><p>"Analitik Motor, tıpkı Jakarlı tezgâhın çiçek ve yaprakları dokuduğu gibi, cebirsel örüntüleri dokur."</p><cite>— Ada Lovelace, 1843</cite></blockquote>
+<p>Tarihin ilk bilgisayar programcısı kabul edilen Ada Lovelace, Charles Babbage’ın Analitik Motoru üzerine yazdığı notlarda bu bağı olağanüstü bir berraklıkla tarif etmişti. Kültür kuramcısı Sadie Plant ise <em>Zeros and Ones</em> (1997) adlı eserinde dokuma tezgâhını "bilgi işlem teknolojisinin kurucu matrisi" olarak tanımlar. Kadınların tarih boyunca icra ettiği dokuma zanaatı, aslında insanlığın ilk yazılım geliştirme pratiğiydi.</p>
+<h2>2. Bauhaus'tan Sanal Alana: Anni Albers ve Strüktür Olarak İplik</h2>
+<p>1920'lerde Bauhaus Dokuma Atölyesi’nin öncülerinden Anni Albers ve Gunta Stölzl, tekstili salt dekoratif bir süsleme olmaktan çıkarıp, malzeme odaklı kavramsal bir strüktüre dönüştürdüler. Albers, <em>On Weaving</em> (1965) kitabında dokumacılığı "çizgiyi iki boyutlu bir alanda matematiksel ve yapısal olarak yönlendirme sanatı" olarak kavramsallaştırdı.</p>
+<p>Albers’ın ızgara (grid) tabanlı desen çalışmaları, bugün Processing veya p5.js ile generative art (üretken sanat) üreten sanatçıların algoritmik mantığıyla birebir örtüşür. Kod yazarı da tıpkı dokumacı gibi kuralları (syntax) tanımlar, parametreleri sınırlar ve ortaya çıkan örüntünün kendi iç dinamiğini gözlemler.</p>
+<div class="curatorial-box"><span class="badge">Küratöryel Not</span>
+<p>Tekstildeki ızgara (grid), ekran teknolojisindeki piksel matrisinin doğrudan atasıdır. Bir pikselin koordinatları ve RGB değerleri, dokuma tezgâhındaki iplik kesişimi ve renk değişimleriyle yapısal olarak özdeştir.</p>
+</div>
+<h2>3. Güncel Pratikler ve Vaka Analizleri</h2>
+<p>Günümüz çağdaş ve yeni medya sanatçıları, dokuma zanaatını yalnızca nostaljik bir referans olarak değil; dijital çağın şeffaflıktan uzak teknolojilerini eleştirmek ve somutlaştırmak için bir araç olarak yeniden ele alıyor.</p>
+<h3>Vaka 1: Ebru Kurbak & Irene Posch – "The Embroidered Computer" (İşlemeli Bilgisayar)</h3>
+<p>Viyana Uygulamalı Sanatlar Üniversitesi bünyesinde yürütülen <em>Stitching Worlds</em> projesi kapsamında sanatçı Ebru Kurbak ve Irene Posch, çağdaş teknolojinin endüstriyel kabullerine radikal bir soru yöneltti: <strong>"Eğer elektronik endüstrisi silikon çiplerden değil de tekstil zanaatından doğmuş olsaydı teknoloji nasıl görünürdü?"</strong></p>
+<p>Sanatçılar, modern mikroişlemcilerin yerine tamamen el nakışı ve geleneksel dikiş teknikleriyle çalışan, altın, gümüş, bakır iplikler, keten kumaş ve ahşaptan oluşan tam teşekküllü <strong>8-bit elektromekanik bir bilgisayar</strong> inşa ettiler. Burada teknoloji artık kapalı, soğuk siyah bir kutu değil; dikiş dikiş işlenmiş, dokunulabilir, şeffaf ve dişil bir zanaat anıtıdır.</p>
+<h3>Vaka 2: Phillip Stearns – "Glitch Textiles"</h3>
+<p>Brooklyn merkezli sanatçı Phillip Stearns, 2012'de başlattığı <em>Glitch Textiles</em> projesinde bilgisayar çökmelerini, ham bellek (RAM) dökümlerini ve dijital görüntü hatalarını doğrudan endüstriyel bilgisayarlı Jakarlı tezgâhlara besliyor.</p>
+<p>Ekranda birkaç milisaniye görünüp kaybolan dijital parazitler (glitch), yün ve pamuk lifleriyle dokunarak kalıcı, tensel ve sıcak battaniyeler veya galeri boyutunda duvar halılarına dönüşüyor. Stearns, Jakarlı tezgâhın delikli kart mirasını, modern dijital çöküşün estetiğiyle birleştirerek döngüyü tamamlıyor.</p>
+<h2>4. Eleştirel Sentez: Malzeme ve Soyutlama Arasında</h2>
+<p>Zanaat bedensel bir bilgelik, malzemenin direncini hissetme ve sabır gerektirir. Algoritma ise hız ve sonsuz soyutlama vaat eder. Dokuma ile kodun buluştuğu güncel sanat enstalasyonları, tam da bu gerilimin üzerinde yükselir:</p>
+<ul>
+<li><strong>Kaybolan Ne?</strong> Yazılım dünyasının dokunulmaz, steril hızı karşısında; lifin kokusu, tezgâhın gıcırtısı ve elin kusuru.</li>
+<li><strong>Kazanılan Ne?</strong> Geleneksel zanaatın müzelik bir folklor objesi olmaktan çıkıp, çağdaş algoritmik tahakküme karşı direnen, eleştirel ve politik bir düşünme aracına dönüşmesi.</li>
+</ul>
+<p>Dokuma tezgâhı ile kod arasındaki bağ, geçmiş ile geleceğin karşıt kutuplar değil; aynı kumaşın çözgüsü ve atkısı olduğunu fısıldar.</p>
+<p>---</p>
+<h3>Kaynakça ve İleri Okumalar</h3>
+<ol>
+<li><strong>Albers, Anni.</strong> <em>On Weaving</em>. Wesleyan University Press, 1965.</li>
+<li><strong>Plant, Sadie.</strong> <em>Zeros and Ones: Digital Women and the New Technoculture</em>. Doubleday, 1997.</li>
+<li><strong>Kurbak, Ebru (Ed.).</strong> <em>Stitching Worlds: Exploring Textiles and Electronics</em>. Revolver Publishing, 2018.</li>
+<li><strong>Lovelace, Ada.</strong> <em>Notes on Luigi Menabrea's Sketch of the Analytical Engine Invented by Charles Babbage</em>, 1843.</li>
+<li><strong>Stearns, Phillip.</strong> <em>Glitch Textiles: Woven Data Structures</em>. Brooklyn, NY, 2012–2024.</li>
+</ol>
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    <p>In contemporary digital culture, "code" is commonly conceived as an invisible, immaterial, and disembodied language operating silently behind glass screens. Yet the earliest programmable machines and algorithmic structures did not emerge in Silicon Valley labs; they germinated in rustic workshops on wooden looms, guided by the tactile cadence of wool fibers, cotton warps, and the rhythmic movements of the human body.</p>
+<p>This profound continuum between ancient craft and computational art dismantles modernism's artificial hierarchy—a doctrine that cast craft as "nostalgic/traditional" and software as "futuristic/immaterial."</p>
+<h2>1. The Primordial Binary: Warp, Weft, and Perforated Cards</h2>
+<p>At its structural core, weaving is pure binary logic. When constructing a woven plane, every vertical warp thread can occupy only one of two states relative to the horizontal weft: <strong>Up (1) or Down (0)</strong>.</p>
+<p>In 1804, when Joseph Marie Jacquard devised his mechanical punch-card attachment to automate complex silk brocade patterns in Lyon, he inadvertently engineered the foundational architecture of digital hardware. A hole in the cardboard allowed a hook to pass through (1); the absence of a hole stopped it (0).</p>
+<blockquote><p>"The Analytical Engine weaves algebraical patterns just as the Jacquard-loom weaves flowers and leaves."</p><cite>— Ada Lovelace, 1843</cite></blockquote>
+<p>Regarded as the world’s first computer programmer, Ada Lovelace captured this intimate lineage in her foundational notes on Charles Babbage’s Analytical Engine. Decades later, cultural theorist Sadie Plant observed in <em>Zeros and Ones</em> (1997) that the loom was the seminal matrix of all computational culture. The repetitive, intricate labor of weaving historically performed by women was, in truth, humanity's inaugural software programming.</p>
+<h2>2. From the Bauhaus to Virtual Space: Anni Albers and the Structural Thread</h2>
+<p>During the 1920s at the Bauhaus Weaving Workshop, visionaries like Anni Albers and Gunta Stölzl emancipated textiles from mere domestic ornamentation, reasserting the medium as a structural, spatial, and conceptual language. In her seminal treatise <em>On Weaving</em> (1965), Albers redefined weaving as "the structural and mathematical manipulation of a line across two dimensions."</p>
+<p>Albers’ rigorous, grid-based compositions prefigure the algorithmic logic that generative artists harness today via code (such as Processing or p5.js). Much like a weaver, the creative coder establishes systemic constraints, defines recursive rules, and observes how complex visual emergence unfolds from simple algorithmic inputs.</p>
+<div class="curatorial-box"><span class="badge">Curatorial Note</span>
+<p>The textile grid is the direct ancestor of the digital pixel matrix. The XY coordinates and color values of an on-screen pixel correspond structurally to the intersection and dye variations of warp and weft threads.</p>
+</div>
+<h2>3. Contemporary Practices and Case Studies</h2>
+<p>Today, contemporary artists and creative technologists are reclaiming weaving not as an exercise in retro-nostalgia, but as a critical instrument to demystify and subvert the black-box opacity of contemporary technology.</p>
+<h3>Case Study 1: Ebru Kurbak & Irene Posch – "The Embroidered Computer"</h3>
+<p>As part of the <em>Stitching Worlds</em> research initiative at the University of Applied Arts Vienna, artists Ebru Kurbak and Irene Posch posed a radical question: <strong>"What if the electronics industry had grown out of textile crafts rather than industrial silicon manufacturing?"</strong></p>
+<p>In response, they handcrafted a fully functional, universal <strong>8-bit electromechanical computer</strong> constructed entirely with traditional embroidery and textile techniques. Utilizing gold, silver, copper yarn, linen cloth, and carved wooden supports, the work strips computing of its sealed industrial casing, rendering logic gates tangible, acoustic, tactile, and historically rooted in domestic craft.</p>
+<h3>Case Study 2: Phillip Stearns – "Glitch Textiles"</h3>
+<p>Brooklyn-based artist Phillip Stearns founded <em>Glitch Textiles</em> in 2012, feeding raw binary dumps, computational memory errors, and physical sensor crashes directly into computerized industrial Jacquard looms.</p>
+<p>Digital artifacts that flash across a screen for a fraction of a millisecond are transmuted through wool and cotton into durable, tactile blankets and gallery tapestries. Stearns brings the lineage of Jacquard full circle: digital algorithmic noise is materialized back into the warmth of the woven thread.</p>
+<h2>4. Critical Synthesis: Between Materiality and Abstraction</h2>
+<p>Craft demands bodily wisdom, intimate negotiation with material resistance, and unyielding patience. The algorithm, conversely, promises frictionless speed and infinite abstraction. The contemporary artworks bridging weaving and code dwell precisely within this tension:</p>
+<ul>
+<li><strong>What is lost?</strong> In the frictionless acceleration of software: the scent of wet wool, the creak of timber shafts, and the serendipity of human error.</li>
+<li><strong>What is gained?</strong> Traditional craft ceases to be a passive ethnographic artifact and reemerges as a potent, critical philosophy capable of interrogating algorithmic hegemony.</li>
+</ul>
+<p>The hidden thread between the loom and code reminds us that the ancient and the digital are not opposing poles; they are the warp and weft of the very same fabric.</p>
+<p>---</p>
+<h3>Curated Bibliography</h3>
+<ol>
+<li><strong>Albers, Anni.</strong> <em>On Weaving</em>. Wesleyan University Press, 1965.</li>
+<li><strong>Plant, Sadie.</strong> <em>Zeros and Ones: Digital Women and the New Technoculture</em>. Doubleday, 1997.</li>
+<li><strong>Kurbak, Ebru (Ed.).</strong> <em>Stitching Worlds: Exploring Textiles and Electronics</em>. Revolver Publishing, 2018.</li>
+<li><strong>Lovelace, Ada.</strong> <em>Notes on Luigi Menabrea's Sketch of the Analytical Engine Invented by Charles Babbage</em>, 1843.</li>
+<li><strong>Stearns, Phillip.</strong> <em>Glitch Textiles: Woven Data Structures</em>. Brooklyn, NY, 2012–2024.</li>
+</ol>
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/weaving-and-code-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar -->
+<div class="editor-toolbar">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  <button class="editor-btn" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#ffffff; border-color:#047857;">
+    <span>🚀</span>
+    <span class="lang-tr">Yayına Al</span>
+    <span class="lang-en" style="display:none;">Publish</span>
+  </button>
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Craft&Code</strong> — Kadim Zanaat & Çağdaş Sanat Araştırmaları
+      </div>
+      <div>
+        <span class="lang-tr">Geleneksel ile güncelin kesiştiği bağımsız araştırma yayını.</span>
+        <span class="lang-en" style="display:none;">An independent publication at the intersection of craft and computation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-msg">✅ Değişiklikler başarıyla kaydedildi!</div>
+
+  <script>
+    var currentLang = localStorage.getItem('craft_code_lang') || 'tr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('craft_code_lang', lang);
+      
+      document.querySelectorAll('.lang-tr').forEach(function(el) {
+        el.style.display = (lang === 'tr') ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = (lang === 'en') ? '' : 'none';
+      });
+
+      var btnTr = document.getElementById('btn-tr');
+      var btnEn = document.getElementById('btn-en');
+      if (btnTr && btnEn) {
+        if (lang === 'tr') {
+          btnTr.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnTr.classList.remove('active');
+        }
+      }
+      document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLang);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+<article class="post" data-slug="{{SLUG}}">
+  {{DRAFT_BANNER}}
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">{{DATE}}</span>
+        <span>•</span>
+        <span class="reading-time">{{READING_TIME_TR}}</span>
+        <span>•</span>
+        <span class="tags">{{TAGS_TR}}</span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">{{TITLE_TR}}</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">{{SUBTITLE_TR}}</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>{{AUTHOR_TR}}</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">{{DATE}}</span>
+        <span>•</span>
+        <span class="reading-time">{{READING_TIME_EN}}</span>
+        <span>•</span>
+        <span class="tags">{{TAGS_EN}}</span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">{{TITLE_EN}}</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">{{SUBTITLE_EN}}</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>{{AUTHOR_EN}}</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button class="img-change-trigger" onclick="openImageModal()">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="{{COVER_IMAGE}}" alt="{{TITLE_TR}}">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">{{COVER_CAPTION_TR}}</strong>
+          <span class="credit editable" id="tr-credit">{{COVER_CREDIT_TR}}</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">{{COVER_CAPTION_EN}}</strong>
+          <span class="credit editable" id="en-credit">{{COVER_CREDIT_EN}}</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    {{CONTENT_TR}}
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    {{CONTENT_EN}}
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="{{COVER_IMAGE}}" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar -->
+<div class="editor-toolbar">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  {{PUBLISH_TOOLBAR_BTN}}
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('Hata: ' + err); });
+  }
+</script>
