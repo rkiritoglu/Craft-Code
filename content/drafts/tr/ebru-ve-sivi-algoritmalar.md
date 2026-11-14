@@ -9,7 +9,7 @@ tags: ['Ebru', 'Generatif Sanat', 'Akışkan Dinamiği', 'Yeni Medya']
 cover_image: "/images/ebru-cover.jpg"
 cover_caption: "Kavramsal Eser: Geleneksel aşı boyası ebru dalgalarının generatif vektör alanları ve hesaplamalı akışkan çizgileriyle birleşimi."
 cover_credit: "Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı"
-draft: false
+draft: true
 ---
 Ebru sanatı, Batı sanat tarihinin "sanatçının dehası tuvali fetheder" mitine karşı Doğu'nun sunduğu en radikal yanıttır. Ebru ustası teknenin başına geçtiğinde boyayı zorlamaz; kitreli suyun yoğunluğunu, ödün yüzey gerilimini ve at kılı fırçanın vuruş açısını ayarlar. Geriye kalan her şey, doğanın termodinamik ve akışkanlar dinamiği yasaları tarafından anbean hesaplanır.
 

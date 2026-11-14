@@ -9,7 +9,7 @@ tags: ['Kintsugi', 'Glitch Art', 'Ceramics', 'Wabi-Sabi', 'New Media']
 cover_image: "/images/kintsugi-porselen-macro.jpg"
 cover_caption: "Conceptual Artwork: Ancient Raku teabowl fractures illuminated by optical fibers, golden neon seams, and ethereal digital polygon glitches."
 cover_credit: "Visual: Craft&Code / AI & Curatorial Concept Synthesis"
-draft: false
+draft: true
 ---
 Smoothness is the prevailing aesthetic dogma of contemporary capitalism. From polished smartphone glass to sleek automotive surfaces, manufactured objects project an illusion of frictionless, unscarred eternity. Yet the 15th-century Japanese art of **Kintsugi** (golden joinery) and contemporary **Glitch Art** propose an antithetical truth: *an object derives its singular value precisely from its trauma, its fractures, and the temporal narrative etched into its scars.*
 

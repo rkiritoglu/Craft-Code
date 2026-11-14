@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editoryal Stüdyo — Craft&Code</title>
-  <link rel="stylesheet" href="/Craft-Code/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -311,14 +311,14 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <a href="/Craft-Code/" class="logo">
+        <a href="/" class="logo">
           Craft<span class="amp">&</span>Code
         </a>
         <span class="tagline">Editoryal Yönetim Stüdyosu</span>
       </div>
 
       <nav class="main-nav">
-        <a href="/Craft-Code/" class="action-btn" style="padding:0.4rem 0.8rem;">← Siteye Dön / View Site</a>
+        <a href="/" class="action-btn" style="padding:0.4rem 0.8rem;">← Siteye Dön / View Site</a>
       </nav>
     </div>
   </header>
@@ -353,7 +353,23 @@
     </div>
 
     <div class="topics-grid" id="topics-grid-container">
-      <div class="topic-card" id="card-cam-ve-raymarching">
+      <div class="topic-card" id="card-selcuklu-cini-3d">
+          <div>
+            <div class="card-top-bar">
+              <span class="category-pill">Mimari Çini & 3D Fabrikasyon</span>
+              <button class="btn-dismiss-topic" onclick="dismissTopic('card-selcuklu-cini-3d')" title="Bu öneriyi kaldır">✕</button>
+            </div>
+            <h3>Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil</h3>
+            <p class="thesis">Selçuklu ustalarının Batı'dan 500 yıl önce keşfettiği yarı-kristal (quasicrystal) geometrinin, günümüz robotik 3D seramik ekstrüzyonu ile yeniden doğuşu.</p>
+            <div class="detail-box">
+              <strong>Vakalar:</strong> Peter Lu (Harvard Science 2007 araştırması), Ronald Rael & 3D kil basımı, parametrik cepheler.
+            </div>
+          </div>
+          <button class="btn-approve" onclick="approveTopic('selcuklu-cini-3d', 'Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil')">
+            <span>🚀</span> Bu Konuyu Onayla & Üret
+          </button>
+        </div>
+<div class="topic-card" id="card-cam-ve-raymarching">
           <div>
             <div class="card-top-bar">
               <span class="category-pill">Cam Zanaatı & Shader Kodları</span>
@@ -385,22 +401,6 @@
             <span>🚀</span> Bu Konuyu Onayla & Üret
           </button>
         </div>
-<div class="topic-card" id="card-dovme-bakir-ses">
-          <div>
-            <div class="card-top-bar">
-              <span class="category-pill">Bakır Zanaatı & Ses Heykelleri</span>
-              <button class="btn-dismiss-topic" onclick="dismissTopic('card-dovme-bakir-ses')" title="Bu öneriyi kaldır">✕</button>
-            </div>
-            <h3>Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans</h3>
-            <p class="thesis">Bakır levhayı çekiç vuruşlarının ritmiyle sertleştirip form verme zanaatı; fiziksel modelleme sentezi ve mikrotonal rezonans frekanslarıyla çalışan ses heykelleriyle kesişiyor.</p>
-            <div class="detail-box">
-              <strong>Vakalar:</strong> Kazancılar Çarşısı çekiç poliritimleri, Harry Bertoia ses heykelleri, MaxMSP fiziksel akustik simülasyonları.
-            </div>
-          </div>
-          <button class="btn-approve" onclick="approveTopic('dovme-bakir-ses', 'Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans')">
-            <span>🚀</span> Bu Konuyu Onayla & Üret
-          </button>
-        </div>
     </div>
 
     <!-- Section 2: Articles Table with Delete Button -->
@@ -418,69 +418,69 @@
         <tbody id="articles-tbody">
           <tr>
           <td>
-            <a href="/Craft-Code/yazi/dokuma-tezgahindan-koda.html" style="text-decoration:none; color:inherit;">
+            <a href="/yazi/dokuma-tezgahindan-koda.html" style="text-decoration:none; color:inherit;">
               <strong>Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri</strong>
             </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/dokuma-tezgahindan-koda.html</small>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/dokuma-tezgahindan-koda.html</small>
           </td>
-          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td><span class="status-badge draft">TASLAK</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
-              <a class="action-btn" href="/Craft-Code/yazi/dokuma-tezgahindan-koda.html">👁️ Aç</a>
-              <button class="action-btn" onclick="unpublishArticle('dokuma-tezgahindan-koda')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <a class="action-btn" href="/yazi/dokuma-tezgahindan-koda.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('dokuma-tezgahindan-koda')">🚀 Yayına Al</button>
               <button class="action-btn delete" onclick="deleteArticle('dokuma-tezgahindan-koda', 'Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri')">🗑️ Sil</button>
             </div>
           </td>
         </tr>
 <tr>
           <td>
-            <a href="/Craft-Code/yazi/kintsugi-ve-dijital-kusur.html" style="text-decoration:none; color:inherit;">
-              <strong>Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</strong>
-            </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/kintsugi-ve-dijital-kusur.html</small>
-          </td>
-          <td><span class="status-badge published">● YAYINDA</span></td>
-          <td>2026-11-14</td>
-          <td>
-            <div class="actions-cell">
-              <a class="action-btn" href="/Craft-Code/yazi/kintsugi-ve-dijital-kusur.html">👁️ Aç</a>
-              <button class="action-btn" onclick="unpublishArticle('kintsugi-ve-dijital-kusur')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
-              <button class="action-btn delete" onclick="deleteArticle('kintsugi-ve-dijital-kusur', 'Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı')">🗑️ Sil</button>
-            </div>
-          </td>
-        </tr>
-<tr>
-          <td>
-            <a href="/Craft-Code/yazi/ebru-ve-sivi-algoritmalar.html" style="text-decoration:none; color:inherit;">
+            <a href="/yazi/ebru-ve-sivi-algoritmalar.html" style="text-decoration:none; color:inherit;">
               <strong>Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar</strong>
             </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/ebru-ve-sivi-algoritmalar.html</small>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/ebru-ve-sivi-algoritmalar.html</small>
           </td>
-          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td><span class="status-badge draft">TASLAK</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
-              <a class="action-btn" href="/Craft-Code/yazi/ebru-ve-sivi-algoritmalar.html">👁️ Aç</a>
-              <button class="action-btn" onclick="unpublishArticle('ebru-ve-sivi-algoritmalar')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <a class="action-btn" href="/yazi/ebru-ve-sivi-algoritmalar.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('ebru-ve-sivi-algoritmalar')">🚀 Yayına Al</button>
               <button class="action-btn delete" onclick="deleteArticle('ebru-ve-sivi-algoritmalar', 'Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar')">🗑️ Sil</button>
             </div>
           </td>
         </tr>
 <tr>
           <td>
-            <a href="/Craft-Code/yazi/hat-sanati-ve-robotik-kaligrafi.html" style="text-decoration:none; color:inherit;">
+            <a href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" style="text-decoration:none; color:inherit;">
               <strong>Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</strong>
             </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/Craft-Code/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
           </td>
-          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td><span class="status-badge draft">TASLAK</span></td>
           <td>2026-11-14</td>
           <td>
             <div class="actions-cell">
-              <a class="action-btn" href="/Craft-Code/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
-              <button class="action-btn" onclick="unpublishArticle('hat-sanati-ve-robotik-kaligrafi')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <a class="action-btn" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('hat-sanati-ve-robotik-kaligrafi')">🚀 Yayına Al</button>
               <button class="action-btn delete" onclick="deleteArticle('hat-sanati-ve-robotik-kaligrafi', 'Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/kintsugi-ve-dijital-kusur.html" style="text-decoration:none; color:inherit;">
+              <strong>Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/kintsugi-ve-dijital-kusur.html</small>
+          </td>
+          <td><span class="status-badge draft">TASLAK</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/kintsugi-ve-dijital-kusur.html">👁️ Aç</a>
+              <button class="action-btn publish" onclick="publishArticle('kintsugi-ve-dijital-kusur')">🚀 Yayına Al</button>
+              <button class="action-btn delete" onclick="deleteArticle('kintsugi-ve-dijital-kusur', 'Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı')">🗑️ Sil</button>
             </div>
           </td>
         </tr>
@@ -502,6 +502,16 @@
   <div id="toast" class="toast-msg"></div>
 
   <script>
+    var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+    function ensureLocalhost(actionName) {
+      if (!isLocalhost) {
+        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8080/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
+        return false;
+      }
+      return true;
+    }
+
     function showToast(msg) {
       var toast = document.getElementById('toast');
       toast.innerText = msg;
@@ -522,6 +532,8 @@
     }
 
     function refreshTopics() {
+      if (!ensureLocalhost('Yeni konu arama')) return;
+
       var btn = document.getElementById('btn-refresh-topics');
       btn.innerHTML = '<span>⏳</span><span>Hafıza Taranıyor...</span>';
       btn.disabled = true;
@@ -531,7 +543,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({})
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
         btn.disabled = false;
@@ -545,12 +560,13 @@
       .catch(function(err) {
         btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
         btn.disabled = false;
-        console.error(err);
-        window.location.reload();
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function approveTopic(topicKey, topicName) {
+      if (!ensureLocalhost('Konu onaylama ve makale üretme')) return;
+
       var overlay = document.getElementById('loading-overlay');
       var content = document.getElementById('loading-content');
       overlay.classList.add('active');
@@ -561,7 +577,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic_key: topicKey })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           content.innerHTML = '<h2 style="color:#a7f3d0; margin-bottom:1rem;">🎉 Makale Başarıyla Hazırlandı!</h2>' +
@@ -576,12 +595,13 @@
         }
       })
       .catch(function(err) {
-        console.error(err);
-        window.location.reload();
+        overlay.classList.remove('active');
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function publishArticle(slug) {
+      if (!ensureLocalhost('Makaleyi yayına alma')) return;
       if (!confirm('Bu taslağı onaylayıp yayına almak istiyor musunuz?')) return;
 
       fetch('/api/studio/publish', {
@@ -589,7 +609,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('🚀 Makale başarıyla yayına alındı!');
@@ -597,10 +620,14 @@
         } else {
           alert('Hata: ' + data.error);
         }
+      })
+      .catch(function(err) {
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function unpublishArticle(slug) {
+      if (!ensureLocalhost('Yazıyı taslağa alma')) return;
       if (!confirm('Bu yazıyı yayından çekip taslak moduna almak istiyor musunuz?')) return;
 
       fetch('/api/studio/unpublish', {
@@ -608,7 +635,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('↩️ Yazı tekrar taslak moduna alındı.');
@@ -616,10 +646,14 @@
         } else {
           alert('Hata: ' + data.error);
         }
+      })
+      .catch(function(err) {
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function deleteArticle(slug, title) {
+      if (!ensureLocalhost('Yazıyı silme')) return;
       var confirmMsg = '"' + (title || slug) + '" başlıklı yazıyı tamamen silmek istediğinizden emin misiniz?';
       if (!confirm(confirmMsg)) return;
 
@@ -628,7 +662,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('🗑️ Yazı başarıyla silindi.');
@@ -638,13 +675,12 @@
         }
       })
       .catch(function(err) {
-        alert('Sunucu hatası: ' + err);
+        alert('Sunucu hatası: ' + err.message);
       });
     }
 
     // Master Authentication Gate
     // On localhost, access is automatically granted with zero friction
-    var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     if (!isLocalhost) {
       var badge = document.getElementById('studio-badge-label');
       if (badge) badge.innerText = '☁️ GITHUB PAGES ÖNİZLEME';
@@ -681,7 +717,7 @@
       <input type="password" id="studio-password-input" placeholder="Yönetici Parolası..." onkeydown="if(event.key==='Enter')verifyStudioAuth()" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-strong, #444); border-radius:6px; background:#141312; color:#fff; font-size:1rem; box-sizing:border-box; margin-bottom:0.75rem; text-align:center;">
       <div id="auth-error-msg" style="color:#ef4444; font-size:0.8rem; margin-bottom:1rem; display:none;">⚠️ Hatalı parola! Yetkisiz erişim engellendi.</div>
       <div style="display:flex; gap:0.75rem; justify-content:center;">
-        <button onclick="window.location.href='/Craft-Code/'" class="editor-btn" style="padding:0.6rem 1.1rem; cursor:pointer;">← Siteye Dön</button>
+        <button onclick="window.location.href='/'" class="editor-btn" style="padding:0.6rem 1.1rem; cursor:pointer;">← Siteye Dön</button>
         <button onclick="verifyStudioAuth()" class="editor-btn primary" style="padding:0.6rem 1.3rem; background:var(--accent); color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Giriş Yap ➔</button>
       </div>
     </div>

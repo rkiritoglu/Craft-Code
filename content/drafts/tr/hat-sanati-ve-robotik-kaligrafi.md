@@ -9,7 +9,7 @@ tags: ["Hat Sanatı", "Çağdaş Sanat", "Generatif Kod", "Yeni Medya"]
 cover_image: "/images/kintsugi-glitch-cover.jpg"
 cover_caption: "Kavramsal Eser: Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi üzerine küratöryel stüdyo araştırması."
 cover_credit: "Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı"
-draft: false
+draft: true
 ---
 Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.
 

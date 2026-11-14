@@ -256,21 +256,8 @@ def build_site(include_drafts=True):
     <span class="lang-en" style="display:none;">Publish</span>
   </button>'''
         else:
-            draft_banner_html = f'''<div style="background:#ecfdf5; border-bottom:1px solid #a7f3d0; padding:0.5rem 1.5rem; font-size:0.8rem; color:#065f46; display:flex; justify-content:space-between; align-items:center;">
-    <div>
-      <span class="lang-tr"><strong>● YAYINDA</strong> — Bu makale Craft&Code editoryal arşivinde canlıdır.</span>
-      <span class="lang-en" style="display:none;"><strong>● PUBLISHED</strong> — This article is live in the Craft&Code editorial archive.</span>
-    </div>
-    <button onclick="unpublishCurrentArticle('{slug}')" style="background:none; border:none; color:#047857; font-size:0.75rem; text-decoration:underline; cursor:pointer;">
-      <span class="lang-tr">Taslağa Geri Al</span>
-      <span class="lang-en" style="display:none;">Revert to Draft</span>
-    </button>
-  </div>'''
-            publish_toolbar_btn = f'''<span style="font-size:0.75rem; color:#047857; font-weight:600; padding:0.35rem 0.6rem; display:inline-flex; align-items:center; gap:0.25rem;">
-    <span>●</span>
-    <span class="lang-tr">Yayında</span>
-    <span class="lang-en" style="display:none;">Published</span>
-  </span>'''
+            draft_banner_html = ""
+            publish_toolbar_btn = ""
 
         cover_img = art["cover_image"]
         if cover_img.startswith("/") and BASE_PATH and not cover_img.startswith(f"{BASE_PATH}/"):

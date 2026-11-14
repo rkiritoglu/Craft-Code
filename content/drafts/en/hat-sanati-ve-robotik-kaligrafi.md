@@ -9,7 +9,7 @@ tags: ["Hat Sanatı", "Contemporary Art", "Generative Code", "New Media"]
 cover_image: "/images/kintsugi-glitch-cover.jpg"
 cover_caption: "Conceptual Artwork: Curatorial studio exploration of The Breath of the Reed: Calligraphic Geometry and Robotic Scribes."
 cover_credit: "Visual: Craft&Code / AI & Curatorial Concept Synthesis"
-draft: false
+draft: true
 ---
 Hat sanatındaki 'nokta' tabanlı parametrik oran sistemi ile yapay zekâ fırça algoritmaları ve robotik kolların insan-makine kaligrafi düetleri.
 

@@ -388,6 +388,16 @@
   <div id="toast" class="toast-msg"></div>
 
   <script>
+    var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+    function ensureLocalhost(actionName) {
+      if (!isLocalhost) {
+        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8080/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
+        return false;
+      }
+      return true;
+    }
+
     function showToast(msg) {
       var toast = document.getElementById('toast');
       toast.innerText = msg;
@@ -408,6 +418,8 @@
     }
 
     function refreshTopics() {
+      if (!ensureLocalhost('Yeni konu arama')) return;
+
       var btn = document.getElementById('btn-refresh-topics');
       btn.innerHTML = '<span>⏳</span><span>Hafıza Taranıyor...</span>';
       btn.disabled = true;
@@ -417,7 +429,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({})
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
         btn.disabled = false;
@@ -431,12 +446,13 @@
       .catch(function(err) {
         btn.innerHTML = '<span>🔄</span><span>Yeni Konu Önerileri Keşfet (AI)</span>';
         btn.disabled = false;
-        console.error(err);
-        window.location.reload();
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function approveTopic(topicKey, topicName) {
+      if (!ensureLocalhost('Konu onaylama ve makale üretme')) return;
+
       var overlay = document.getElementById('loading-overlay');
       var content = document.getElementById('loading-content');
       overlay.classList.add('active');
@@ -447,7 +463,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic_key: topicKey })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           content.innerHTML = '<h2 style="color:#a7f3d0; margin-bottom:1rem;">🎉 Makale Başarıyla Hazırlandı!</h2>' +
@@ -462,12 +481,13 @@
         }
       })
       .catch(function(err) {
-        console.error(err);
-        window.location.reload();
+        overlay.classList.remove('active');
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function publishArticle(slug) {
+      if (!ensureLocalhost('Makaleyi yayına alma')) return;
       if (!confirm('Bu taslağı onaylayıp yayına almak istiyor musunuz?')) return;
 
       fetch('/api/studio/publish', {
@@ -475,7 +495,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('🚀 Makale başarıyla yayına alındı!');
@@ -483,10 +506,14 @@
         } else {
           alert('Hata: ' + data.error);
         }
+      })
+      .catch(function(err) {
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function unpublishArticle(slug) {
+      if (!ensureLocalhost('Yazıyı taslağa alma')) return;
       if (!confirm('Bu yazıyı yayından çekip taslak moduna almak istiyor musunuz?')) return;
 
       fetch('/api/studio/unpublish', {
@@ -494,7 +521,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('↩️ Yazı tekrar taslak moduna alındı.');
@@ -502,10 +532,14 @@
         } else {
           alert('Hata: ' + data.error);
         }
+      })
+      .catch(function(err) {
+        alert('İşlem başarısız: ' + err.message);
       });
     }
 
     function deleteArticle(slug, title) {
+      if (!ensureLocalhost('Yazıyı silme')) return;
       var confirmMsg = '"' + (title || slug) + '" başlıklı yazıyı tamamen silmek istediğinizden emin misiniz?';
       if (!confirm(confirmMsg)) return;
 
@@ -514,7 +548,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug })
       })
-      .then(function(res) { return res.json(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
       .then(function(data) {
         if (data.ok) {
           showToast('🗑️ Yazı başarıyla silindi.');
@@ -524,13 +561,12 @@
         }
       })
       .catch(function(err) {
-        alert('Sunucu hatası: ' + err);
+        alert('Sunucu hatası: ' + err.message);
       });
     }
 
     // Master Authentication Gate
     // On localhost, access is automatically granted with zero friction
-    var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     if (!isLocalhost) {
       var badge = document.getElementById('studio-badge-label');
       if (badge) badge.innerText = '☁️ GITHUB PAGES ÖNİZLEME';

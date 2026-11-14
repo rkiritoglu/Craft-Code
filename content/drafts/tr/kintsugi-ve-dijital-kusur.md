@@ -9,7 +9,7 @@ tags: ['Kintsugi', 'Glitch Art', 'Seramik', 'Wabi-Sabi', 'Yeni Medya']
 cover_image: "/images/kintsugi-porselen-macro.jpg"
 cover_caption: "Kavramsal Eser: Geleneksel Raku çay kasesindeki çatlakların optik fiberler, altın neon hatlar ve dijital poligonlarla onarımı."
 cover_credit: "Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı"
-draft: false
+draft: true
 ---
 Pürüzsüzlük, modern tüketim toplumunun en baskın estetik takıntısıdır. Akıllı telefon ekranlarından parlak otomobil kaportalarına kadar her nesne, zamansız ve yarasız bir ebediyet vaat eder. Oysa 15. yüzyıl Japonya’sında doğan **Kintsugi** (altınla birleştirme) sanatı ve günümüz dijital kültüründeki **Glitch Art** (kusur sanatı), tam tersi bir hakikatin peşindedir: *Bir nesneyi asıl değerli kılan şey, yaşadığı kaza, aldığı yara ve o yaranın taşıdığı zamansal hafızadır.*
 

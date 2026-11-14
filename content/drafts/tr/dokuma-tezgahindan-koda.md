@@ -9,7 +9,7 @@ tags: ["Dokuma", "Generatif Sanat", "Tekstil", "Yeni Medya", "Jacquard"]
 cover_image: "/images/ai-gen-1794673772658.jpg"
 cover_caption: "Kavramsal Enstalasyon: Geleneksel ahşap tezgâhtaki el dokuması yün ipliklerin optik fiberlere ve pikselli generatif matrise dönüşümü."
 cover_credit: "Görsel: Craft&Code / Yapay Zekâ ve Küratöryel Konsept Tasarımı"
-draft: false
+draft: true
 ---
 Günümüz dijital kültüründe "kod", ekranların arkasında görünmezce işleyen, soyut ve maddesiz bir dil olarak algılanır. Oysa bilinen ilk algoritmik sistemler ve programlanabilir yapılar silikon vadilerinde değil; taşra atölyelerindeki ahşap tezgâhlarda, yün liflerinin, pamuk çözgülerinin ve insan bedeninin ritminde filizlenmiştir.
 

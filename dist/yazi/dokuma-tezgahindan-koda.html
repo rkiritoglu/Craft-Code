@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri — Craft&Code</title>
-  <link rel="stylesheet" href="/Craft-Code/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <a href="/Craft-Code/" class="logo">
+        <a href="/" class="logo">
           Craft<span class="amp">&</span>Code
         </a>
         <span class="tagline">Art, Craft & Computational Inquiries</span>
@@ -22,7 +22,7 @@
 
       <nav class="main-nav">
         <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
-        <a href="/Craft-Code/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
+        <a href="/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
           <span>⚡</span>
           <span>Stüdyo</span>
         </a>
@@ -38,15 +38,16 @@
 
   <main>
     <article class="post" data-slug="dokuma-tezgahindan-koda">
-  <div style="background:#ecfdf5; border-bottom:1px solid #a7f3d0; padding:0.5rem 1.5rem; font-size:0.8rem; color:#065f46; display:flex; justify-content:space-between; align-items:center;">
-    <div>
-      <span class="lang-tr"><strong>● YAYINDA</strong> — Bu makale Craft&Code editoryal arşivinde canlıdır.</span>
-      <span class="lang-en" style="display:none;"><strong>● PUBLISHED</strong> — This article is live in the Craft&Code editorial archive.</span>
+  <div class="draft-banner">
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.6rem;">
+      <div>
+        <span class="lang-tr"><strong>⚠️ TASLAK ÖNİZLEME MODU</strong> — Bu yazı henüz internette canlıda değildir. İnceleyip düzenleyebilir veya doğrudan yayına alabilirsiniz.</span>
+        <span class="lang-en" style="display:none;"><strong>⚠️ DRAFT PREVIEW MODE</strong> — This piece is not yet live. You can review, edit or publish it.</span>
+      </div>
+      <button class="editor-btn primary" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#fff; border-color:#047857; padding:0.4rem 0.85rem; font-size:0.82rem; cursor:pointer;">
+        <span>🚀</span> <span class="lang-tr">Bu Yazıyı Yayına Al</span><span class="lang-en" style="display:none;">Publish This Article</span>
+      </button>
     </div>
-    <button onclick="unpublishCurrentArticle('dokuma-tezgahindan-koda')" style="background:none; border:none; color:#047857; font-size:0.75rem; text-decoration:underline; cursor:pointer;">
-      <span class="lang-tr">Taslağa Geri Al</span>
-      <span class="lang-en" style="display:none;">Revert to Draft</span>
-    </button>
   </div>
 
   <!-- Turkish Version Header -->
@@ -97,7 +98,7 @@
       <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
     </button>
     <figure class="hero-figure">
-      <img id="cover-img-elem" src="/Craft-Code/images/weaving-and-code-cover.jpg" alt="Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri">
+      <img id="cover-img-elem" src="/images/weaving-and-code-cover.jpg" alt="Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri">
       <figcaption>
         <span class="lang-tr">
           <strong class="editable" id="tr-caption">Kavramsal Enstalasyon: Geleneksel ahşap tezgâhtaki el dokuması yün ipliklerin optik fiberlere ve pikselli generatif matrise dönüşümü.</strong>
@@ -224,7 +225,7 @@
     <!-- Tab 2: URL / Local Path -->
     <div id="tab-url-content" style="display:none;">
       <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
-      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/Craft-Code/images/weaving-and-code-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/weaving-and-code-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
       
       <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
         Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
@@ -259,11 +260,11 @@
     <span class="lang-en" style="display:none;">Save</span>
   </button>
 
-  <span style="font-size:0.75rem; color:#047857; font-weight:600; padding:0.35rem 0.6rem; display:inline-flex; align-items:center; gap:0.25rem;">
-    <span>●</span>
-    <span class="lang-tr">Yayında</span>
-    <span class="lang-en" style="display:none;">Published</span>
-  </span>
+  <button class="editor-btn" onclick="publishCurrentArticle('dokuma-tezgahindan-koda')" style="background:#047857; color:#ffffff; border-color:#047857;">
+    <span>🚀</span>
+    <span class="lang-tr">Yayına Al</span>
+    <span class="lang-en" style="display:none;">Publish</span>
+  </button>
 </div>
 
 <script>
