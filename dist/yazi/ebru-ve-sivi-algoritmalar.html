@@ -21,8 +21,8 @@
       </div>
 
       <nav class="main-nav">
-        <!-- Quick Studio Access -->
-        <a href="/Craft-Code/studio.html" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem;">
+        <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
+        <a href="/Craft-Code/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
           <span>⚡</span>
           <span>Stüdyo</span>
         </a>
@@ -92,7 +92,7 @@
 
   <!-- Shared Hero Figure with Image Change Option -->
   <div class="figure-wrapper">
-    <button class="img-change-trigger" onclick="openImageModal()">
+    <button id="img-change-trigger" class="img-change-trigger" onclick="openImageModal()" style="display:none;">
       <span>📷</span>
       <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
       <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
@@ -176,8 +176,8 @@
   </div>
 </div>
 
-<!-- Floating In-Browser Live Editor Toolbar -->
-<div class="editor-toolbar">
+<!-- Floating In-Browser Live Editor Toolbar (Admin / Localhost Only) -->
+<div id="editor-toolbar" class="editor-toolbar" style="display:none;">
   <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
     <span>✏️</span>
     <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
@@ -398,6 +398,18 @@
     })
     .catch(function(err) { alert('Hata: ' + err); });
   }
+
+  // Only display editor controls to the author (localhost or admin)
+  document.addEventListener('DOMContentLoaded', function() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+    if (isAdmin) {
+      var tb = document.getElementById('editor-toolbar');
+      if (tb) tb.style.display = 'flex';
+      var imgTrig = document.getElementById('img-change-trigger');
+      if (imgTrig) imgTrig.style.display = 'inline-flex';
+    }
+  });
 </script>
 
   </main>
@@ -450,6 +462,24 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       setLanguage(currentLang);
+
+      // Studio button is completely hidden from public visitors
+      var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+      if (isAdmin) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) sBtn.style.display = 'inline-flex';
+      }
+    });
+
+    // Secret shortcut: Pressing Ctrl+Shift+S (or Cmd+Shift+S) toggles Studio button
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) {
+          sBtn.style.display = (sBtn.style.display === 'none') ? 'inline-flex' : 'none';
+        }
+      }
     });
   </script>
 

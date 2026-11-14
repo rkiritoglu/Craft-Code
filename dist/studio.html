@@ -311,7 +311,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <a href="/" class="logo">
+        <a href="/Craft-Code/" class="logo">
           Craft<span class="amp">&</span>Code
         </a>
         <span class="tagline">Editoryal Yönetim Stüdyosu</span>
@@ -636,7 +636,44 @@
         alert('Sunucu hatası: ' + err);
       });
     }
+
+    // Master Authentication Gate
+    // On localhost, access is automatically granted with zero friction
+    var isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocalhost && sessionStorage.getItem('craft_studio_auth') !== 'granted') {
+      document.getElementById('auth-gate-modal').style.display = 'flex';
+    }
+
+    function verifyStudioAuth() {
+      var input = document.getElementById('studio-password-input');
+      var entered = input ? input.value.trim() : '';
+      if (entered === 'craft2026') {
+        sessionStorage.setItem('craft_studio_auth', 'granted');
+        document.getElementById('auth-gate-modal').style.display = 'none';
+        showToast('🔓 Yönetici girişi başarılı!');
+      } else {
+        document.getElementById('auth-error-msg').style.display = 'block';
+        if (input) input.value = '';
+      }
+    }
   </script>
+
+  <!-- Master Password Protection Modal (For Non-Localhost Visitors) -->
+  <div id="auth-gate-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:#121110; z-index:99999; justify-content:center; align-items:center;">
+    <div style="background:var(--bg-surface-elevated, #1c1a18); border:1px solid var(--border-strong, #3e3832); border-radius:12px; max-width:400px; width:90%; padding:2.5rem 2rem; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.6);">
+      <div style="font-size:2.8rem; margin-bottom:1rem;">🔒</div>
+      <h2 style="font-size:1.35rem; font-weight:600; margin:0 0 0.5rem; color:var(--text-primary, #f5f2eb);">Editoryal Stüdyo Korumalıdır</h2>
+      <p style="font-size:0.86rem; color:var(--text-secondary, #9c9589); line-height:1.55; margin-bottom:1.5rem;">
+        Bu yönetim masası yalnızca site sahibine açıktır. Devam etmek için yönetici parolanızı giriniz:
+      </p>
+      <input type="password" id="studio-password-input" placeholder="Yönetici Parolası..." onkeydown="if(event.key==='Enter')verifyStudioAuth()" style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-strong, #444); border-radius:6px; background:#141312; color:#fff; font-size:1rem; box-sizing:border-box; margin-bottom:0.75rem; text-align:center;">
+      <div id="auth-error-msg" style="color:#ef4444; font-size:0.8rem; margin-bottom:1rem; display:none;">⚠️ Hatalı parola! Yetkisiz erişim engellendi.</div>
+      <div style="display:flex; gap:0.75rem; justify-content:center;">
+        <button onclick="window.location.href='/Craft-Code/'" class="editor-btn" style="padding:0.6rem 1.1rem; cursor:pointer;">← Siteye Dön</button>
+        <button onclick="verifyStudioAuth()" class="editor-btn primary" style="padding:0.6rem 1.3rem; background:var(--accent); color:#fff; border:none; border-radius:4px; font-weight:600; cursor:pointer;">Giriş Yap ➔</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
