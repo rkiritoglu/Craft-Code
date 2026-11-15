@@ -590,6 +590,193 @@
         if (input) input.value = '';
       }
     }
+
+    // --- YouTube Shorts Studio Logic ---
+    var currentShortsSlug = '';
+
+    function openShortsModal(slug) {
+      currentShortsSlug = slug;
+      var modal = document.getElementById('shorts-modal');
+      modal.classList.add('open');
+      modal.style.display = 'flex';
+
+      var loading = document.getElementById('shorts-loading');
+      var content = document.getElementById('shorts-content');
+      loading.style.display = 'block';
+      content.style.display = 'none';
+
+      // Check if video already exists
+      fetch('{{BASE_PATH}}/videos/' + slug + '-shorts-meta.json')
+      .then(function(res) {
+        if (!res.ok) throw new Error('Video henüz üretilmedi');
+        return res.json();
+      })
+      .then(function(meta) {
+        displayShortsData(meta);
+      })
+      .catch(function() {
+        if (isLocalhost) {
+          generateShorts(slug);
+        } else {
+          loading.style.display = 'none';
+          content.style.display = 'grid';
+          alert('ℹ️ Bu yazı için henüz Shorts videosu üretilmemiş. Video üretimi yerel stüdyo (http://localhost:8080/studio.html) üzerinden tek tıkla yapılır.');
+          closeShortsModal();
+        }
+      });
+    }
+
+    function closeShortsModal() {
+      var modal = document.getElementById('shorts-modal');
+      modal.classList.remove('open');
+      modal.style.display = 'none';
+      var video = document.getElementById('shorts-video-player');
+      if (video) video.pause();
+    }
+
+    function triggerRegenShorts() {
+      if (currentShortsSlug) {
+        generateShorts(currentShortsSlug);
+      }
+    }
+
+    function generateShorts(slug) {
+      if (!ensureLocalhost('YouTube Shorts video üretimi')) return;
+
+      var loading = document.getElementById('shorts-loading');
+      var content = document.getElementById('shorts-content');
+      loading.style.display = 'block';
+      content.style.display = 'none';
+
+      fetch('/api/studio/generate-shorts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Sunucu hatası: ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (data.ok && data.meta) {
+          displayShortsData(data.meta);
+          showToast('🎬 YouTube Shorts videosu başarıyla üretildi!');
+        } else {
+          loading.style.display = 'none';
+          content.style.display = 'grid';
+          alert('Hata: ' + (data.error || 'Bilinmeyen hata'));
+        }
+      })
+      .catch(function(err) {
+        loading.style.display = 'none';
+        content.style.display = 'grid';
+        alert('Video üretimi başarısız: ' + err.message);
+      });
+    }
+
+    function displayShortsData(meta) {
+      document.getElementById('shorts-loading').style.display = 'none';
+      document.getElementById('shorts-content').style.display = 'grid';
+
+      var video = document.getElementById('shorts-video-player');
+      var vUrl = meta.video_url.startsWith('/') ? '{{BASE_PATH}}' + meta.video_url : meta.video_url;
+      video.src = vUrl + '?t=' + Date.now();
+      video.load();
+
+      document.getElementById('shorts-title-input').value = meta.youtube_title;
+      document.getElementById('shorts-desc-input').value = meta.youtube_description;
+      document.getElementById('shorts-meta-duration').innerText = meta.resolution + ' • ' + meta.duration + ' sn • ' + meta.file_size_kb + ' KB';
+
+      var dlBtn = document.getElementById('shorts-download-btn');
+      dlBtn.href = vUrl;
+      dlBtn.download = meta.slug + '-shorts.mp4';
+
+      var tagsContainer = document.getElementById('shorts-tags-container');
+      tagsContainer.innerHTML = '';
+      (meta.hashtags || []).forEach(function(tag) {
+        var span = document.createElement('span');
+        span.className = 'category-pill';
+        span.innerText = tag;
+        span.style.cursor = 'pointer';
+        span.title = 'Kopyalamak için tıkla';
+        span.onclick = function() {
+          navigator.clipboard.writeText(tag);
+          showToast(tag + ' kopyalandı!');
+        };
+        tagsContainer.appendChild(span);
+      });
+    }
+
+    function copyShortsField(elementId, successMsg) {
+      var elem = document.getElementById(elementId);
+      if (!elem) return;
+      elem.select();
+      navigator.clipboard.writeText(elem.value);
+      showToast(successMsg || 'Panoya kopyalandı!');
+    }
+  </script>
+
+  <!-- YouTube Shorts Studio Modal -->
+  <div id="shorts-modal" class="modal-overlay" style="display:none; justify-content:center; align-items:center;">
+    <div class="modal-card" style="max-width: 840px; width:92%; max-height: 90vh; overflow-y: auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+        <h3 style="margin:0; display:flex; align-items:center; gap:0.5rem; font-size:1.3rem;">
+          <span>🎬</span> <span>YouTube Shorts Video Stüdyosu</span>
+        </h3>
+        <button onclick="closeShortsModal()" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      </div>
+
+      <div id="shorts-loading" style="display:none; text-align:center; padding:3.5rem 1rem;">
+        <div class="spinner" style="margin:0 auto 1.5rem; border-top-color:#7c3aed;"></div>
+        <h3 style="font-size:1.25rem; margin-bottom:0.5rem;">Shorts Videosu Derleniyor...</h3>
+        <p style="color:var(--text-secondary); font-size:0.88rem; max-width:480px; margin:0 auto;">
+          Yüksek çözünürlüklü difüzyon görseli dikey formata ölçekleniyor, seslendirme sentezleniyor, ambient müzik miksleniyor ve 1080x1920 MP4 oluşturuluyor (~20-25 sn).
+        </p>
+      </div>
+
+      <div id="shorts-content" style="display:grid; grid-template-columns: 280px 1fr; gap:1.75rem; align-items:start;">
+        <!-- Vertical Phone Video Player -->
+        <div style="background:#0a0908; border-radius:18px; padding:10px; border:2px solid var(--border-strong); box-shadow:0 15px 35px rgba(0,0,0,0.5); text-align:center;">
+          <video id="shorts-video-player" controls style="width:100%; aspect-ratio:9/16; border-radius:12px; background:#000; object-fit:cover; display:block;" preload="metadata"></video>
+          <div style="margin-top:0.6rem; font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);" id="shorts-meta-duration">1080x1920 • 9:16</div>
+        </div>
+
+        <!-- Video Metadata, Title, Description, Copy Tools -->
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div>
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:0.3rem;">📌 YouTube Shorts Başlığı</label>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="text" id="shorts-title-input" readonly style="flex:1; padding:0.6rem; border:1px solid var(--border-strong); border-radius:4px; font-size:0.85rem; background:var(--bg-surface); color:var(--text-primary);">
+              <button class="action-btn" onclick="copyShortsField('shorts-title-input', 'Başlık kopyalandı!')">📋 Kopyala</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:0.3rem;">📝 YouTube Açıklaması & Linkler</label>
+            <textarea id="shorts-desc-input" rows="6" readonly style="width:100%; padding:0.6rem; border:1px solid var(--border-strong); border-radius:4px; font-size:0.82rem; background:var(--bg-surface); color:var(--text-primary); font-family:var(--font-sans); line-height:1.45;"></textarea>
+            <div style="text-align:right; margin-top:0.3rem;">
+              <button class="action-btn" onclick="copyShortsField('shorts-desc-input', 'Açıklama kopyalandı!')">📋 Açıklamayı Kopyala</button>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:0.8rem; font-weight:600; color:var(--text-secondary); display:block; margin-bottom:0.3rem;">🏷️ Hashtagler (Kopyalamak için tıklayın)</label>
+            <div id="shorts-tags-container" style="display:flex; flex-wrap:wrap; gap:0.4rem; font-family:var(--font-mono); font-size:0.75rem;"></div>
+          </div>
+
+          <div style="display:flex; gap:0.75rem; margin-top:0.75rem; flex-wrap:wrap;">
+            <a id="shorts-download-btn" href="#" download class="action-btn publish" style="background:#7c3aed; border-color:#7c3aed; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+              <span>⬇️</span> <span>MP4 Videosunu İndir</span>
+            </a>
+            <button class="action-btn" id="shorts-regen-btn" onclick="triggerRegenShorts()">
+              <span>🔄</span> <span>Yeniden Üret</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
   </script>
 
   <!-- Master Password Protection Modal (For Non-Localhost Visitors) -->

@@ -404,6 +404,7 @@ def build_site(include_drafts=True):
             <div class="actions-cell">
               <a class="action-btn" href="{art_url}">👁️ Aç</a>
               {pub_btn}
+              <button class="action-btn" onclick="openShortsModal('{slug}')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
               <button class="action-btn delete" onclick="deleteArticle('{slug}', '{title_escaped}')">🗑️ Sil</button>
             </div>
           </td>

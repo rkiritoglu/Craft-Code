@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Craft&Code Interactive Server & Studio API
-Supports in-browser live editing, real AI image synthesis from prompts, dynamic gallery, and live preview.
+Supports in-browser live editing, dynamic gallery, live preview, topic generation, and YouTube Shorts creation.
 """
 
 import http.server
@@ -18,7 +18,9 @@ from content_generator import generate_topic_draft, refresh_proposals
 ROOT_DIR = Path(__file__).resolve().parent
 DIST_DIR = ROOT_DIR / "dist"
 CONTENT_DIR = ROOT_DIR / "content"
-IMAGES_DIR = ROOT_DIR / "public" / "images"
+PUBLIC_DIR = ROOT_DIR / "public"
+IMAGES_DIR = PUBLIC_DIR / "images"
+VIDEOS_DIR = PUBLIC_DIR / "videos"
 
 class CraftCodeHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -52,6 +54,31 @@ class CraftCodeHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps(images).encode('utf-8'))
+                return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+                return
+
+        # List all generated Shorts videos
+        if self.path == '/api/studio/list-shorts':
+            try:
+                shorts_list = []
+                v_dir = PUBLIC_DIR / "videos"
+                if v_dir.exists():
+                    for f in v_dir.glob("*-meta.json"):
+                        try:
+                            meta = json.loads(f.read_text(encoding="utf-8"))
+                            shorts_list.append(meta)
+                        except Exception:
+                            pass
+                shorts_list.sort(key=lambda x: x.get("slug", ""))
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps(shorts_list).encode('utf-8'))
                 return
             except Exception as e:
                 self.send_response(500)
@@ -234,6 +261,32 @@ class CraftCodeHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"ok": False, "error": str(e)}).encode('utf-8'))
                 return
+
+        # 4c. Studio: Generate YouTube Shorts Video
+        if self.path == '/api/studio/generate-shorts':
+            try:
+                content_len = int(self.headers.get('Content-Length', 0))
+                data = json.loads(self.rfile.read(content_len).decode('utf-8'))
+                slug = data.get('slug')
+                if not slug:
+                    raise ValueError("Slug parameter missing")
+
+                from shorts_generator import render_shorts_video
+                meta = render_shorts_video(slug)
+                build_site(include_drafts=True)
+
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"ok": True, "meta": meta}).encode('utf-8'))
+                print(f"  🎬 Generated YouTube Shorts video: {slug}")
+                return
+            except Exception as e:
+                print(f"  ❌ Error generating Shorts: {e}")
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"ok": False, "error": str(e)}).encode('utf-8'))
                 return
 
         # 5. In-Browser Editor: Save Draft Edits
