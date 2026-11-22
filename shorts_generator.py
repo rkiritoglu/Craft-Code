@@ -166,39 +166,80 @@ def normalize_phonetics_tr(text):
         text = text.replace(old, new)
     return text
 
+EDGE_TTS_BIN = ROOT_DIR / ".venv" / "bin" / "edge-tts"
+PIPER_BIN = ROOT_DIR / ".venv" / "bin" / "piper"
+PIPER_MODEL = ROOT_DIR / "models" / "tr_TR-dfki-medium.onnx"
+
 def synthesize_speech(text, output_path):
     """
-    Synthesizes a deep, resonant, natural male baritone voice in fluent Turkish.
-    Applies phonetic normalization and professional broadcast EQ/compression.
+    Synthesizes authentic, natural, deep male Turkish narration ("tok erkek sesi").
+    1. Primary Engine: Microsoft Neural Voice (tr-TR-AhmetNeural).
+       Provides broadcast-grade human Turkish pronunciation, nuanced pauses, and warm baritone tone.
+    2. Fallback Engine: Piper Neural TTS (offline ONNX model: tr_TR-dfki-medium).
     """
     phonetic_text = normalize_phonetics_tr(text)
 
-    # Generate raw audio with deep pitch male voice (tr+m3)
-    raw_path = output_path.with_name(f"raw_{output_path.name}")
-    cmd = [
-        "espeak-ng",
-        "-v", "tr+m3",      # Deep male voice 3
-        "-s", "126",        # Measured, calm documentary narration tempo
-        "-p", "26",         # Deep baritone pitch (tok erkek sesi)
-        "-k", "10",         # Grounded pitch variation
-        "-a", "140",        # Confident amplitude
-        phonetic_text,
-        "-w", str(raw_path)
-    ]
-    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # 1. Primary Engine: Microsoft Neural Ahmet (Ultra-realistic natural Turkish male voice)
+    if EDGE_TTS_BIN.exists():
+        try:
+            mp3_temp = output_path.with_suffix(".mp3")
+            cmd = [
+                str(EDGE_TTS_BIN),
+                "--voice", "tr-TR-AhmetNeural",
+                "--pitch", "-2Hz",
+                "--rate", "-2%",
+                "--volume", "+10%",
+                "--text", phonetic_text,
+                "--write-media", str(mp3_temp)
+            ]
+            res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=20)
+            if res.returncode == 0 and mp3_temp.exists() and mp3_temp.stat().st_size > 500:
+                # Gentle broadcast warmth without artificial pitch-distortion:
+                cmd_conv = [
+                    "ffmpeg", "-y", "-i", str(mp3_temp),
+                    "-af", "bass=g=3:f=110,equalizer=f=3500:t=q:w=1.0:g=-1.5,acompressor=threshold=-16dB:ratio=2.5:attack=20:release=150,volume=1.15",
+                    str(output_path)
+                ]
+                subprocess.run(cmd_conv, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                if mp3_temp.exists():
+                    mp3_temp.unlink()
+                print("    ✓ Voice generated with Microsoft Neural Ahmet (Doğal Tok Türkçe Erkek Sesi)")
+                return
+        except Exception as ee:
+            print(f"    [Edge-TTS Notice] {ee}, attempting local fallback...")
 
-    # Professional broadcast audio enhancement:
-    # 1. bass boost at 110Hz (+9dB) for a deep, warm chest resonance ("tok ses")
-    # 2. gentle dip at 3000Hz (-4dB) to remove harsh synthetic sibilance
-    # 3. broadcast dynamic compression for a thick, solid presence
-    cmd_filter = [
-        "ffmpeg", "-y", "-i", str(raw_path),
-        "-af", "bass=g=9:f=110,equalizer=f=3000:t=q:w=1.2:g=-4,acompressor=threshold=-15dB:ratio=3.5:attack=15:release=120,volume=1.35",
-        str(output_path)
-    ]
-    subprocess.run(cmd_filter, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    if raw_path.exists():
-        raw_path.unlink()
+    # 2. Offline Fallback Engine: Piper Neural TTS
+    if PIPER_BIN.exists() and PIPER_MODEL.exists():
+        try:
+            raw_temp = output_path.with_name(f"raw_piper_{output_path.name}")
+            cmd_piper = [
+                str(PIPER_BIN),
+                "-m", str(PIPER_MODEL),
+                "--length-scale", "1.02",
+                "-f", str(raw_temp)
+            ]
+            res = subprocess.run(
+                cmd_piper,
+                input=phonetic_text.encode("utf-8"),
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE,
+                timeout=30
+            )
+            if res.returncode == 0 and raw_temp.exists() and raw_temp.stat().st_size > 1000:
+                cmd_filter = [
+                    "ffmpeg", "-y", "-i", str(raw_temp),
+                    "-af", "bass=g=4:f=110,equalizer=f=3200:t=q:w=1.0:g=-2,acompressor=threshold=-15dB:ratio=3:attack=15:release=120,volume=1.2",
+                    str(output_path)
+                ]
+                subprocess.run(cmd_filter, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                if raw_temp.exists():
+                    raw_temp.unlink()
+                print("    ✓ Voice generated with Piper Neural TTS fallback")
+                return
+        except Exception as pe:
+            print(f"    [Piper Error] {pe}")
+
+    raise RuntimeError("Hiçbir doğal ses motoru çalıştırılamadı! Lütfen internet bağlantısını veya model dosyalarını kontrol edin.")
 
 def get_audio_duration(filepath):
     """Retrieves duration of audio file via ffmpeg."""

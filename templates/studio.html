@@ -337,7 +337,7 @@
 
     <!-- Notice if viewed on remote GitHub Pages -->
     <div id="remote-studio-notice" style="display:none; background:#fef3c7; border:1px solid #f59e0b; border-radius:6px; padding:0.85rem 1.25rem; margin-bottom:1.5rem; color:#92400e; font-size:0.88rem; line-height:1.5;">
-      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8080/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8080/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
+      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8008/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8008/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
     </div>
 
     <!-- Section 1: AI Topic Proposals with Refresh Button -->
@@ -392,7 +392,7 @@
 
     function ensureLocalhost(actionName) {
       if (!isLocalhost) {
-        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8080/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
+        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8008/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
         return false;
       }
       return true;
@@ -620,7 +620,7 @@
         } else {
           loading.style.display = 'none';
           content.style.display = 'grid';
-          alert('ℹ️ Bu yazı için henüz Shorts videosu üretilmemiş. Video üretimi yerel stüdyo (http://localhost:8080/studio.html) üzerinden tek tıkla yapılır.');
+          alert('ℹ️ Bu yazı için henüz Shorts videosu üretilmemiş. Video üretimi yerel stüdyo (http://localhost:8008/studio.html) üzerinden tek tıkla yapılır.');
           closeShortsModal();
         }
       });

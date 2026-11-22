@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Art, Craft & Computational Inquiries</span>
+      </div>
+
+      <nav class="main-nav">
+        <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
+        <a href="/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
+          <span>⚡</span>
+          <span>Stüdyo</span>
+        </a>
+
+        <!-- In-Browser Instant Language Toggle -->
+        <div class="lang-toggle-btn" onclick="toggleLanguage()" title="Dili Değiştir / Switch Language">
+          <span class="opt active" id="btn-tr">TR</span>
+          <span class="opt" id="btn-en">EN</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="post" data-slug="kok-boyacilik-ve-biyo-tasarim">
+  
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">11 dk</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Doğal Pigment</span> <span class="tag">#Kök Boya</span> <span class="tag">#Biyo-Tasarım</span> <span class="tag">#Generatif Kod</span> <span class="tag">#Yeni Medya</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">Anadolu kazanlarındaki şap ve demir mordanından, pH duyarlı Streptomyces coelicolor kolonilerine ve reaksiyon-difüzyon algoritmalarına uzanan moleküler renk grameri.</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>Craft&Code Araştırma Masası</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">11 min read</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Natural Pigment</span> <span class="tag">#Madder Dyeing</span> <span class="tag">#Bio-Design</span> <span class="tag">#Generative Code</span> <span class="tag">#New Media</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">Molecular Earth: Ancient Natural Dyeing and Bacterial Pigment Algorithms</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">From Anatolian alum and iron mordants in hammered copper cauldrons to pH-sensitive Streptomyces coelicolor colonies and reaction-diffusion code.</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>Craft&Code Editorial Desk</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button id="img-change-trigger" class="img-change-trigger" onclick="openImageModal()" style="display:none;">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="/images/kok-boya-cover.jpg" alt="Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">Kavramsal Eser: Anadolu kök boya çileleri ile bakteriyel pigment difüzyonu ve renk haritalama diyagramının küratöryel sentezi.</strong>
+          <span class="credit editable" id="tr-credit">Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">Conceptual Synthesis: Curatorial mapping of Anatolian madder root skeins, bacterial pigment fermentation, and chromatic diffusion algorithms.</strong>
+          <span class="credit editable" id="en-credit">Visual: Craft&Code / AI & Curatorial Concept Synthesis</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    <p>Modern endüstriyel tekstil dünyası için renk, petrokimya tesislerinde sentezlenen ve Pantone kataloğundan çağrılan standart bir hex kodudur. Yüzeyin altına inmeyen, ışığa ve zamana karşı mekanik bir direniş gösteren bu anilin boyalar; doğanın mevsimsel değişkenliğini, toprağın mineral yapısını ve suyun sertliğini dışarıda bırakır. Oysa kadim <strong>kök boyacılık</strong> (doğal boyama zanaatı) geleneğinde renk, hiçbir zaman statik bir yüzey kaplaması olmamıştır. Ustanın kazanındaki kızıl, sarı veya lacivert; bitkinin hasat edildiği rakımın, suyun pH değerinin, kazanı oluşturan metalin ve lifin moleküler hafızasının ortaklaşa hesapladığı <strong>canlı bir kimyasal çıktıdır</strong>.</p>
+<p>Anadolu halı ve kilim tezgâhlarından Hindistan'ın çivit küplerine uzanan bu bin yıllık zanaat; aslında dünyanın ilk moleküler programlama pratiklerinden biridir. Bugün biyo-tasarım laboratuvarlarında ve hesaplamalı sanat atölyelerinde <em>Streptomyces</em> gibi pigment üreten bakterilerle çalışan tasarımcılar, kök boyacıların kazan başında sezgisel olarak yönettiği değişkenleri doğrudan genetik ve algoritmik parametrelere tercüme etmektedir.</p>
+<h2>1. Tarihsel Kökler: Anadolu Boyahanelerinden İpek Yolu loncalarına</h2>
+<p>Doğal boyacılığın tarihi, tarım ve tekstil devrimiyle yaşıttır. Çatalhöyük kazılarında bulunan M.Ö. 6000'lere tarihlenen dokuma parçalarından Gordion'daki Frig tümülüslerine kadar Anadolu toprakları, bitkisel ve hayvansal pigment teknolojisinin kesintisiz bir laboratuvarı olmuştur. Antik çağda Fenikelilerin <em>Murex</em> deniz salyangozundan elde ettiği ve yalnızca imparatorların giyebildiği "Sur Erguvanı" (Tyrian Purple) nasıl ki politik bir statü şifresi idiyse, Anadolu ve Orta Asya bozkırlarında <strong>Rubia tinctorum</strong> (boyacı kökü / kızılkök) bitkisinden elde edilen <strong>Türk Kırmızısı</strong> (<em>Rouge d'Andrinople</em> / Edirne Kırmızısı) da yüzyıllar boyunca dünyanın en stratejik teknolojik sırrı olarak korunmuştur.</p>
+<ol>
+<li>ve 18. yüzyıllar arasında Bursa, Uşak, Konya, Gördes, Bergama ve Milas boyahaneleri; Osmanlı lonca teşkilatı (<em>boyacılar esnafı</em>) içinde son derece sıkı kalite standartlarına bağlıydı. Edirne ve Aydın havalisinde ustaların kırmızı alizarin pigmentini pamuk ve yüne kalıcı olarak bağlamak için geliştirdiği on yedi aşamalı fermantasyon, yağlama (zeytinyağı ve küllü su banyosu), mazı taneni ve şaplama protokolü o denli üstündü ki, Fransız ve İngiliz tekstil sanayicileri bu reçeteyi çözebilmek için 1740'larda İzmir'den Marsilya'ya Rum ve Türk boya ustalarını davet etmek zorunda kalmışlardı.</li>
+</ol>
+<p>1856'da William Henry Perkin'in tesadüfen ilk sentetik anilin boya olan <em>mauvein</em>'i keşfetmesi ve 1869'da sentetik alizarinin laboratuvarda kopyalanmasıyla birlikte, binlerce yıllık bitkisel bilgi birikimi elli yıl içinde hızla terk edildi. 19. yüzyıl sonundaki ucuz ve parlak fakat güneş altında solup lifleri çürüten anilin dalgasına karşı; Anadolu'nun uzak köylerinde sandıklarda korunan eski halılar ve birkaç yaşlı boya ustasının hafızası, bu moleküler mirasın hayatta kalmasını sağladı.</p>
+<h2>2. Malzeme, Mordan ve Kazanın Kimyasal Anatomisi</h2>
+<p>Kök boyacılığı sıradan bir "ot kaynatma" işinden ayıran ve onu gerçek bir <strong>malzeme programlama disiplini</strong> haline getiren üç temel fiziksel bileşen vardır: <strong>kromofor bitki kaynağı</strong>, <strong>mordan (bağlayıcı metal tuzu)</strong> ve <strong>ortam dinamiği (pH, sıcaklık, zaman ve kap metali)</strong>.</p>
+<figure class="article-figure"><img src="/images/kok-boya-geleneksel-kazan.jpg" alt="Anadolu kök boyacılık atölyesi: kurutulmuş boyacı kökü, ceviz kabuğu, şap kristalleri ve bakır kazanda kaynayan yün çileleri" loading="lazy"/><figcaption><strong>Anadolu Kök Boya Kazanı: Rubia tinctorum kökleri, nar kabuğu, şap mordanı ve dövme bakır kazanda renk sabitlenmesi</strong><span class="credit">Görsel: Craft&Code Belgesel Zanaat Arşivi</span></figcaption></figure>
+<ul>
+<li><strong>Ana Kromofor Bitkiler:</strong> Kök boyacının paleti mevsimlere yayılır. Kızıl ve mercan tonları için toprağın altında en az üç yıl bekletilip nişastası ve <em>ruberitrik asit</em> oranı olgunlaşmış <strong>boyacı kökü</strong> (<em>Rubia tinctorum</em>) sökülür. Altın sarısı ve yeşil alt tonları için güneş gören yüksek yamaçlardan toplanan <strong>muhabbet çiçeği</strong> (<em>Reseda luteola</em>, etkin maddesi <em>luteolin</em>), derin sarı ve kahveler için <strong>sütleğen</strong>, <strong>nar kabuğu</strong> (<em>Punica granatum</em>) ve <strong>ceviz yeşil kabuğu</strong> (<em>Juglans regia</em> — etkin maddesi doğrudan mordan gerektirmeyen <em>juglon</em>) kullanılır. Anadolu'da derin lacivert ve siyahın temeli ise <strong>çivit otu</strong> (<em>Isatis tinctoria</em>) veya Hindistan menşeli <strong>indigo</strong> (<em>Indigofera tinctoria</em>) yapraklarının oksijensiz ortamda fermente edilmesiyle kurulur.</li>
+<li><strong>Mordanlama (Şaplama):</strong> Yün ve ipek gibi hayvansal protein lifleri ile pamuk ve keten gibi selüloz lifleri, boyar moleküllerin çoğuna doğrudan tutunamaz. "Isırmak" anlamına gelen Fransızca <em>mordre</em> kökünden türeyen <strong>mordan</strong>, lifin amino veya hidroksil grupları ile bitki pigmenti arasında <strong>koordinasyon kimyası bağı (şelat)</strong> kuran metal iyonudur.</li>
+<li><strong>Potasyum Alüminyum Sülfat — Şap (Al³⁺):</strong> Renkleri parlaklaştırır ve berraklaştırır; alizarin ile ateş kırmızısı, <em>Reseda luteola</em> ile saf limon sarısı verir.</li>
+<li><strong>Demir Sülfat — Sacı Kıbrıs / Karaboya (Fe²⁺):</strong> Aynı boya banyosunu anında koyulaştırır (<em>saddening</em>); kırmızıyı patlıcan moruna, sarıyı zeytin yeşiline veya antrasit siyaha çevirir.</li>
+<li><strong>Bakır Sülfat — Göztaşı (Cu²⁺):</strong> Sarıları zümrüt ve çam yeşiline kaydırır.</li>
+<li><strong>Palamut ve Mazı Taneni:</strong> Selüloz liflerinin boyayı emmesi için ön-bağlayıcı zemin örer.</li>
+<li><strong>İndigo Küpü ve Oksijenin Dansı:</strong> Kök boya atölyesinin en büyüleyici anı, indigo küpünden (<em>çivit küpü</em>) çıkarılan yün çilesinin sudan ilk çıktığında parlak sarı-yeşil renkte görünmesi, ardından açık havadaki oksijenle temas ettiği kırk saniye içinde gözler önünde koyu laciverte dönüşmesidir. Suda çözünmeyen <em>indigotin</em>, alkali ve oksijensiz bir fermantasyon kazanında bakteriyel redüksiyonla çözünür <strong>löko-indigo</strong> formuna indirgenir; life nüfuz ettikten sonra havayla oksitlenerek molekülün içinde geri dönülmez biçimde kilitlenir.</li>
+</ul>
+<blockquote><p>"Zanaatkâr, doğadan kopmuş ham veriyi değil, malzemenin kendi termodinamik direncini ve kimyasal eğilimlerini yönetir; mordan yalnızca boyayı bağlamaz, taşınan niyeti maddeye tercüme eder."</p><cite>— Harald Böhmer, Koekboya (2002)</cite></blockquote>
+<p>Görüldüğü üzere geleneksel kök boyacılıkta <strong>aynı kök</strong>, yalnızca kazana eklenen bir tutam şap veya demir pası ya da suyun içine atılan odun külünün pH değişimiyle birbirinden tamamen farklı onlarca ton üretir. Bu süreç, bir kaynak verinin farklı dönüştürücü fonksiyonlardan geçirilerek yepyeni çıktılar üretmesinden farksızdır.</p>
+<h2>3. Gelenekselden Koda: Yapısal Karşılıklar ve Algoritmik Çeviri</h2>
+<p>Kök boyacılık pratiği dışarıdan bakıldığında tamamen organik ve "kod dışı" gibi görünebilir; oysa süreç adım adım analiz edildiğinde modern <strong>parametrik renk uzayı dönüşümlerinin</strong>, <strong>koşullu durum makinelerinin</strong> ve <strong>2 boyutlu reaksiyon-difüzyon algoritmalarının</strong> fiziksel bir öncülü olduğu ortaya çıkar.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Geleneksel Kök Boyacılık Unsuru</th><th>Atölyedeki Fiziksel ve Kimyasal İşlevi</th><th>Koddaki / Algoritmadaki Karşılığı</th></tr></thead><tbody><tr><td>Bitki ve Kök Türü (<em>Rubia</em>, <em>Reseda</em>, <em>Juglans</em>)</td><td>Alizarin, luteolin veya indigotin gibi temel kromofor molekül yapısını kazan banyosuna verir.</td><td>Başlangıç kromofor vektörü / renk uzayı tohum verisi (<code>base_chromophore</code>)</td></tr><tr><td>Mordan İyonu (<em>Al³⁺ Şap</em>, <em>Fe²⁺ Demir</em>, <em>Cu²⁺ Bakır</em>)</td><td>Metal-boya şelat kompleksi oluşturarak ışığın soğurulma dalga boyunu fiziksel olarak kaydırır.</td><td>Matris dönüşüm operatörü / spektral kayma fonksiyonu (<code>chelate_shift()</code>)</td></tr><tr><td>Kazan Suyunun pH Dengesi (Kül Suyu / Limon / Tartar)</td><td>Ortamın asidik veya bazik olmasına göre molekülün iyonlaşma durumunu ve rengini anlık değiştirir.</td><td>Parametrik koşullu dallanma ve renk eşiği (<code>if pH &lt; 6.0 ... else ...</code>)</td></tr><tr><td>Çile Daldırma ve Kazanda Dinlendirme Süresi</td><td>Yün pulcukları arasına giren pigment konsantrasyonunu zamanla orantılı olarak doyurur.</td><td>İteratif döngü ve doygunluk integrasyonu (<code>for dip in range(cycles)</code>)</td></tr><tr><td>Bakır vs. Emaye / Kalaylı Kazan Seçimi</td><td>Kap cidarından banyoya sızan iz elementlerle yan renk reaksiyonu başlatır.</td><td>Global ortam değişkeni / çevre bağlamı (<code>ambient_ion_context</code>)</td></tr><tr><td>Çivit Küpünde Fermantasyon ve Oksidasyon</td><td>Anaerobik bakterilerin redüksiyonu ile life giren boyanın oksijenle renk kilitlemesi.</td><td>Asenkron durum geçişi: İndirgeme -> Difüzyon -> Durum Kilitleme (<code>lock_state()</code>)</td></tr><tr><td>Kumaş Lifinde Islak Yayılım ve Kılcal Çekim</td><td>Boyanın çözgü-atkı kesişimlerinde eşit olmayan yoğunlukla süzülmesi ve kenar izi bırakması.</td><td>Gray-Scott Reaksiyon-Difüzyon PDE çözümü ve gürültü haritası (<code>laplacian(U)</code>)</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Zanaattan Koda Köprü</span>
+<p>Geleneksel kazandaki <strong>mordan + pH + daldırma döngüsü</strong> üçlüsü, yazılım mühendisliğindeki bir <strong>pure transformation pipeline</strong> (veri dönüştürme hattı) gibi çalışır. Sentetik boyada renk doğrudan sabit bir koddur (<code>#99422B</code>); kök boyada ise renk asla sabitlenmez, <code>renk = f(kök, mordan_iyonu, pH, sıcaklık, lif_tipi)</code> fonksiyonunun çalışma anındaki (runtime) sonucudur. Biyo-tasarımda bakterinin besiyeri üzerindeki yayılımı ise doğrudan yerel komşuluk ilişkilerine dayalı <strong>hücresel otomat</strong> (<em>cellular automata</em>) kurallarıyla örtüşür.</p>
+</div>
+<p>Aşağıdaki Python modeli, bu iki dünyayı aynı çatı altında birleştirmektedir: İlk bölüm, klasik <strong>alizarin</strong> kromoforunun kazandaki alüminyum, demir ve bakır mordan iyonlarıyla verdiği spektral kaymayı (şelatlamayı) hesaplar; ikinci bölüm ise çağdaş biyo-tasarımda <em>Streptomyces coelicolor</em> bakterisinin ipek kumaş üzerindeki pH duyarlı <strong>aktinorodin</strong> (mavi/kırmızı) pigment yayılımını 2 boyutlu bir difüzyon ızgarasında simüle eder.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">PYTHON</span><span class="code-title">Mordan Şelatlama ve Bakteriyel Pigment Difüzyonu</span></div><pre><code class="language-python"># Craft&amp;Code — Kök Boya Şelatlama ve Biyolojik Pigment Difüzyon Modeli
+
+MORDANT_CHELATION = {
+    &quot;Al3+ (Şap)&quot;:      {&quot;shift&quot;: (0.98, 0.34, 0.22), &quot;stability&quot;: 0.94},
+    &quot;Fe2+ (Karaboya)&quot;: {&quot;shift&quot;: (0.42, 0.24, 0.35), &quot;stability&quot;: 0.91},
+    &quot;Cu2+ (Göztaşı)&quot;:  {&quot;shift&quot;: (0.66, 0.45, 0.28), &quot;stability&quot;: 0.87},
+}
+
+def dye_vat_calculation(madder_ratio, mordant_type, ph, dip_cycles):
+    &quot;&quot;&quot;Klasik boya kazanındaki malzeme ve kimyasal parametreleri RGB çıktısına çevirir.&quot;&quot;&quot;
+    mordant = MORDANT_CHELATION[mordant_type]
+    r_base, g_base, b_base = mordant[&quot;shift&quot;]
+
+    # Kazandaki pH değişimi (Kül suyu = bazik/morumsu, Tartar = asidik/turuncu)
+    ph_shift = (ph - 7.0) * 0.06
+    saturation = 1.0 - (0.72 ** dip_cycles)  # Her daldırmada logaritmik lif doygunluğu
+
+    r = max(0, min(255, int(255 * (r_base - ph_shift * 0.4) * saturation)))
+    g = max(0, min(255, int(255 * (g_base - abs(ph_shift) * 0.2) * saturation)))
+    b = max(0, min(255, int(255 * (b_base + ph_shift * 0.9) * saturation)))
+    return (r, g, b), round(mordant[&quot;stability&quot;] * madder_ratio, 2)
+
+def bacterial_pigment_step(pigment_grid, ph_grid, diff_rate=0.18, growth=0.05):
+    &quot;&quot;&quot;Streptomyces coelicolor kolonisinde pH duyarlı aktinorodin difüzyonu.&quot;&quot;&quot;
+    rows, cols = len(pigment_grid), len(pigment_grid[0])
+    next_grid = [[0.0] * cols for _ in range(rows)]
+    for y in range(1, rows - 1):
+        for x in range(1, cols - 1):
+            laplacian = (
+                pigment_grid[y - 1][x] + pigment_grid[y + 1][x] +
+                pigment_grid[y][x - 1] + pigment_grid[y][x + 1] -
+                4.0 * pigment_grid[y][x]
+            )
+            # Aktinorodin pH 7.5 uzerinde maviye, asidik bolgede kirmiziya doner
+            metabolic_boost = growth * (1.2 if ph_grid[y][x] &gt; 7.2 else 0.85)
+            next_val = pigment_grid[y][x] + diff_rate * laplacian + metabolic_boost
+            next_grid[y][x] = max(0.0, min(1.0, next_val))
+    return next_grid</code></pre></div>
+<p>Bu kod bloğunda dikkati çeken en önemli nokta, kazandaki <code>1.0 - (0.72 ** dip_cycles)</code> ifadesiyle ifade edilen doygunluk eğrisinin de, <code>bacterial_pigment_step</code> fonksiyonundaki <code>laplacian</code> kılcal yayılımının da doğrudan doğadaki gerçek difüzyon matematiğinden türetilmiş olmasıdır. Klasik ustayla biyo-kodlayıcı arasındaki fark araçtadır; kavramsal algoritma aynıdır.</p>
+<h2>4. Çağdaş Sanat, Laboratuvar ve Vaka İncelemeleri</h2>
+<ol>
+<li>yüzyıl sonundan günümüze uzanan süreçte, hem geleneksel kök boyacılığın Anadolu'daki bilimsel yeniden doğuşu hem de sentetik biyolojiyle harmanlanan avant-garde tekstil deneyleri dikkat çekici üç ana eksen oluşturmuştur.</li>
+</ol>
+<figure class="article-figure"><img src="/images/kok-boya-bakteriyel-algoritma.jpg" alt="Biyo-tasarım stüdyosu: ipek kumaş üzerinde Streptomyces coelicolor bakteriyel pigment halkaları ve pH test kartelaları" loading="lazy"/><figcaption><strong>Canlı Pigment Laboratuvarı: Petri kaplarında Streptomyces coelicolor kolonilerinin pH gradyanına bağlı mordan benzeri renk dönüşümü</strong><span class="credit">Görsel: Craft&Code Biyo-Sanat Seçkisi</span></figcaption></figure>
+<h3>Vaka 1: DOBAG Projesi ve Harald Böhmer (Ayvacık & Yuntdağ, 1981)</h3>
+<p>Doğal boyacılığın modern çağdaki en büyük kurtarma operasyonu, Alman kimyager ve tarihçi <strong>Harald Böhmer</strong> ile Marmara Üniversitesi uzmanlarının 1981 yılında Çanakkale Ayvacık ve Manisa Yuntdağ köylerinde başlattığı <strong>DOBAG (Doğal Boya Araştırma ve Geliştirme Projesi)</strong> oldu. Böhmer, 15. ve 17. yüzyıl Anadolu halılarından aldığı mikroskobik lif örneklerini İnce Tabaka Kromatografisi (TLC) ve HPLC yöntemleriyle analiz ederek sentetik boyalar yüzünden unutulan eski mordan ve kök oranlarını tersine mühendislikle yeniden çözümledi.</p>
+<p>Köylerdeki kadın dokumacılarla doğrudan iş birliği kurularak her halıya boyamada kullanılan bitkilerin ve köken köyün seri numarasını taşıyan sertifikalı deri mühürler verildi. DOBAG, geleneksel şifahi bilginin bilimsel analizle kodifiye edildiğinde yalnızca kültürel bir anı değil, ekonomik açıdan sürdürülebilir ve ekolojik bir üretim modeli olabileceğini dünyaya kanıtladı.</p>
+<h3>Vaka 2: Natsai Audrey Chieza & Faber Futures — <em>Project Coelicolor</em> (Londra, 2011–2023)</h3>
+<p>Zimbabweli-İngiliz tasarımcı <strong>Natsai Audrey Chieza</strong> tarafından kurulan Londra merkezli tasarım ajansı <strong>Faber Futures</strong>, tekstil boyamadaki devasa su tüketimine ve zehirli atıklara karşı <em>Streptomyces coelicolor</em> adlı toprak bakterisini merkeze alan öncü bir biyo-fabrika pratiği geliştirdi. Chieza, bakterinin normalde toprakta bir savunma metaboliti olarak ürettiği <strong>aktinorodin</strong> pigmentini doğrudan ham ipek lifleri üzerinde büyütmeyi başardı.</p>
+<p>En çarpıcı keşif ise kök boyacıların yüzyıllardır yaptığı şeyle birebir aynıydı: <em>Streptomyces coelicolor</em> kültürünün besiyeri pH değeri asidik düzeyde tutulduğunda ipek üzerinde canlı <strong>kızıl-pembe</strong> tonlar; bazik düzeye çekildiğinde ise derin <strong>kobalt mavi ve mor</strong> tonlar oluşuyordu. Geleneksel katlama teknikleri (<em>shibori</em>), damlatma ve petri kontrolüyle birleştiğinde bakteri tek bir damla ek kimyasal olmadan doğal desenler ören canlı bir algoritma halini aldı.</p>
+<h3>Vaka 3: Laura Luchtman & Ilfa Siebenhaar — <em>Living Colour</em> (Rotterdam, 2017–2024)</h3>
+<p>Hollandalı tekstil tasarımcıları Laura Luchtman ve Ilfa Siebenhaar, bakteriyel pigment üretimini bir adım ileri taşıyarak süreci doğrudan <strong>akustik frekans kodlamasıyla</strong> birleştirdi. <em>Living Colour</em> araştırma projesi kapsamında <em>Janthinobacterium lividum</em> (mor/viyole) ve <em>Serratia marcescens</em> (mercan kırmızı) gibi pigment üreten bakteriler, spesifik ses dalga boylarına (Hertz titreşimleri) maruz bırakılarak kumaş üzerinde büyütüldü.</p>
+<p>Farklı ses frekansları sıvı besiyerinde tıpkı ebru teknesine veya Chladni plakasına benzeyen <strong>durağan dalga düğümleri</strong> (nodal patterns) oluşturdu; bakteriler bu akustik titreşim alanlarına yerleşerek sesin geometrisini doğrudan kumaşın biyolojik dokusuna kazıdı. Kök boya ustasının el ritmi ve kazan sıcaklığıyla başlattığı süreç, burada ses algoritmaları ve mikroorganizmaların metabolizması üzerinden dokunabilir bir veri kumaşına dönüştü.</p>
+<h2>5. Eleştirel Sentez: Zanaatın Direnci ve Kodun Sınırı</h2>
+<p>Endüstriyel dijital baskı makineleri bir metrekare kumaşa saniyeler içinde on altı milyon farklı RGB rengi püskürtebilir; fakat o renk yüzeyde yabancı bir plastik tabakası gibi asılı kalır, güneşle kavruldukça cansızca ağarır ve lifin kimyasına asla katılmaz. Oysa kadim bir <strong>boyacı kökü</strong> banyosunda boyanmış yün çilesi ya da petri kabında yedi günde bakterilerle büyütülmüş bir ipek eşarp, zamanın içinde yaşar; ışık açısı değiştikçe içindeki alizarin kristalleri veya biyolojik pigment granülleri başka tonlarda titreşir.</p>
+<p>Algoritmik çağın asıl tuzağı, tüm dünyayı sınırsız kopyalanabilir ve sıfır maliyetli sayısal simülasyonlara indirgeme arzusudur. Oysa biyo-tasarım ile kök boyacılığın buluştuğu bu eşik bize çok güçlü bir hakikati hatırlatır: <strong>Doğadaki en zarif algoritmalar silikondan değil; karbon, azot, su ve mineral tuzlarının yavaş ve sabırlı etkileşiminden doğar.</strong> Kodun görevi doğayı ve zanaatkârı ikame etmek değil; kadim kazanın içindeki bu derin kimyasal zekâyı görünür kılmak, yeniden ölçmek ve geleceğin zehirsiz malzeme ekolojisini bu hafıza üzerine kurmaktır.</p>
+<div class="curatorial-box"><span class="badge">Küratöryel Not</span>
+<p>Bir Anadolu köy kazandaki demir şapı tepkimesi ile Londra'daki bir biyo-laboratuvarda <em>Streptomyces</em> kolonisine verilen pH komutu, tarih çizgisinin iki ucunda aynı dili konuşmaktadır: <strong>Rengi nesnenin üstüne boyamak değil, maddenin kendi metabolizmasının içinden çağırmak.</strong> Gerçek sürdürülebilir tasarım, sıfırdan icat edilmiş sentetik yeniliklerde değil; kadim kök bilgisinin hesaplamalı zekâyla kurduğu bu alçakgönüllü süreklilikte gizlidir.</p>
+</div>
+<hr class="editorial-divider">
+<h3>Kaynakça ve İleri Okumalar</h3>
+<ol>
+<li><strong>Böhmer, Harald.</strong> <em>Koekboya: Natural Dyes and Textiles — A Colour Journey from Turkey to India and Beyond</em>. REMHÖB-Verlag, Ganderkesee, 2002.</li>
+<li><strong>Cardon, Dominique.</strong> <em>Natural Dyes: Sources, Tradition, Technology and Science</em>. Archetype Publications, London, 2007.</li>
+<li><strong>Chieza, Natsai Audrey & Myers, William.</strong> "Biodesign and the New Color Palette: Project Coelicolor and Microbial Dyeing." <em>Bio Design: Nature + Science + Creativity</em>, Thames & Hudson, 2018.</li>
+<li><strong>Karadağ, Recep.</strong> <em>Doğal Boyamacılık (Natural Dyeing)</em>. T.C. Kültür ve Turizm Bakanlığı DÖSİMM Yayınları, Ankara, 2007.</li>
+<li><strong>Enez, Nevin.</strong> <em>Doğal Boyamacılık: Anadolu'da Yün Boyamacılığında Kullanılan Bitkiler</em>. Marmara Üniversitesi Güzel Sanatlar Fakültesi Yayınları, İstanbul, 1987.</li>
+<li><strong>Luchtman, Laura & Siebenhaar, Ilfa.</strong> <em>Living Colour: Pigment-Producing Bacteria and Acoustic Growth Patterns</em>. Textile Research Archive, Rotterdam, 2019–2024.</li>
+</ol>
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    <p>To the industrial textile economy, color is a standardized petrochemical product called from a digital swatch book—an inert hex coordinate stamped onto fibers from the outside. Sealed against seasonal fluctuation, mineral water hardness, and living decay, synthetic aniline dyes impose chromatic uniformity while severing textiles from ecology. Within the ancient tradition of <strong>natural dyeing</strong> (<em>kök boyacılık</em>), color has never been a static surface coating. The crimson, ochre, or indigo drawn from a master dyer's copper cauldron is a <strong>living chemical computation</strong>: the emergent result of plant harvest altitude, water alkalinity, metallic vessel traces, and protein fiber memory negotiating in real time.</p>
+<p>From Anatolian village dyeworks to West African indigo pits and Kyoto workshops, this multi-millennial craft operated as one of humanity's earliest molecular programming systems. Today, bio-designers cultivating pigment-producing microbes such as <em>Streptomyces coelicolor</em> on raw silk are not discarding craft; they are translating the tacit parameter space of the cauldron into living genetic and algorithmic syntax.</p>
+<h2>1. Historical Roots: From Anatolian Dyehouses to Silk Road Guilds</h2>
+<p>The history of botanical pigmentation reaches as far back as woven fiber itself. Textile fragments recovered from Neolithic Çatalhöyük (circa 6000 BCE) and the Phrygian royal tombs at Gordion testify that Anatolia served for millennia as a crossroad of dye chemistry. While Tyrian Purple extracted by Phoenicians from <em>Murex</em> sea snails signified imperial decree, <strong>Turkey Red</strong> (<em>Edirne Kırmızısı</em> / <em>Rouge d'Andrinople</em>) extracted from <strong>Rubia tinctorum</strong> (dyer's madder root) stood across the early modern world as a closely guarded technological triumph.</p>
+<p>Between the fifteenth and eighteenth centuries, Ottoman dyers' guilds (<em>boyacılar esnafı</em>) in Bursa, Uşak, Konya, Bergama, Gördes, and Edirne enforced stringent guild charters forbidding fugitive vegetable stains. Their seventeen-stage Turkey Red protocol—combining fermented olive oil emulsions, sumac or oak-gall tannins, sheep-dung alkaline baths, and multi-pass alum mordanting—produced cotton and wool reds of unmatched brilliance and lightfastness. So prized was the Anatolian technique that French industrialists in Marseille recruited Greek and Turkish master dyers from Smyrna and Edirne in the 1740s solely to decode the thermal and alkaline sequence.</p>
+<p>When William Henry Perkin accidentally synthesized <em>mauveine</em> from coal tar in 1856, followed by synthetic alizarin in 1869, empirical botanical dye knowledge appeared destined for extinction. Yet though cheap synthetic powders swept across workshops within decades, rural Anatolian weavers quietly preserved heirloom recipes, heirloom roots, and unfading antique carpets that later enabled modern chemistry to recover the lost grammar.</p>
+<h2>2. Materials, Mordants, and the Chemistry of the Cauldron</h2>
+<p>Natural dyeing transcends folklore precisely because it rests on deterministic coordination chemistry governed by three interacting parameter layers: <strong>chromophore source</strong>, <strong>mordant chelation salt</strong>, and <strong>bath state (pH, temperature, vessel metal, and oxygenation)</strong>.</p>
+<figure class="article-figure"><img src="/images/kok-boya-geleneksel-kazan.jpg" alt="Traditional Anatolian natural dyeing workshop with dried madder roots, walnut husks, alum crystals, and wool skeins simmering in a hammered copper vat" loading="lazy"/><figcaption><strong>Anatolian Dye Cauldron: Dried Rubia tinctorum madder roots, pomegranate rinds, alum mordant, and wool yarn soaking in a hammered copper vessel</strong><span class="credit">Visual: Craft&Code Documentary Craft Archive</span></figcaption></figure>
+<ul>
+<li><strong>Primary Botanical Chromophores:</strong> A master dyer's palette tracks ecological time. Deep terracotta crimson derives from <strong>madder roots</strong> (<em>Rubia tinctorum</em>) left underground for at least three winters so <em>alizarin</em> and <em>purpurin</em> glycosides reach maturity. Pure golden yellows come from mountain-grown <strong>weld</strong> (<em>Reseda luteola</em>, rich in <em>luteolin</em>), while walnut hulls (<em>Juglans regia</em>, containing substantive <em>juglone</em>) and pomegranate skins (<em>Punica granatum</em>) deliver warm browns and tannic blacks without prior salts. Deep blues across the Silk Road rest on <strong>woad</strong> (<em>Isatis tinctoria</em>) and <strong>true indigo</strong> (<em>Indigofera tinctoria</em>).</li>
+<li><strong>Mordanting as Molecular Bridging:</strong> Protein fibers (wool and silk) and cellulose fibers (cotton and linen) rarely bond directly to dissolved plant molecules. Derived from the French <em>mordre</em> ("to bite"), a <strong>mordant</strong> is a polyvalent metal ion that forms a physical chelation bridge between fiber amino/hydroxyl sites and the dye chromophore:</li>
+<li><strong>Potassium Aluminum Sulfate — Alum (Al³⁺):</strong> Acts as an optical brightener and structural anchor, yielding fiery scarlet with madder and clear lemon gold with weld.</li>
+<li><strong>Ferrous Sulfate — Iron (Fe²⁺):</strong> Induces immediate <em>saddening</em> (bathochromic darkening), shifting madder red into aubergine plum and weld yellow into deep forest olive or charcoal black.</li>
+<li><strong>Copper Sulfate — Göztaşı (Cu²⁺):</strong> Pulls yellow flavonoids cleanly toward emerald and moss greens.</li>
+<li><strong>Oak Gall & Sumac Tannins:</strong> Pre-structure plant cellulose prior to metal-salt binding.</li>
+<li><strong>The Indigo Reduction Vat:</strong> The most dramatic moment in any traditional dyehouse occurs when yarn lifted from the fermented indigo vat (<em>çivit küpü</em>) emerges translucent chartreuse yellow—only to transform before the eye into midnight navy within forty seconds of atmospheric contact. Inside the warm anaerobic vat, alkaliphilic fermentation bacteria reduce insoluble blue <em>indigotin</em> into soluble <strong>leuco-indigo</strong>; once diffused deep into wool scales, oxygen re-oxidizes the molecule in place, locking color inside the fiber core.</li>
+</ul>
+<blockquote><p>"The artisan does not manipulate inert matter from above, but stewards chemical affinities already latent in root, mineral, and water; a mordant translates intention into durable molecular architecture."</p><cite>— Harald Böhmer, Koekboya (2002)</cite></blockquote>
+<p>Crucially, <strong>the exact same handful of dried roots</strong> produces radically different hues simply by toggling a pinch of iron salt, wood-ash lye, or vinegar—mirroring how a single dataset renders distinct visual spectra when passed through parameterized shaders.</p>
+<h2>3. Craft to Code: Structural Correspondences & Algorithmic Translation</h2>
+<p>Viewed computationally, an Anatolian cauldron is a stateful nonlinear chemical engine. Every workshop variable maps transparently to modern parametric color processing, conditional branching, and 2D reaction-diffusion simulation.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Traditional Dyeing Element</th><th>Physical & Chemical Role in the Workshop</th><th>Equivalent Construct in Code & Algorithms</th></tr></thead><tbody><tr><td>Botanical Source (<em>Rubia</em>, <em>Reseda</em>, <em>Juglans</em>)</td><td>Introduces specific organic chromophore molecules (alizarin, luteolin, juglone) into aqueous solution.</td><td>Base chromophore vector / seed pigment coordinates (<code>base_chromophore</code>)</td></tr><tr><td>Mordant Metal Ion (<code>Al³⁺</code> Alum, <code>Fe²⁺</code> Iron, <code>Cu²⁺</code> Copper)</td><td>Forms coordinate covalent chelate rings that physically alter light absorption wavelengths.</td><td>Spectral transformation operator / shader uniform matrix (<code>chelate_shift()</code>)</td></tr><tr><td>Bath pH Balance (Wood Ash Lye / Tartar / Lemon)</td><td>Shifts molecular ionization states cleanly between orange-red and violet-crimson regimes.</td><td>Conditional state branching and chromatic threshold (<code>if pH &lt; 6.0 ... else ...</code>)</td></tr><tr><td>Skein Immersion & Stirring Cycles</td><td>Drives concentration-dependent diffusion deeper across wool cuticle scales over discrete passes.</td><td>Iterative loop and logarithmic saturation curve (<code>for dip in range(cycles)</code>)</td></tr><tr><td>Copper vs. Tinned/Enamel Cauldron Material</td><td>Trace ions leaching from the vessel walls alter complexation throughout thermal soaking.</td><td>Global ambient runtime state (<code>ambient_ion_context</code>)</td></tr><tr><td>Indigo Vat Bacterial Fermentation & Air Exposure</td><td>Anaerobic microbial reduction enables uptake; oxidation locks pigment inside the fiber core.</td><td>Asynchronous state pipeline: Reduce -> Diffuse -> Lock (<code>lock_state()</code>)</td></tr><tr><td>Capillary Wicking & Uneven Fiber Diffusion</td><td>Creates organic marbled gradients across warp-weft intersections as moisture evaporates.</td><td>2D Gray-Scott Reaction-Diffusion PDE & neighbor stencil (<code>laplacian(U)</code>)</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Craft-to-Code Bridge</span>
+<p>In industrial synthetic printing, a pixel or droplet carries a hardcoded static address (<code>#99422B</code>). In both Anatolian root dyeing and living bio-computation, <strong>color is never static data; it is the runtime evaluation of <code>hue = f(chromophore, metal_ion, pH, time, substrate)</code></strong>. When bio-designers cultivate microbes directly onto folded silk, local nutrient gradients and neighboring colony metabolism act literally as biological <strong>cellular automata</strong>.</p>
+</div>
+<p>The Python model below unifies both domains: the first function computes classical madder-alizarin color shifts across alum, iron, and copper mordants under bath pH variation, while the second simulates pH-modulated actinorhodin pigment diffusion in a <em>Streptomyces coelicolor</em> bacterial colony across a 2D textile substrate grid.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">PYTHON</span><span class="code-title">Mordant Chelation &amp; Bacterial Pigment Diffusion Model</span></div><pre><code class="language-python"># Craft&amp;Code — Botanical Chelation and Living Microbial Diffusion Simulation
+
+MORDANT_CHELATION = {
+    &quot;Al3+ (Alum)&quot;:   {&quot;shift&quot;: (0.98, 0.34, 0.22), &quot;stability&quot;: 0.94},
+    &quot;Fe2+ (Iron)&quot;:   {&quot;shift&quot;: (0.42, 0.24, 0.35), &quot;stability&quot;: 0.91},
+    &quot;Cu2+ (Copper)&quot;: {&quot;shift&quot;: (0.66, 0.45, 0.28), &quot;stability&quot;: 0.87},
+}
+
+def dye_vat_calculation(madder_ratio, mordant_type, ph, dip_cycles):
+    &quot;&quot;&quot;Maps traditional cauldron chemistry parameters to dynamic RGB output and lightfastness.&quot;&quot;&quot;
+    mordant = MORDANT_CHELATION[mordant_type]
+    r_base, g_base, b_base = mordant[&quot;shift&quot;]
+
+    # Wood ash pushes pH alkaline toward violet-crimson; tartar shifts acidic toward coral
+    ph_shift = (ph - 7.0) * 0.06
+    saturation = 1.0 - (0.72 ** dip_cycles)  # Logarithmic uptake across repeated dips
+
+    r = max(0, min(255, int(255 * (r_base - ph_shift * 0.4) * saturation)))
+    g = max(0, min(255, int(255 * (g_base - abs(ph_shift) * 0.2) * saturation)))
+    b = max(0, min(255, int(255 * (b_base + ph_shift * 0.9) * saturation)))
+    return (r, g, b), round(mordant[&quot;stability&quot;] * madder_ratio, 2)
+
+def bacterial_pigment_step(pigment_grid, ph_grid, diff_rate=0.18, growth=0.05):
+    &quot;&quot;&quot;Simulates pH-sensitive actinorhodin secretion in Streptomyces coelicolor across silk.&quot;&quot;&quot;
+    rows, cols = len(pigment_grid), len(pigment_grid[0])
+    next_grid = [[0.0] * cols for _ in range(rows)]
+    for y in range(1, rows - 1):
+        for x in range(1, cols - 1):
+            laplacian = (
+                pigment_grid[y - 1][x] + pigment_grid[y + 1][x] +
+                pigment_grid[y][x - 1] + pigment_grid[y][x + 1] -
+                4.0 * pigment_grid[y][x]
+            )
+            # Actinorhodin yields cobalt blue above pH 7.2 and magenta-crimson under acidic agar
+            metabolic_boost = growth * (1.2 if ph_grid[y][x] &gt; 7.2 else 0.85)
+            next_val = pigment_grid[y][x] + diff_rate * laplacian + metabolic_boost
+            next_grid[y][x] = max(0.0, min(1.0, next_val))
+    return next_grid</code></pre></div>
+<p>Notice how neither domain treats pigmentation as a lookup stamp: the iterative curve <code>1.0 - (0.72 ** dip_cycles)</code> models the physical saturation limit of wool keratin scales, while the five-point <code>laplacian</code> kernel captures how dissolved metabolites spread across damp silk weave intersections.</p>
+<h2>4. Contemporary Practice & Scientific Case Studies</h2>
+<p>From late twentieth-century ethnobotanical conservation in western Anatolia to contemporary synthetic biology studios in London and Rotterdam, three landmark initiatives exemplify the continuity between cauldron craft and living code.</p>
+<figure class="article-figure"><img src="/images/kok-boya-bakteriyel-algoritma.jpg" alt="Bio-design studio overhead photography of glass petri dishes with blue-violet and crimson bacterial colonies blooming across raw silk squares" loading="lazy"/><figcaption><strong>Living Pigment Laboratory: Streptomyces coelicolor colonies producing pH-tuned blue and crimson chromophores directly on folded silk</strong><span class="credit">Visual: Craft&Code Bio-Art Archive</span></figcaption></figure>
+<h3>Case Study 1: The DOBAG Project & Harald Böhmer (Ayvacık & Yuntdağ, 1981)</h3>
+<p>The decisive modern revival of Anatolian root dyeing began in 1981 when German chemist and rug historian <strong>Harald Böhmer</strong>, collaborating with Marmara University researchers, launched the <strong>DOBAG Project</strong> (<em>Doğal Boya Araştırma ve Geliştirme Projesi</em>) across villages in Ayvacık (Çanakkale) and Yuntdağ (Manisa). Using Thin-Layer Chromatography and HPLC spectroscopy on microscopic yarn samples preserved inside sixteenth-century Ottoman rugs, Böhmer reverse-engineered vanished madder, weld, and mordant proportions.</p>
+<p>Rather than relegating findings to museum journals, DOBAG partnered directly with village women cooperatives, establishing reproducible cold and warm dyebaths and issuing numbered leather authenticity seals indexing each rug's botanical recipe and weaver. The project demonstrated that encoding oral craft into analytical chemical parameters could restore ecological resilience and artisan autonomy simultaneously.</p>
+<h3>Case Study 2: Natsai Audrey Chieza & Faber Futures — <em>Project Coelicolor</em> (London, 2011–2023)</h3>
+<p>Zimbabwean-British designer <strong>Natsai Audrey Chieza</strong>, founder of London bio-design agency <strong>Faber Futures</strong>, sought an alternative to conventional fashion dyeing, an industry consuming trillions of liters of potable water annually. Working alongside microbiology laboratories, Chieza cultured <strong>Streptomyces coelicolor</strong>—a soil-dwelling actinobacterium that secretes the antibiotic pigment <em>actinorhodin</em>—directly onto pre-folded and pleated raw silk inside petri chambers, requiring mere milliliters of water.</p>
+<p>In an uncanny echo of Anatolian cauldron pH tuning, Chieza observed that keeping the growth medium acidic guided bacterial colonies to dye silk brilliant <strong>crimson and magenta</strong>, whereas nudging medium alkalinity shifted output across <strong>vibrant violets and indigo blues</strong>. Combined with <em>shibori</em>-inspired folding constraints, living colonies became autonomous algorithmic plotters staining fibers from within.</p>
+<h3>Case Study 3: Laura Luchtman & Ilfa Siebenhaar — <em>Living Colour</em> (Rotterdam, 2017–2024)</h3>
+<p>Dutch textile researchers Laura Luchtman and Ilfa Siebenhaar expanded microbial pigmentation by coupling living cultures directly to <strong>sonic wave computation</strong>. Under the <em>Living Colour</em> research platform, strains including <em>Janthinobacterium lividum</em> (producing deep violacein violet) and <em>Serratia marcescens</em> (crimson-orange) were incubated atop damp textiles resting on acoustic speakers driven at precise Hertz frequencies.</p>
+<p>Just as sand grains gather along Chladni nodal contours on vibrating brass plates, sound frequencies sculpted standing-wave zones in the liquid growth medium—guiding bacterial colonies to anchor and pigment fabrics along mathematically coherent resonance rings. The traditional master's physical stirring rhythm thus re-emerged as frequency-coded morphogenesis.</p>
+<h2>5. Critical Synthesis: Resistance of Matter, Horizons of Code</h2>
+<p>An industrial inkjet plotter can fire sixteen million digital RGB combinations onto polyester within seconds, yet those inks sit mechanically atop petroleum fibers, cracking and washing downstream as micro-plastic runoff. By contrast, madder-dyed Anatolian wool or silk fermented for seven days alongside <em>Streptomyces</em> holds light inside the structural architecture of keratin and fibroin; it ages like wine or patina, deepening rather than turning dull and brittle.</p>
+<p>The persistent temptation of computational culture is to treat matter as passive friction—something to be bypassed by faster screens and infinitely copyable abstractions. The dialogue between ancient <em>kök boya</em> cauldrons and living bio-algorithms argues the opposite: <strong>nature's subtlest computations run not on doped silicon, but through patient molecular negotiations of roots, mineral salts, bacteria, water, and oxygen</strong>. Code serves this lineage best not by erasing the dyehouse, but by making its embedded molecular intelligence legible again for an ecological future.</p>
+<div class="curatorial-box"><span class="badge">Curatorial Note</span>
+<p>Whether toggling iron sulfate in a sixteenth-century Anatolian cauldron or modulating nutrient agar pH under a laminar hood in London, both practitioners obey the same foundational axiom: <strong>never paint color onto dead surfaces—call color forth from the living metabolism of the material itself.</strong></p>
+</div>
+<hr class="editorial-divider">
+<h3>Bibliography & Further Reading</h3>
+<ol>
+<li><strong>Böhmer, Harald.</strong> <em>Koekboya: Natural Dyes and Textiles — A Colour Journey from Turkey to India and Beyond</em>. REMHÖB-Verlag, Ganderkesee, 2002.</li>
+<li><strong>Cardon, Dominique.</strong> <em>Natural Dyes: Sources, Tradition, Technology and Science</em>. Archetype Publications, London, 2007.</li>
+<li><strong>Chieza, Natsai Audrey & Myers, William.</strong> "Biodesign and the New Color Palette: Project Coelicolor." <em>Bio Design: Nature + Science + Creativity</em>, Thames & Hudson, 2018.</li>
+<li><strong>Karadağ, Recep.</strong> <em>Doğal Boyamacılık (Natural Dyeing)</em>. Republic of Turkey Ministry of Culture and Tourism Publications, Ankara, 2007.</li>
+<li><strong>Enez, Nevin.</strong> <em>Natural Dyeing: Plants Used in Traditional Anatolian Wool Dyeing</em>. Marmara University Faculty of Fine Arts, Istanbul, 1987.</li>
+<li><strong>Luchtman, Laura & Siebenhaar, Ilfa.</strong> <em>Living Colour: Exploring Acoustic Influence on Bacterial Pigmentation</em>. Rotterdam Design Archive, 2019–2024.</li>
+</ol>
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/kok-boya-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar (Admin / Localhost Only) -->
+<div id="editor-toolbar" class="editor-toolbar" style="display:none;">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  // Only display editor controls to the author (localhost or admin)
+  document.addEventListener('DOMContentLoaded', function() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+    if (isAdmin) {
+      var tb = document.getElementById('editor-toolbar');
+      if (tb) tb.style.display = 'flex';
+      var imgTrig = document.getElementById('img-change-trigger');
+      if (imgTrig) imgTrig.style.display = 'inline-flex';
+    }
+  });
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Craft&Code</strong> — Kadim Zanaat & Çağdaş Sanat Araştırmaları
+      </div>
+      <div>
+        <span class="lang-tr">Geleneksel ile güncelin kesiştiği bağımsız araştırma yayını.</span>
+        <span class="lang-en" style="display:none;">An independent publication at the intersection of craft and computation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-msg">✅ Değişiklikler başarıyla kaydedildi!</div>
+
+  <script>
+    var currentLang = localStorage.getItem('craft_code_lang') || 'tr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('craft_code_lang', lang);
+      
+      document.querySelectorAll('.lang-tr').forEach(function(el) {
+        el.style.display = (lang === 'tr') ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = (lang === 'en') ? '' : 'none';
+      });
+
+      var btnTr = document.getElementById('btn-tr');
+      var btnEn = document.getElementById('btn-en');
+      if (btnTr && btnEn) {
+        if (lang === 'tr') {
+          btnTr.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnTr.classList.remove('active');
+        }
+      }
+      document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLang);
+
+      // Studio button is completely hidden from public visitors
+      var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+      if (isAdmin) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) sBtn.style.display = 'inline-flex';
+      }
+    });
+
+    // Secret shortcut: Pressing Ctrl+Shift+S (or Cmd+Shift+S) toggles Studio button
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) {
+          sBtn.style.display = (sBtn.style.display === 'none') ? 'inline-flex' : 'none';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

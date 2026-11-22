@@ -7,6 +7,7 @@ Unified Bilingual (TR/EN) Engine with Curatorial Studio.
 import os
 import sys
 import re
+import html
 import shutil
 import json
 from pathlib import Path
@@ -51,26 +52,123 @@ def parse_markdown(text):
     html_parts = []
     in_list = False
     list_type = "ul"
-    in_curatorial = False
+    container_stack = []
+    in_code = False
+    code_lang = ""
+    code_title = ""
+    code_lines = []
 
-    for line in lines:
-        stripped = line.strip()
+    def close_list():
+        nonlocal in_list
+        if in_list:
+            html_parts.append(f"</{list_type}>")
+            in_list = False
+
+    i = 0
+    while i < len(lines):
+        raw_line = lines[i]
+        stripped = raw_line.strip()
+
+        if in_code:
+            if stripped.startswith("```"):
+                code_text = "\n".join(code_lines)
+                lang_label = html.escape((code_lang or "code").upper())
+                lang_cls = re.sub(r"[^a-zA-Z0-9_-]", "", code_lang or "text")
+                title_html = f'<span class="code-title">{html.escape(code_title)}</span>' if code_title else ""
+                html_parts.append(
+                    f'<div class="code-study">'
+                    f'<div class="code-study-header"><span class="code-lang">{lang_label}</span>{title_html}</div>'
+                    f'<pre><code class="language-{lang_cls}">{html.escape(code_text)}</code></pre>'
+                    f'</div>'
+                )
+                in_code = False
+                code_lang = ""
+                code_title = ""
+                code_lines = []
+            else:
+                code_lines.append(raw_line)
+            i += 1
+            continue
+
+        if stripped.startswith("```"):
+            close_list()
+            fence_rest = stripped[3:].strip()
+            code_lang = ""
+            code_title = ""
+            m_fence = re.match(r'^([^\s"]+)?(?:\s+title="(.*?)")?', fence_rest)
+            if m_fence:
+                code_lang = (m_fence.group(1) or "").strip()
+                code_title = (m_fence.group(2) or "").strip()
+            in_code = True
+            code_lines = []
+            i += 1
+            continue
 
         if not stripped:
-            if in_list:
-                html_parts.append(f"</{list_type}>")
-                in_list = False
+            close_list()
+            i += 1
             continue
 
         if stripped.startswith(":::curatorial"):
-            badge_text = stripped.replace(":::curatorial", "").strip() or "Curatorial Note"
-            html_parts.append(f'<div class="curatorial-box"><span class="badge">{badge_text}</span>')
-            in_curatorial = True
+            close_list()
+            badge_text = stripped.replace(":::curatorial", "", 1).strip() or "Curatorial Note"
+            html_parts.append(f'<div class="curatorial-box"><span class="badge">{html.escape(badge_text)}</span>')
+            container_stack.append("curatorial")
+            i += 1
+            continue
+        elif stripped.startswith(":::bridge"):
+            close_list()
+            badge_text = stripped.replace(":::bridge", "", 1).strip() or "Zanaattan Koda Köprü"
+            html_parts.append(f'<div class="bridge-box"><span class="badge">{html.escape(badge_text)}</span>')
+            container_stack.append("bridge")
+            i += 1
+            continue
+        elif stripped.startswith(":::gallery"):
+            close_list()
+            html_parts.append('<div class="article-gallery">')
+            container_stack.append("gallery")
+            i += 1
             continue
         elif stripped == ":::":
-            if in_curatorial:
+            close_list()
+            if container_stack:
+                container_stack.pop()
                 html_parts.append('</div>')
-                in_curatorial = False
+            i += 1
+            continue
+
+        if stripped in ("---", "***"):
+            close_list()
+            html_parts.append('<hr class="editorial-divider">')
+            i += 1
+            continue
+
+        # Markdown Table
+        if (
+            stripped.startswith("|")
+            and stripped.endswith("|")
+            and i + 1 < len(lines)
+            and re.match(r"^\|[\s:-]+(?:\|[\s:-]+)+\|$", lines[i + 1].strip())
+        ):
+            close_list()
+            headers = [c.strip() for c in stripped.strip("|").split("|")]
+            t_html = ['<div class="table-wrap"><table class="craft-code-table"><thead><tr>']
+            for h in headers:
+                t_html.append(f"<th>{format_inline(h)}</th>")
+            t_html.append("</tr></thead><tbody>")
+            i += 2
+            while i < len(lines):
+                row_s = lines[i].strip()
+                if not (row_s.startswith("|") and row_s.endswith("|")):
+                    break
+                cells = [c.strip() for c in row_s.strip("|").split("|")]
+                t_html.append("<tr>")
+                for c in cells:
+                    t_html.append(f"<td>{format_inline(c)}</td>")
+                t_html.append("</tr>")
+                i += 1
+            t_html.append("</tbody></table></div>")
+            html_parts.append("".join(t_html))
             continue
 
         h3_match = re.match(r"^###\s+(.*)", stripped)
@@ -78,84 +176,110 @@ def parse_markdown(text):
         h1_match = re.match(r"^#\s+(.*)", stripped)
 
         if h3_match:
+            close_list()
             html_parts.append(f"<h3>{format_inline(h3_match.group(1))}</h3>")
+            i += 1
             continue
         if h2_match:
+            close_list()
             html_parts.append(f"<h2>{format_inline(h2_match.group(1))}</h2>")
+            i += 1
             continue
         if h1_match:
+            close_list()
             html_parts.append(f"<h1>{format_inline(h1_match.group(1))}</h1>")
+            i += 1
             continue
 
         if stripped.startswith(">"):
+            close_list()
             quote_text = stripped.lstrip(">").strip()
             if " -- " in quote_text:
                 q, cite = quote_text.split(" -- ", 1)
-                html_parts.append(f"<blockquote><p>{format_inline(q)}</p><cite>— {cite}</cite></blockquote>")
+                html_parts.append(f"<blockquote><p>{format_inline(q)}</p><cite>— {format_inline(cite)}</cite></blockquote>")
             else:
                 html_parts.append(f"<blockquote><p>{format_inline(quote_text)}</p></blockquote>")
+            i += 1
             continue
 
         if stripped.startswith("- ") or stripped.startswith("* "):
-            if not in_list:
+            if not in_list or list_type != "ul":
+                close_list()
                 in_list = True
                 list_type = "ul"
                 html_parts.append("<ul>")
             html_parts.append(f"<li>{format_inline(stripped[2:])}</li>")
+            i += 1
             continue
 
         num_match = re.match(r"^\d+\.\s+(.*)", stripped)
         if num_match:
-            if not in_list:
+            if not in_list or list_type != "ol":
+                close_list()
                 in_list = True
                 list_type = "ol"
                 html_parts.append("<ol>")
             html_parts.append(f"<li>{format_inline(num_match.group(1))}</li>")
+            i += 1
             continue
 
-        if in_list:
-            html_parts.append(f"</{list_type}>")
-            in_list = False
+        close_list()
 
         fig_match = re.match(r'^!\[(.*?)\]\((.*?)(?:\s+"(.*?)")?\)$', stripped)
         if fig_match:
-            alt = fig_match.group(1)
-            src = fig_match.group(2)
+            alt = html.escape(fig_match.group(1))
+            src = fig_match.group(2).strip()
+            if src.startswith("/") and BASE_PATH and not src.startswith(f"{BASE_PATH}/"):
+                src = f"{BASE_PATH}{src}"
             meta = fig_match.group(3) or ""
             caption = meta
             credit = ""
             if "|" in meta:
                 caption, credit = [x.strip() for x in meta.split("|", 1)]
-            
-            fig_html = f'<figure class="article-figure"><img src="{src}" alt="{alt}" loading="lazy"/>'
+
+            fig_html = f'<figure class="article-figure"><img src="{html.escape(src)}" alt="{alt}" loading="lazy"/>'
             if caption or credit:
-                fig_html += f'<figcaption><strong>{caption}</strong>'
+                fig_html += f'<figcaption><strong>{format_inline(caption)}</strong>'
                 if credit:
-                    fig_html += f'<span class="credit">{credit}</span>'
+                    fig_html += f'<span class="credit">{format_inline(credit)}</span>'
                 fig_html += '</figcaption>'
             fig_html += '</figure>'
             html_parts.append(fig_html)
+            i += 1
             continue
 
         html_parts.append(f"<p>{format_inline(stripped)}</p>")
+        i += 1
 
-    if in_list:
-        html_parts.append(f"</{list_type}>")
-    if in_curatorial:
+    close_list()
+    while container_stack:
+        container_stack.pop()
         html_parts.append('</div>')
 
     return frontmatter, "\n".join(html_parts)
 
 def format_inline(text):
+    placeholders = []
+
+    def _replace_code(match):
+        idx = len(placeholders)
+        placeholders.append(f"<code>{html.escape(match.group(1))}</code>")
+        return f"\x00CODE{idx}\x00"
+
+    text = re.sub(r"`([^`]+)`", _replace_code, text)
     text = re.sub(r"\*\*\*(.*?)\*\*\*", r"<strong><em>\1</em></strong>", text)
     text = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"\*(.*?)\*", r"<em>\1</em>", text)
-    text = re.sub(r"`(.*?)`", r"<code>\1</code>", text)
     text = re.sub(r"\[(.*?)\]\((.*?)\)", r'<a href="\2">\1</a>', text)
+
+    for idx, code_html in enumerate(placeholders):
+        text = text.replace(f"\x00CODE{idx}\x00", code_html)
     return text
 
 def calculate_reading_time(text):
-    words = len(re.findall(r"\w+", text))
+    clean = re.sub(r"^---\s*\n.*?\n---\s*\n", "", text, flags=re.DOTALL)
+    clean = re.sub(r"```[\s\S]*?```", " ", clean)
+    words = len(re.findall(r"\w+", clean))
     return max(1, round(words / 180))
 
 def build_site(include_drafts=True):

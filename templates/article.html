@@ -260,7 +260,7 @@
   function saveAllChanges() {
     var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     if (!isLocal) {
-      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
       return;
     }
 
@@ -309,7 +309,7 @@
   function publishCurrentArticle(slug) {
     var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     if (!isLocal) {
-      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
       return;
     }
 
@@ -337,7 +337,7 @@
   function unpublishCurrentArticle(slug) {
     var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
     if (!isLocal) {
-      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8080) üzerinden yapılır.');
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
       return;
     }
 

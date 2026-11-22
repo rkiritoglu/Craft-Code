@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <marker id="arrow-indigo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#235d72" />
+    </marker>
+    <marker id="arrow-terra" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#99422b" />
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="720" fill="#f9f5ed" />
+  <rect x="14" y="14" width="1172" height="692" fill="none" stroke="#d8cfc0" stroke-width="2" />
+  <text x="44" y="54" font-family="Georgia, serif" font-size="23" font-weight="bold" fill="#1c1a17">SELJUK KUNDEKARI: LOCKED FRAME RAILS &amp; HYGROSCOPIC TOLERANCE CROSS-SECTION</text>
+  <text x="44" y="79" font-family="monospace" font-size="13" fill="#5e5952">LEFT: NAIL-LESS INTERLOCKING 8-FOLD STAR GEOMETRY   |   RIGHT: TONGUE-AND-GROOVE EXPANSION CLEARANCE (delta-t)</text>
+  <line x1="44" y1="95" x2="1156" y2="95" stroke="#d8cfc0" stroke-width="1.5" />
+<rect x="44" y="115" width="536" height="555" fill="#f4f1ea" stroke="#d8cfc0" stroke-width="1.5" rx="6" />
+<rect x="620" y="115" width="536" height="555" fill="#f4f1ea" stroke="#d8cfc0" stroke-width="1.5" rx="6" />
+<text x="64" y="142" font-family="monospace" font-size="13" font-weight="bold" fill="#99422b">01 // CICEK &amp; YILDIZ DOLGU PANEL TOPOLOJISI</text>
+<text x="640" y="142" font-family="monospace" font-size="13" font-weight="bold" fill="#235d72">02 // ZIVANA-LAMBA KESITI &amp; MEVSIMSEL PAY (delta-t)</text>
+<rect x="64" y="155" width="496" height="450" fill="#f9f5ed" stroke="#d8cfc0" rx="4" />
+<path d="M 460.0 380.0 L 382.2 409.1 L 416.7 484.7 L 341.1 450.2 L 312.0 528.0 L 282.9 450.2 L 207.3 484.7 L 241.8 409.1 L 164.0 380.0 L 241.8 350.9 L 207.3 275.3 L 282.9 309.8 L 312.0 232.0 L 341.1 309.8 L 416.7 275.3 L 382.2 350.9 Z" fill="#d8b98c" stroke="#99422b" stroke-width="2.5" />
+<path d="M 382.2 409.1 L 460.0 380.0 L 492.2 454.6 L 416.7 484.7 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="522.0" y1="380.0" x2="460.5" y2="528.5" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="522.0" cy="380.0" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 341.1 450.2 L 416.7 484.7 L 386.6 560.2 L 312.0 528.0 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="460.5" y1="528.5" x2="312.0" y2="590.0" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="460.5" cy="528.5" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 282.9 450.2 L 312.0 528.0 L 237.4 560.2 L 207.3 484.7 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="312.0" y1="590.0" x2="163.5" y2="528.5" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="312.0" cy="590.0" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 241.8 409.1 L 207.3 484.7 L 131.8 454.6 L 164.0 380.0 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="163.5" y1="528.5" x2="102.0" y2="380.0" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="163.5" cy="528.5" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 241.8 350.9 L 164.0 380.0 L 131.8 305.4 L 207.3 275.3 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="102.0" y1="380.0" x2="163.5" y2="231.5" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="102.0" cy="380.0" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 282.9 309.8 L 207.3 275.3 L 237.4 199.8 L 312.0 232.0 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="163.5" y1="231.5" x2="312.0" y2="170.0" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="163.5" cy="231.5" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 341.1 309.8 L 312.0 232.0 L 386.6 199.8 L 416.7 275.3 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="312.0" y1="170.0" x2="460.5" y2="231.5" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="312.0" cy="170.0" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<path d="M 382.2 350.9 L 416.7 275.3 L 492.2 305.4 L 460.0 380.0 Z" fill="#c69f68" fill-opacity="0.65" stroke="#1c1a17" stroke-width="1.4" />
+<line x1="460.5" y1="231.5" x2="522.0" y2="380.0" stroke="#99422b" stroke-width="8" stroke-linecap="round" />
+<circle cx="460.5" cy="231.5" r="5" fill="#235d72" stroke="#ffffff" stroke-width="1.5" />
+<circle cx="312" cy="380" r="76" fill="none" stroke="#235d72" stroke-width="1" stroke-dasharray="4,4" />
+<circle cx="312" cy="380" r="148" fill="none" stroke="#235d72" stroke-width="1" stroke-dasharray="4,4" />
+<rect x="640" y="155" width="496" height="450" fill="#f9f5ed" stroke="#d8cfc0" rx="4" />
+<path d="M 675 290 L 795 290 L 795 345 L 745 345 L 745 415 L 795 415 L 795 470 L 675 470 Z" fill="#b88d58" stroke="#1c1a17" stroke-width="2" />
+<path d="M 1100 290 L 980 290 L 980 345 L 1030 345 L 1030 415 L 980 415 L 980 470 L 1100 470 Z" fill="#b88d58" stroke="#1c1a17" stroke-width="2" />
+<path d="M 762 355 L 795 355 L 818 332 L 957 332 L 980 355 L 1013 355 L 1013 405 L 980 405 L 957 428 L 818 428 L 795 405 L 762 405 Z" fill="#e2c9a0" stroke="#99422b" stroke-width="2.2" />
+<rect x="747" y="347" width="13" height="66" fill="#235d72" fill-opacity="0.35" stroke="#235d72" stroke-width="1.5" stroke-dasharray="2,2" />
+<rect x="1015" y="347" width="13" height="66" fill="#235d72" fill-opacity="0.35" stroke="#235d72" stroke-width="1.5" stroke-dasharray="2,2" />
+<path d="M 762 320 L 795 320 L 818 297 L 957 297 L 980 320 L 1013 320" fill="none" stroke="#235d72" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-indigo)" />
+<text x="888" y="276" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#235d72">7-EKSEN CNC / ZIVANA TAKIM YOLU</text>
+<text x="735" y="510" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#235d72">BOSLUK: delta-t = 1.8 mm</text>
+<line x1="753" y1="490" x2="753" y2="418" stroke="#235d72" stroke-width="1.5" marker-end="url(#arrow-indigo)" />
+<text x="1040" y="510" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#235d72">GENLESME PAYI</text>
+<line x1="1021" y1="490" x2="1021" y2="418" stroke="#235d72" stroke-width="1.5" marker-end="url(#arrow-indigo)" />
+<text x="888" y="385" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#1c1a17">SERBEST YUZEN DOLGU</text>
+<text x="64" y="632" font-family="Georgia, serif" font-size="13" fill="#1c1a17">True hakiki kundekari interlocks floating hardwood panels without glue or iron nails.</text>
+<text x="640" y="632" font-family="Georgia, serif" font-size="13" fill="#1c1a17">Calculated groove gap delta-t absorbs winter-summer wood humidity swelling safely.</text>
+</svg>

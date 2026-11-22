@@ -4,6 +4,7 @@ Craft&Code Interactive Server & Studio API
 Supports in-browser live editing, dynamic gallery, live preview, topic generation, and YouTube Shorts creation.
 """
 
+import argparse
 import http.server
 import socketserver
 import os
@@ -11,6 +12,10 @@ import sys
 import json
 import re
 import shutil
+import subprocess
+import threading
+import urllib.request
+import webbrowser
 from pathlib import Path
 from build import build_site
 from content_generator import generate_topic_draft, refresh_proposals
@@ -34,6 +39,13 @@ class CraftCodeHandler(http.server.SimpleHTTPRequestHandler):
         if self.path in ['/tr', '/tr/', '/en', '/en/']:
             self.path = '/index.html'
             super().do_GET()
+            return
+
+        if self.path == '/api/health':
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"ok": True, "app": "craft-and-code"}).encode('utf-8'))
             return
 
         # Dynamic Gallery API: Returns ALL images in public/images
@@ -368,14 +380,50 @@ def update_markdown_file(filepath, updates):
 class ReusableTCPServer(socketserver.TCPServer):
     allow_reuse_address = True
 
+def is_craft_and_code_running(port):
+    """Checks whether Craft&Code Studio is already responding on the given port."""
+    try:
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/health", timeout=1) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            return isinstance(data, dict) and data.get("app") == "craft-and-code"
+    except Exception:
+        return False
+
+def open_studio_browser(url):
+    """Opens the Studio URL in the desktop browser if a graphical session is available."""
+    if not (os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")):
+        return
+    try:
+        xdg_open = shutil.which("xdg-open")
+        if xdg_open:
+            subprocess.Popen([xdg_open, url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        else:
+            webbrowser.open(url)
+    except Exception:
+        pass
+
 def main():
+    parser = argparse.ArgumentParser(description="Craft&Code Editorial Studio Server")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8008")), help="Primary port to bind")
+    parser.add_argument("--open", action="store_true", help="Open Studio in default browser")
+    args = parser.parse_args()
+
+    preferred_port = args.port
+    candidate_ports = [preferred_port] + [p for p in [8008, 8018, 8028, 8001] if p != preferred_port]
+
+    if is_craft_and_code_running(preferred_port):
+        studio_url = f"http://localhost:{preferred_port}/studio.html"
+        print(f"✅ Craft&Code Stüdyo zaten çalışıyor: {studio_url}")
+        if args.open:
+            open_studio_browser(studio_url)
+        return
+
     print("=" * 65)
     print("  Craft&Code — Editoryal Stüdyo & Canlı Önizleme Sunucusu")
     print("=" * 65)
-    
+
     build_site(include_drafts=True)
 
-    candidate_ports = [8080, 8008, 5000, 8001]
     httpd = None
     active_port = None
 
@@ -385,15 +433,21 @@ def main():
             active_port = p
             break
         except OSError:
+            if p == preferred_port:
+                print(f"⚠️ Uyarı: {preferred_port} portu başka bir uygulama tarafından kullanılıyor; alternatif port deneniyor...")
             continue
 
     if not httpd:
         print("❌ Hata: Uygun bir port bulunamadı!")
         sys.exit(1)
 
-    print(f"\n🚀 Stüdyo & Önizleme hazır: http://localhost:{active_port}/studio.html")
+    studio_url = f"http://localhost:{active_port}/studio.html"
+    print(f"\n🚀 Stüdyo & Önizleme hazır: {studio_url}")
     print(f"👉 Ana Sayfa: http://localhost:{active_port}/")
     print("\nDurdurmak için Ctrl + C tuşlarına basın.\n")
+
+    if args.open:
+        threading.Timer(0.6, open_studio_browser, args=(studio_url,)).start()
 
     try:
         httpd.serve_forever()

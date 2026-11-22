@@ -337,7 +337,7 @@
 
     <!-- Notice if viewed on remote GitHub Pages -->
     <div id="remote-studio-notice" style="display:none; background:#fef3c7; border:1px solid #f59e0b; border-radius:6px; padding:0.85rem 1.25rem; margin-bottom:1.5rem; color:#92400e; font-size:0.88rem; line-height:1.5;">
-      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8080/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8080/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
+      <strong>ℹ️ GitHub Pages Canlı Önizleme Modu:</strong> Yeni makale üretimi, dosya silme ve taslak yayınlama işlemleri doğrudan bilgisayarınızdaki dosyalara erişim gerektirdiği için <strong>yerel stüdyonuzdan (<a href="http://localhost:8008/studio.html" style="color:#b45309; font-weight:600; text-decoration:underline;">http://localhost:8008/studio.html</a>)</strong> yürütülür. Yerelde onayladığınız tüm içerikler GitHub ile otomatik eşitlenir.
     </div>
 
     <!-- Section 1: AI Topic Proposals with Refresh Button -->
@@ -353,35 +353,19 @@
     </div>
 
     <div class="topics-grid" id="topics-grid-container">
-      <div class="topic-card" id="card-cam-ve-raymarching">
+      <div class="topic-card" id="card-kundekari-robotik-ahsap">
           <div>
             <div class="card-top-bar">
-              <span class="category-pill">Cam Zanaatı & Shader Kodları</span>
-              <button class="btn-dismiss-topic" onclick="dismissTopic('card-cam-ve-raymarching')" title="Bu öneriyi kaldır">✕</button>
+              <span class="category-pill">Ahşap Kündekâri & Dijital Eklemler</span>
+              <button class="btn-dismiss-topic" onclick="dismissTopic('card-kundekari-robotik-ahsap')" title="Bu öneriyi kaldır">✕</button>
             </div>
-            <h3>Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</h3>
-            <p class="thesis">1000 derecede eriyen silika camının yerçekimi ve nefesle şekillenmesi ile bilgisayar grafiklerindeki foton haritalama ve caustics shader simülasyonları.</p>
+            <h3>Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri</h3>
+            <p class="thesis">Tutkal ve çivi kullanmadan ahşabın nefes almasını sağlayan zıvanalı kündekâri zanaatı; parametrik robotik ahşap strüktürleri ve tolerans algoritmalarıyla canlanıyor.</p>
             <div class="detail-box">
-              <strong>Vakalar:</strong> Murano ustaları, Neri Oxman (MIT Glass 3D printing), GLSL gerçek zamanlı optik shader'lar.
+              <strong>Vakalar:</strong> Konya Alâeddin ve Beyşehir Eşrefoğlu Camii minberleri, ETH Zürih Gramazio Kohler Research, EPFL IBOIS.
             </div>
           </div>
-          <button class="btn-approve" onclick="approveTopic('cam-ve-raymarching', 'Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)')">
-            <span>🚀</span> Bu Konuyu Onayla & Üret
-          </button>
-        </div>
-<div class="topic-card" id="card-kok-boya-biyohesaplama">
-          <div>
-            <div class="card-top-bar">
-              <span class="category-pill">Doğal Pigment & Biyo-Tasarım</span>
-              <button class="btn-dismiss-topic" onclick="dismissTopic('card-kok-boya-biyohesaplama')" title="Bu öneriyi kaldır">✕</button>
-            </div>
-            <h3>Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması</h3>
-            <p class="thesis">Köklerden ve likenlerden elde edilen kadim boyama simyası; günümüzde sentetik biyoloji, bakteriyel fermentasyon ve generatif renk haritalarıyla buluşuyor.</p>
-            <div class="detail-box">
-              <strong>Vakalar:</strong> Anadolu kök boya gelenekleri, Faber Futures (Natsai Audrey Chieza), biyolojik algoritmik boyama.
-            </div>
-          </div>
-          <button class="btn-approve" onclick="approveTopic('kok-boya-biyohesaplama', 'Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması')">
+          <button class="btn-approve" onclick="approveTopic('kundekari-robotik-ahsap', 'Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri')">
             <span>🚀</span> Bu Konuyu Onayla & Üret
           </button>
         </div>
@@ -394,7 +378,7 @@
             <h3>Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans</h3>
             <p class="thesis">Bakır levhayı çekiç vuruşlarının ritmiyle sertleştirip form verme zanaatı; fiziksel modelleme sentezi ve mikrotonal rezonans frekanslarıyla çalışan ses heykelleriyle kesişiyor.</p>
             <div class="detail-box">
-              <strong>Vakalar:</strong> Kazancılar Çarşısı çekiç poliritimleri, Harry Bertoia ses heykelleri, MaxMSP fiziksel akustik simülasyonları.
+              <strong>Vakalar:</strong> Gaziantep ve Kahramanmaraş Kazancılar Çarşısı çekiç poliritimleri, Harry Bertoia Sonambient, IRCAM Modalys.
             </div>
           </div>
           <button class="btn-approve" onclick="approveTopic('dovme-bakir-ses', 'Çekicin Yankısı: Dövme Bakır Zanaatı ve Algoritmik Akustik Rezonans')">
@@ -472,24 +456,6 @@
         </tr>
 <tr>
           <td>
-            <a href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" style="text-decoration:none; color:inherit;">
-              <strong>Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</strong>
-            </a><br>
-            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
-          </td>
-          <td><span class="status-badge published">● YAYINDA</span></td>
-          <td>2026-11-14</td>
-          <td>
-            <div class="actions-cell">
-              <a class="action-btn" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
-              <button class="action-btn" onclick="unpublishArticle('hat-sanati-ve-robotik-kaligrafi')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
-              <button class="action-btn" onclick="openShortsModal('hat-sanati-ve-robotik-kaligrafi')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
-              <button class="action-btn delete" onclick="deleteArticle('hat-sanati-ve-robotik-kaligrafi', 'Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi')">🗑️ Sil</button>
-            </div>
-          </td>
-        </tr>
-<tr>
-          <td>
             <a href="/yazi/kintsugi-ve-dijital-kusur.html" style="text-decoration:none; color:inherit;">
               <strong>Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</strong>
             </a><br>
@@ -503,6 +469,60 @@
               <button class="action-btn" onclick="unpublishArticle('kintsugi-ve-dijital-kusur')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
               <button class="action-btn" onclick="openShortsModal('kintsugi-ve-dijital-kusur')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
               <button class="action-btn delete" onclick="deleteArticle('kintsugi-ve-dijital-kusur', 'Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/cam-ufleme-ve-isik-kirilmasi.html" style="text-decoration:none; color:inherit;">
+              <strong>Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/cam-ufleme-ve-isik-kirilmasi.html</small>
+          </td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/cam-ufleme-ve-isik-kirilmasi.html">👁️ Aç</a>
+              <button class="action-btn" onclick="unpublishArticle('cam-ufleme-ve-isik-kirilmasi')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <button class="action-btn" onclick="openShortsModal('cam-ufleme-ve-isik-kirilmasi')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
+              <button class="action-btn delete" onclick="deleteArticle('cam-ufleme-ve-isik-kirilmasi', 'Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/kok-boyacilik-ve-biyo-tasarim.html" style="text-decoration:none; color:inherit;">
+              <strong>Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/kok-boyacilik-ve-biyo-tasarim.html</small>
+          </td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/kok-boyacilik-ve-biyo-tasarim.html">👁️ Aç</a>
+              <button class="action-btn" onclick="unpublishArticle('kok-boyacilik-ve-biyo-tasarim')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <button class="action-btn" onclick="openShortsModal('kok-boyacilik-ve-biyo-tasarim')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
+              <button class="action-btn delete" onclick="deleteArticle('kok-boyacilik-ve-biyo-tasarim', 'Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması')">🗑️ Sil</button>
+            </div>
+          </td>
+        </tr>
+<tr>
+          <td>
+            <a href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" style="text-decoration:none; color:inherit;">
+              <strong>Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</strong>
+            </a><br>
+            <small style="color:var(--text-muted);font-family:var(--font-mono);">/yazi/hat-sanati-ve-robotik-kaligrafi.html</small>
+          </td>
+          <td><span class="status-badge published">● YAYINDA</span></td>
+          <td>2026-11-14</td>
+          <td>
+            <div class="actions-cell">
+              <a class="action-btn" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html">👁️ Aç</a>
+              <button class="action-btn" onclick="unpublishArticle('hat-sanati-ve-robotik-kaligrafi')" style="color:#047857;border-color:#a7f3d0;" title="Yazıyı tekrar taslak moduna al">↩️ Taslağa Al</button>
+              <button class="action-btn" onclick="openShortsModal('hat-sanati-ve-robotik-kaligrafi')" style="background:#6d28d9; color:#ffffff; border-color:#6d28d9;" title="YouTube Shorts videosu üret ve izle">🎬 Shorts</button>
+              <button class="action-btn delete" onclick="deleteArticle('hat-sanati-ve-robotik-kaligrafi', 'Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi')">🗑️ Sil</button>
             </div>
           </td>
         </tr>
@@ -528,7 +548,7 @@
 
     function ensureLocalhost(actionName) {
       if (!isLocalhost) {
-        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8080/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
+        alert('ℹ️ ' + actionName + ' işlemi bilgisayarınızdaki yerel Editoryal Stüdyo (http://localhost:8008/studio.html) üzerinden yürütülür.\n\nGitHub Pages salt statik barındırma sağladığı için dosya oluşturma ve yayınlama işlemleri yerel sunucunuzda yapılır ve canlıya aktarılır.');
         return false;
       }
       return true;
@@ -756,7 +776,7 @@
         } else {
           loading.style.display = 'none';
           content.style.display = 'grid';
-          alert('ℹ️ Bu yazı için henüz Shorts videosu üretilmemiş. Video üretimi yerel stüdyo (http://localhost:8080/studio.html) üzerinden tek tıkla yapılır.');
+          alert('ℹ️ Bu yazı için henüz Shorts videosu üretilmemiş. Video üretimi yerel stüdyo (http://localhost:8008/studio.html) üzerinden tek tıkla yapılır.');
           closeShortsModal();
         }
       });

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching) — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Art, Craft & Computational Inquiries</span>
+      </div>
+
+      <nav class="main-nav">
+        <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
+        <a href="/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
+          <span>⚡</span>
+          <span>Stüdyo</span>
+        </a>
+
+        <!-- In-Browser Instant Language Toggle -->
+        <div class="lang-toggle-btn" onclick="toggleLanguage()" title="Dili Değiştir / Switch Language">
+          <span class="opt active" id="btn-tr">TR</span>
+          <span class="opt" id="btn-en">EN</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="post" data-slug="cam-ufleme-ve-isik-kirilmasi">
+  
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">10 dk</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Cam Zanaatı</span> <span class="tag">#Murano</span> <span class="tag">#Raymarching</span> <span class="tag">#GLSL Shader</span> <span class="tag">#Yeni Medya</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">Murano fırınlarında 1100 derecede nefes ve yerçekimiyle dönen erimiş silika kristalinden, GLSL shader kodlarındaki Snell kırılma yasasına ve foton kostik (caustics) simülasyonlarına.</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>Craft&Code Araştırma Masası</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">10 min read</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Glassblowing</span> <span class="tag">#Murano</span> <span class="tag">#Raymarching</span> <span class="tag">#GLSL Shader</span> <span class="tag">#New Media</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">Viscosity of Fire: Venetian Glassblowing and Algorithmic Caustics</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">From 1100°C molten silica spun on Murano steel blowpipes with wet pearwood blocks to Snell refraction equations and GLSL raymarching shaders.</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>Craft&Code Editorial Desk</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button id="img-change-trigger" class="img-change-trigger" onclick="openImageModal()" style="display:none;">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="/images/cam-ufleme-cover.jpg" alt="Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">Kavramsal Eser: El üflemesi Venedik kristalinden süzülen ışık kostiklerinin ve hesaplamalı optik kırılma vektörlerinin görsel sentezi.</strong>
+          <span class="credit editable" id="tr-credit">Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">Conceptual Synthesis: Hand-blown Venetian crystal prisms casting refractive caustics traced against algorithmic ray vectors.</strong>
+          <span class="credit editable" id="en-credit">Visual: Craft&Code / AI & Curatorial Concept Synthesis</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    <p>Cam, fizik dünyasının en paradoksal maddesidir. Ne kristal yapılı bir katıdır ne de bildiğimiz anlamda bir sıvı; moleküllerin soğurken düzenli bir kristal kafese dizilmeye vakit bulamadığı, yüksek sıcaklıktaki düzensiz sıvı halinin donmuş bir anıtı, yani <strong>amorf bir katıdır</strong>. Bin yüz derece sıcaklıktaki bir potadan üfleme çubuğunun (<em>canna da soffio</em>) ucuna alınan erimiş silika kütlesi, yalnızca otuz saniye içinde akışkan bal kıvamından kaskatı kırılganlığa geçer.</p>
+<p>Bu yüzden cam üfleme ustası (<em>maestro vetraio</em>), maddesel dünyayla saniyelerle yarışan bir termodinamik müzakereci olmak zorundadır. Çubuğu sürekli kendi ekseni etrafında döndürmediği an yerçekimi kütleyi aşağı çeker; üflediği nefesin basıncını ıslak armut ağacından kalıpla dengelemediği an cidar incelip patlar. Bugün bilgisayar grafiklerinde <em>raytracing</em> ve <em>raymarching</em> algoritmalarıyla simüle ettiğimiz gerçek zamanlı ışık kırılmaları ve kostik (<em>caustics</em>) ağları ise aynı amorf optik fiziğin diferansiyel denklemlere çevrilmiş ikizidir.</p>
+<h2>1. Tarihsel Kökler: Suriye Fırınlarından Murano ve Beykoz Atölyelerine</h2>
+<p>Üfleme cam tekniği M.Ö. 1. yüzyılda Doğu Akdeniz kıyılarında —bugünkü Suriye, Lübnan ve Anadolu ticaret hattında— Fenikeli ve Romalı ustaların uzun metal bir boruyla erimiş camı şişirebileceğini keşfetmesiyle tarih sahnesine çıktı. Bu tekniğin yarattığı hız ve ince cidar hafifliği, camı lüks bir tapınak objesinden gündelik hayatın ve optik biliminin temel taşına dönüştürdü. Roma İmparatorluğu'nun ardından Bizans atölyeleri ve özellikle Abbasi-Selçuklu coğrafyası cam kesme, mineleme ve üfleme zanaatını yüksek bir kimyasal inceliğe taşıdı.</p>
+<p>Orta Çağ Avrupası'nda bu mirasın başkentini Venedik Cumhuriyeti kurdu. Venedik Senatosu, hem şehri yıkıcı ahşap yangınlarından korumak hem de stratejik cam tariflerinin yabancı ülkelere sızmasını önlemek amacıyla <strong>1291 yılında aldığı bir kararnameyle</strong> tüm cam fırınlarını lagün içindeki <strong>Murano Adası</strong>'na taşıdı. Murano ustaları ayrıcalıklı bir soylu sınıfı statüsüne yükseltilirken, adadan izinsiz ayrılıp mesleki sırrı başka şehirlere götürmeleri ağır vatana ihanet suçu sayıldı. 1450'lerde Murano ustası <strong>Angelo Barovier</strong>'in deniz yosunu küllerinden (<em>soda ash</em>) elde edilen manganez dekoloranıyla kusursuz berraklıkta <strong>cristallo</strong> (kristal berraklığında cam) formülünü bulması, yalnızca Venedik sanatını değil, Galileo'nun teleskobundan Hollanda mikroskoplarına kadar Batı optik devrimini doğrudan mümkün kıldı.</p>
+<p>Anadolu ve Osmanlı topraklarında ise 18. ve 19. yüzyıllarda Sultan III. Selim ve II. Abdülmecid dönemlerinde <strong>Beykoz Cam Atölyeleri</strong>, İtalya'dan gelen ustalarla Mevlevi dervişi Mehmet Dede'nin yerel tecrübesini birleştirdi. Özellikle süt beyazı cam çubukların şeffaf gövde içine sarmal helezonlarla hapsedildiği <strong>Çeşm-i Bülbül</strong> tekniği, sıcaklık viskozitesinin renkli ve şeffaf cam katmanlar arasında geometrik bir algoritma gibi örülmesinin eşsiz bir zirvesini temsil eder.</p>
+<h2>2. Malzeme, Ateş ve Viskozite Anatomisi</h2>
+<p>Cam ocağı (<em>fornace</em>), dışarıdan bakıldığında kaotik bir alev çukuru gibi görünse de ustaların hareketleri milimetrik zaman döngülerine ve keskin malzeme reçetelerine göre işler:</p>
+<figure class="article-figure"><img src="/images/cam-ufleme-murano-atolye.jpg" alt="Venedik Murano cam ocağında fırın ağzında üfleme borusuyla çevrilen kor cam kütlesi ve ıslak armut ağacı şekillendirme bloğu" loading="lazy"/><figcaption><strong>Murano Cam Fırını: Kor halindeki silika kütlesi, üfleme borusu (canna da soffio), ıslak armut ağacı kaşık (mazzetta) ve demir maşalar</strong><span class="credit">Görsel: Craft&Code Belgesel Zanaat Arşivi</span></figcaption></figure>
+<ul>
+<li><strong>Harman Kimyası (Silika, Soda ve Kireç):</strong> Saf kuvars kumu (<em>SiO₂</em>) 1700°C'nin üzerinde erir ki bu odun veya gaz fırınları için ulaşılmazdır. Ustalar erime noktasını 1100–1200°C bandına çekebilmek için karışıma akışkanlaştırıcı (ergitici) olarak deniz bitkisi külünden gelen <strong>soda</strong> (sodyum karbonat, <em>Na₂CO₃</em>), suda çözünmesini engellemek ve mekanik dayanım kazandırmak için <strong>kireçtaşı</strong> (<em>CaCO₃</em>) ve optik parlaklık için kurşun oksit veya baryum ekler.</li>
+<li><strong>Üfleme Borusu ve Sürekli Dönüş (Rotation):</strong> İçi boş çelik borunun (<em>canna da soffio</em>) ucuna potadan alınan erimiş cam (<em>para</em>), asla hareketsiz bırakılmaz. Usta boruyu bilekleriyle saniyede ortalama bir buçuk tam tur döndürür; yerçekiminin tek yönlü çekişi ancak sürekli açısal momentum ile silindirik simetriye zorlanır.</li>
+<li><strong>Islak Armut Ağacı (<em>Mazzetta / Block</em>) ve Leidenfrost Yastığı:</strong> Şekillendirme tezgâhında usta, kızgın cam kütlesini su içinde bekletilmiş içi oyuk sert armut veya kiraz ağacından kepçelere yaslar. 1000°C cam ahşaba değdiği anda su buharlaşır ve cam ile tahta arasında sürtünmesiz, pürüzsüz mikroskobik bir <strong>buhar yastığı</strong> (Leidenfrost etkisi) oluşturur. Bu sayede cam yüzeyinde tek bir çizik olmadan parlar ve merkezlenir.</li>
+<li><strong>Kırılma Noktası ve Tavlama Fırını (<em>Tempera / Lehr</em>):</strong> Biçimlendirilip altından <em>puntello</em> (tutma çubuğu) ile koparılan eser hemen oda sıcaklığına bırakılırsa, dış kabuk hızla büzüşürken iç çekirdek sıcak kalarak gerilim biriktirir ve cam kendiliğinden patlar. Her eser saatlerce süren <strong>500°C'den oda sıcaklığına kontrollü soğuma</strong> (<em>tavlama / annealing</em>) eğrisinden geçmek zorundadır.</li>
+</ul>
+<blockquote><p>"Cam, soğuduğu her milisaniyede ne olmak istediğini değil, ateşteyken hangi kuvvetlerin ona yön verdiğini hatırlar; cam üflemeci şekli elleriyle kazımaz, yerçekimi ve nefesin kesişiminde doğmasına izin verir."</p><cite>— Angelo Barovier geleneği üzerine Murano Atölye Notları</cite></blockquote>
+<h2>3. Gelenekselden Koda: Yapısal Karşılıklar ve Algoritmik Çeviri</h2>
+<p>Cam üfleme ustasının atölyede saniyeler içinde çözdüğü viskozite, eğrilik, kalınlık ve optik kırılma problemi; bilgisayar grafiklerinde <strong>İşaretli Mesafe Alanları (SDF — Signed Distance Fields)</strong>, <strong>Snell Kırılma Yasası</strong> ve <strong>Kromatik Kostik Işın İzleme (Raymarching)</strong> matematiklerinin birebir fiziksel karşılığıdır.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Geleneksel Cam Zanaatı Unsuru</th><th>Fırın ve Tezgâhtaki Fiziksel İşlevi</th><th>Koddaki / GLSL Shader Karşılığı</th></tr></thead><tbody><tr><td>Boru Ucunda Sürekli Döndürme (<em>Canna</em>)</td><td>Yerçekimi vektörünü silindirik eksene dağıtarak eksenel simetri ve pürüzsüz yüzey sağlar.</td><td>Eksenel Dönel İşaretli Mesafe Fonksiyonu (<code>sdRevolution</code> / Torus & Vase SDF)</td></tr><tr><td>Harman Oranı (Soda / Kurşun / Baryum)</td><td>Camın optik yoğunluğunu ve ışığı bükme kapasitesini (<strong>kırılma indisi, IOR ≈ 1.48–1.55</strong>) belirler.</td><td><code>refract(rayDir, normal, 1.0 / IOR)</code> fonksiyonuna verilen kırılma katsayısı</td></tr><tr><td>Kalın Cidar vs. İnce Üflenmiş Kenar</td><td>Farklı cam kalınlıkları beyaz ışığın renk bileşenlerini farklı açılarda dağıtarak gökkuşağı saçar.</td><td>Kromatik dağılım (dispersion): Kırmızı, Yeşil, Mavi kanallar için ayrı <code>eta_R</code>, <code>eta_G</code>, <code>eta_B</code></td></tr><tr><td>Islak Armut Kalıp ve Buhar Yastığı</td><td>Yüzey pürüzlülüğünü sıfıra indirerek ayna benzeri yüksek yansıtıcılık sağlar.</td><td>Fresnel denklemi (<code>pow(1.0 - max(dot(-V, N), 0.0), 5.0)</code>) ve parlaklık terimi</td></tr><tr><td>Venedik Fitilli Yüzey (<em>Rigadin</em> / Çeşm-i Bülbül)</td><td>Dikey kaburgalı ve sarmal damarlı cam cidarları, geçen ışığı keskin parlak ağlara odaklar.</td><td>Yüzey normaline uygulanan sinüzoidal burulma ve odaklanan <strong>Kostik (Caustics)</strong> yoğunluğu</td></tr><tr><td>Sıcaklık Eğrisi ve Viskozite Akışı</td><td>Isı arttıkça yüzey gerilimi keskin köşeleri yumuşatıp organik eğrilere dönüştürür.</td><td>Smooth minimum harmanlama operatörü (<code>smin(d1, d2, viscosityK)</code>)</td></tr><tr><td>Tavlama Fırını (<em>Lehr</em>) Soğutma Eğrisi</td><td>İç termal gerilimleri yavaş adımlarla sıfıra yakınsatarak yapısal bütünlük kurar.</td><td>Işın adımlama yakınsama döngüsü (<code>for (int i = 0; i &lt; MAX_STEPS; i++)</code>)</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Zanaattan Koda Köprü</span>
+<p>Geleneksel bir cam üfleme ustasının üfleyerek kalınlığını değiştirdiği küresel cidar, bir <strong>GLSL Fragment Shader</strong> içinde <code>refract()</code> fonksiyonunun <strong>R (650nm), G (530nm) ve B (460nm)</strong> dalga boylarına farklı kırılma katsayıları uygulamasıyla birebir modellenir. Üfleme fırınında kaburgalı bir kalıba (<em>rigadin</em>) basılmış vazonun taş masa üstüne düşürdüğü o titrek ışık ağları (kostikler), ışınların kavisli cam yüzey normalleri tarafından sıkıştırıldığı Jacobian yoğunluk alanlarıdır.</p>
+</div>
+<p>Aşağıdaki GLSL shader kodu, üfleme çubuğu etrafında simetrik olarak şekillendirilmiş ve kaburgalı <em>rigadin</em> damarlarına sahip bir Murano camının hem gerçek zamanlı ışın kırılmasını (kromatik sapma ile birlikte) hem de zemin taşında bıraktığı optik kostik ışık odaklanmasını hesaplar.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">GLSL</span><span class="code-title">Murano Camında Snell Kırılması ve Kromatik Kostik Shader</span></div><pre><code class="language-glsl">// Craft&amp;Code — SDF Eksenel Cam Geometrisi ve Kromatik Raymarching
+float smin(float a, float b, float viscosity) {
+    // Yüksek sıcaklıkta eriyen iki cam kütlesinin yumuşak akışkan birleşimi
+    float h = clamp(0.5 + 0.5 * (b - a) / viscosity, 0.0, 1.0);
+    return mix(b, a, h) - viscosity * h * (1.0 - h);
+}
+
+float sdMuranoVessel(vec3 p) {
+    // Boru ekseni (Y) etrafinda üflenmiş vazo profili + kaburgalı rigadin deseni
+    float angle = atan(p.z, p.x);
+    float ribs = 0.025 * sin(16.0 * angle + p.y * 2.5); // Çeşm-i Bülbül sarmalı
+    float radius = 0.42 + 0.14 * sin(p.y * 2.4) + ribs;
+    float outerShell = length(p.xz) - radius;
+    return smin(outerShell, abs(p.y) - 0.85, 0.08);
+}
+
+vec3 traceVenetianCrystal(vec3 rayOrigin, vec3 rayDir, vec3 surfaceNormal) {
+    // Cam harmanındaki kurşun/soda oranına göre R, G, B kırılma indisleri (dispersion)
+    vec3 eta = vec3(1.0 / 1.515, 1.0 / 1.522, 1.0 / 1.534);
+
+    vec3 refractedR = refract(rayDir, surfaceNormal, eta.r);
+    vec3 refractedG = refract(rayDir, surfaceNormal, eta.g);
+    vec3 refractedB = refract(rayDir, surfaceNormal, eta.b);
+
+    // Yüzey yansıması (Schlick Fresnel yaklaşımı) ve ışık yoğunlaşması (Caustics)
+    float fresnel = pow(1.0 - clamp(dot(-rayDir, surfaceNormal), 0.0, 1.0), 5.0);
+    vec3 dispersedSpectrum = vec3(
+        sampleFloorCaustic(refractedR),
+        sampleFloorCaustic(refractedG),
+        sampleFloorCaustic(refractedB)
+    );
+    return mix(dispersedSpectrum, vec3(0.95, 0.98, 1.0), fresnel * 0.65);
+}</code></pre></div>
+<p>Buradaki <code>smin(..., viscosity)</code> fonksiyonu, fırındaki ısı düştükçe katılaşan yüzey geriliminin pürüzsüz akış geometrisini matematiksel olarak üretir. <code>eta = vec3(1.0/1.515, ...)</code> satırı ise ustanın cam harmanına kattığı kurşun ve soda tuzlarının ışığı dalga boylarına ayırarak prizmatik gökkuşağı kostikleri yaratma davranışını doğrudan koda geçirir.</p>
+<h2>4. Çağdaş Sanat, Laboratuvar ve Vaka İncelemeleri</h2>
+<p>Camın üfleme borusundan algoritmik eklemlere taşınması son yıllarda hem malzeme biliminde hem de dijital sanat dünyasında çığır açıcı çalışmalara kapı araladı.</p>
+<figure class="article-figure"><img src="/images/cam-ufleme-caustics-raymarching.jpg" alt="Karanlık bazalt taş üzerine yansıyan kaburgalı Murano kristalinin ışık kostikleri ve ince optik ışın izleme eğrileri" loading="lazy"/><figcaption><strong>Optik Kırılma ve Kostik Araştırması: El üflemesi kaburgalı kristal cidardan süzülen spektral ışık ağları ve ışın kırılma vektörleri</strong><span class="credit">Görsel: Craft&Code Optik Sanat Seçkisi</span></figcaption></figure>
+<h3>Vaka 1: Angelo Barovier ve 15. Yüzyıl <em>Cristallo</em> Devrimi (Murano, c. 1450)</h3>
+<p>Venedikli usta <strong>Angelo Barovier</strong>'in <em>cristallo</em>'yu icat etmesi, zanaat tarihinin en erken kimyasal kodlama başarılarından biridir. Barovier, Doğu Akdeniz kıyılarından ithal edilen <em>rochetta</em> bitki küllerini kaynatıp filtreleyerek saf potasyum-sodyum tuzları elde etmiş, karışımı manganez dioksitle ağartarak yeşilimsi demir kirliliğini nötrleştirmişti. Sonuç, su gibi şeffaf ilk optik ortamdı. Bu şeffaflık olmadan mercek ustalığı doğamaz, teleskoplarla gezegen uyduları görülemezdi; başka bir deyişle modern bilimin görsel algısı Murano potalarındaki ham madde arıtma algoritmasından doğdu.</p>
+<h3>Vaka 2: Neri Oxman & Mediated Matter Group — <em>G3DP</em> Optically Transparent Glass 3D Printing (MIT Media Lab, 2015–2018)</h3>
+<p>MIT Media Lab bünyesinde çalışan mimar ve tasarımcı <strong>Neri Oxman</strong> ve ekibi, geleneksel üfleme cam ustalığının insan ciğerine ve bileğine dayalı sıcak çalışma protokolünü <strong>3D yazıcı G-Code kinematiği</strong> ile birleştirdi. <em>G3DP</em> (Glass 3D Printing) adlı sistemde üstte 1165°C'lik bir eritme potası, altta ise nozul ucunu ısıtıp soğutan hassas bir kiln hücresi yer alıyordu.</p>
+<p>Erimiş soda-kireç camı herhangi bir mekanik kalıp olmadan doğrudan parametrik kodla çizilen yörüngeler boyunca katman katman akıtıldı. Elde edilen heykelsi cam sütunların üzerindeki hafif dalgalı yatay şeritler, bir yandan bin yıllık sarmal cam üfleme estetiğini taşırken öte yandan içerdikleri optik kostikleri duvarlara önceden hesaplanmış bir ışık deseni gibi yansıtıyordu.</p>
+<h3>Vaka 3: Inigo Quilez & Gerçek Zamanlı Kostik Shader Sanatı (2013–2024)</h3>
+<p>Modern hesaplamalı grafiklerin öncülerinden Inigo Quilez ve Shadertoy topluluğundaki generatif sanatçılar, poligon (üçgen ağ) kullanmadan yalnızca saf matematiksel mesafe fonksiyonlarıyla (Raymarching SDF) cam ve akışkan ışık kırılmasını gerçek zamanlı hesaplayan teknikler geliştirdiler. <em>Bi-directional path tracing</em> ve <em>caustic mapping</em> yöntemleri sayesinde dijital ekranlarda saniyede altmış kare hızıyla dönen sanal cam formlarının zemin üzerinde bıraktığı ışık dansı, gerçek bir Venedik fırınındaki cam ustanın ışığa karşı ölçtüğü yüzey kalınlığıyla birebir aynı fiziksel gerçekliğe ulaştı.</p>
+<h2>5. Eleştirel Sentez: Zanaatın Direnci ve Kodun Sınırı</h2>
+<p>Ekranda çalışan bir raymarching shader'ı, 10 milyon ışın yolunu tek bir saniyede hesaplayıp hiçbir cam kırığı tehlikesi olmadan kusursuz prizmatik yansımalar sunabilir. Ancak sanal cam üşümez, borunun ucunda ağırlaşıp bükülmez, tavlama fırınında aniden çatlayıp günlerce verilen emeği boşa çıkarmaz. Bilgisayar kodu bize <strong>optik ihtimalleri sonsuz hızda test etme özgürlüğü</strong> verirken; geleneksel Murano veya Beykoz tezgâhı ise bizi <strong>zamanın geri döndürülemez termodinamiğiyle</strong> yüzleştirir.</p>
+<p>Geleceğin cam zanaatı ve ışık mimarlığı bu iki kutbu birbirine düşman değil, ortak bir dilin iki farklı lehçesi olarak okuduğunda anlam kazanır: Shader kodu fırına girmeden önce ışığın kostik dansını öngören bir optik eskiz defteri olabilir; ancak nefesi cama hapseden, ateşi ıslak armut ağacının buharıyla evcilleştiren ustalık hâlâ fiziksel maddenin en büyük öğretmenidir.</p>
+<div class="curatorial-box"><span class="badge">Küratöryel Not</span>
+<p>Murano'nun ateşli potasında dönen şeffaf silika kütlesi de, GPU işlemcisinde çalışan kırılma shader'ı da aynı görünmez geometriye tapınır: <strong>Işığın hızını maddenin yoğunluğuna göre büken Snell yasası.</strong> Biri nefes ve yerçekimiyle yazılır, diğeri vektör ve diferansiyelle.</p>
+</div>
+<hr class="editorial-divider">
+<h3>Kaynakça ve İleri Okumalar</h3>
+<ol>
+<li><strong>Zecchin, Luigi.</strong> <em>Vetro e vetrai di Murano: Studi sulla storia del vetro</em> (3 Cilt). Arsenale Editrice, Venedik, 1987–1990.</li>
+<li><strong>McCray, W. Patrick.</strong> <em>Glassmaking in Renaissance Venice: The Fragile Craft</em>. Ashgate Publishing, Aldershot, 1999.</li>
+<li><strong>Klein, J., Stern, M., Franchin, G., Kayser, M., Inamura, C., Dave, S., Weaver, J. C., Houk, P., Colombo, P., Yang, M., & Oxman, N.</strong> "Additive Manufacturing of Optically Transparent Glass." <em>3D Printing and Additive Manufacturing</em>, Vol. 2, No. 3, 2015, ss. 92–105.</li>
+<li><strong>Bayramoğlu, Fuat.</strong> <em>Türk Cam Sanatı ve Beykoz İşleri</em>. Türkiye İş Bankası Kültür Yayınları, İstanbul, 1974.</li>
+<li><strong>Canav-Özgümüş, Üzlifat.</strong> <em>Çağlar Boyu Cam Tasarımı</em>. İTÜ Vakfı Yayınları, İstanbul, 2013.</li>
+<li><strong>Pharr, Matt, Jakob, Wenzel, & Humphreys, Greg.</strong> <em>Physically Based Rendering: From Theory to Implementation</em> (4th Edition — Refraction & Caustics Chapters). MIT Press, 2023.</li>
+</ol>
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    <p>Glass occupies an uncanny state in the physical taxonomy of matter. Neither a rigid crystalline lattice nor an ordinary flowing liquid, it is an <strong>amorphous solid</strong>—a high-temperature liquid configuration cooled too rapidly for silica tetrahedra to align into periodic crystal order. Plucked from an 1100°C crucible on the tip of a hollow steel blowpipe (<em>canna da soffio</em>), a glowing gather of silica shifts from honey-like fluidity to rigid brittleness in less than thirty seconds.</p>
+<p>Consequently, every master glassblower (<em>maestro vetraio</em>) acts as an intuitive real-time thermodynamic calculator. Stop rotating the iron pipe for two seconds and gravity collapses the molten sphere off-axis; blow too forcefully without counter-pressure from a soaked pearwood shaping block and the vessel membrane bursts. What computational graphics later formalized inside <strong>raymarching shaders</strong> and <strong>caustic photon maps</strong>, Venetian and Anatolian furnaces had spent centuries computing physically through rotation, breath, viscosity, and refraction.</p>
+<h2>1. Historical Roots: From Levantine Furnaces to Murano and Beykoz</h2>
+<p>Blown glass emerged along the Syro-Palestinian coast of the Eastern Mediterranean during the first century BCE, when Phoenician and Roman glassmakers realized that molten glass gathered onto a hollow iron tube could be inflated rapidly from within. That invention democratized vessel thickness and transparency, launching Byzantine mosaic gilding, Islamic enameled mosque lamps, and the great European stained-glass ateliers.</p>
+<p>In Renaissance Venice, glass chemistry became a geopolitical secret of the state. In <strong>1291</strong>, seeking both to prevent catastrophic timber fires in densely packed neighborhoods and to lock strategic formulas away from rival crowns, the Venetian Senate decreed that all glass furnaces (<em>fornaci</em>) be relocated strictly to the island of <strong>Murano</strong>. Masters received aristocratic privileges yet faced severe penalties for emigrating without state license. Around <strong>1450</strong>, Murano innovator <strong>Angelo Barovier</strong> boiled Levantine <em>rochetta</em> seaweed ash to purge insoluble impurities and added manganese dioxide to neutralize greenish iron contamination—producing <strong>cristallo</strong>, the clearest artificial glass humanity had yet forged. Without Murano's refractive purification, Galileo's telescopes and early Dutch microscopes could never have resolved celestial moons or cellular microbes.</p>
+<p>Across the Ottoman Empire, eighteenth- and nineteenth-century imperial ateliers at <strong>Beykoz</strong> along the Bosphorus forged a celebrated synthesis between imported Italian furnace masters and Mevlevi glass master Mehmet Dede. Their signature <strong>Çeşm-i Bülbül</strong> ("nightingale's eye") wares fused opaque milk-white and cobalt-blue canes inside clear crystal cylinders before twisting the glowing mass in spiral motion—literally weaving chromatic viscosity into geometric symmetry on the blowpipe.</p>
+<h2>2. Materials, Fire, and the Anatomy of Viscosity</h2>
+<p>Although a traditional glasshouse appears at first glance to be pure furnace chaos, every gesture around the workbench answers crisp chemical proportions and split-second thermal constraints:</p>
+<figure class="article-figure"><img src="/images/cam-ufleme-murano-atolye.jpg" alt="Traditional Venetian Murano glassblowing workshop showing molten amber silica turning on a blowpipe before the brick furnace and wet pearwood block" loading="lazy"/><figcaption><strong>Murano Glasshouse: Glowing molten silica spun on a steel blowpipe (canna da soffio) beside the wet pearwood shaping block (mazzetta) and forged jacks</strong><span class="credit">Visual: Craft&Code Documentary Craft Archive</span></figcaption></figure>
+<ul>
+<li><strong>Batch Formulation (Silica, Soda, Lime):</strong> Pure quartz silica (<em>SiO₂</em>) melts above 1700°C—far beyond traditional wood or oil kilns. Glassmakers lower fusion down to workable furnace ranges (1100–1200°C) by blending quartz sand with sodium carbonate <strong>flux</strong> derived from marine plant ash (<em>soda ash</em>), stabilizing chemical durability against water dissolution with <strong>limestone</strong> (<em>calcium carbonate</em>), and modulating refractive brilliance with lead or barium oxides.</li>
+<li><strong>Continuous Angular Momentum (<em>Canna da Soffio</em>):</strong> Gravity pulls unceasingly downward on incandescent glass. From crucible extraction to workbench shaping, the artisan's palms roll the steel pipe steadily at roughly 60–90 revolutions per minute—canceling linear gravity into rotational symmetry through physical angular momentum.</li>
+<li><strong>Wet Pearwood Block (<em>Mazzetta</em>) & the Leidenfrost Cushion:</strong> Resting incandescent glass against a hollowed block of water-soaked fruitwood triggers instant flash-steam along the contact interface. Rather than burning or scratching the vessel skin, the <strong>Leidenfrost vapor layer</strong> floats the molten skin across a frictionless cushion of microscopic steam—tightening circular concentricity and sealing tiny surface bubbles.</li>
+<li><strong>Thermodynamic Cooling (<em>Tempera / Lehr</em>):</strong> Glass sets on the outside milliseconds before heat leaves its core. Without slow soaking inside an annealing kiln (<em>lehr</em>) cooled gradually from ~510°C toward room temperature, internal tension shatters the finished work spontaneously hours later.</li>
+</ul>
+<blockquote><p>"Cold glass remembers every force applied to it while incandescent; the blower does not carve silhouette against matter, but coaxes rotation, gravity, and breath into momentary optical equilibrium."</p><cite>— Venetian <em>Fornace</em> Atelier Notebooks</cite></blockquote>
+<h2>3. Craft to Code: Structural Correspondences & Algorithmic Translation</h2>
+<p>Every physical gesture inside the Murano <em>fornace</em> resolves differential boundary geometry and light transport problems identical to those solved numerically inside <strong>Signed Distance Fields (SDF)</strong>, <strong>Snell refraction vectors</strong>, and <strong>real-time caustic shaders</strong>.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Traditional Glasscraft Element</th><th>Physical & Optical Function in the Glasshouse</th><th>Equivalent Construct in Code & GLSL</th></tr></thead><tbody><tr><td>Continuous Pipe Rotation (<em>Canna</em>)</td><td>Averages gravitational droop radially into smooth axially symmetric silhouettes.</td><td>Surface of revolution Signed Distance Field (<code>sdRevolution</code> / Vase SDF)</td></tr><tr><td>Batch Density (Lead / Soda-Lime Ratio)</td><td>Dictates optical density and speed of light travel inside glass (<strong>IOR ≈ 1.48–1.55</strong>).</td><td><code>refract(rayDir, normal, 1.0 / IOR)</code> index parameter</td></tr><tr><td>Wall Thickness & Faceted Edge Angle</td><td>Splits white light asymmetrically by wavelength, fanning spectral prism halos.</td><td>Chromatic dispersion: separate <code>eta_R</code>, <code>eta_G</code>, <code>eta_B</code> ray refractions</td></tr><tr><td>Pearwood Steam Cushion & Flame Polish</td><td>Eliminates micro-scratches to maximize specular mirror reflection at grazing angles.</td><td>Schlick Fresnel equation (<code>pow(1.0 - max(dot(-V, N), 0.0), 5.0)</code>)</td></tr><tr><td>Fluted <em>Rigadin</em> Ribs & <em>Çeşm-i Bülbül</em> Spirals</td><td>Curved vertical grooves focus transmitted light into sharp bright web filaments.</td><td>Perturbed surface normals focusing Jacobian light intensity (<strong>Caustics</strong>)</td></tr><tr><td>Temperature-Driven Surface Tension</td><td>High heat blends sharp transitions smoothly into continuous organic curves.</td><td>Smooth minimum blending operator (<code>smin(d1, d2, viscosityK)</code>)</td></tr><tr><td>Slow Annealing Schedule (<em>Lehr</em>)</td><td>Relaxes differential thermal stress iteratively until structural equilibrium settles.</td><td>Raymarch convergence loop (<code>for (int i = 0; i &lt; MAX_STEPS; i++)</code>)</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Craft-to-Code Bridge</span>
+<p>As breath expands an incandescent vessel wall inside a fluted <em>rigadin</em> bronze mold, uneven wall thicknesses bend incoming rays into intricate bright arcs across the workbench below. Inside a <strong>GLSL Fragment Shader</strong>, that exact phenomenon is evaluated per pixel: smooth-minimum (<code>smin</code>) blends emulate furnace surface tension, while splitting <strong>Red (650nm), Green (530nm), and Blue (460nm)</strong> refraction constants reproduces spectral dispersion across digital crystal.</p>
+</div>
+<p>The annotated GLSL shader excerpt below implements this continuity directly: modeling a fluted axial vessel extruded via <code>smin</code> viscosity blending, then dispersing incident light through calibrated refractive indices across the gallery floor.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">GLSL</span><span class="code-title">Snell Refraction &amp; Chromatic Caustics Shader for Fluted Crystal</span></div><pre><code class="language-glsl">// Craft&amp;Code — Axial SDF Glass Profile &amp; Chromatic Dispersion Raymarcher
+float smin(float a, float b, float viscosity) {
+    // Emulates smooth surface tension blending between molten glass gathers
+    float h = clamp(0.5 + 0.5 * (b - a) / viscosity, 0.0, 1.0);
+    return mix(b, a, h) - viscosity * h * (1.0 - h);
+}
+
+float sdMuranoVessel(vec3 p) {
+    // Radial blowpipe silhouette + twisted Cesm-i Bulbul / rigadin rib modulation
+    float angle = atan(p.z, p.x);
+    float ribs = 0.025 * sin(16.0 * angle + p.y * 2.5);
+    float radius = 0.42 + 0.14 * sin(p.y * 2.4) + ribs;
+    float outerShell = length(p.xz) - radius;
+    return smin(outerShell, abs(p.y) - 0.85, 0.08);
+}
+
+vec3 traceVenetianCrystal(vec3 rayOrigin, vec3 rayDir, vec3 surfaceNormal) {
+    // Wavelength-dependent Index of Refraction tuned to soda-lime crystal batch
+    vec3 eta = vec3(1.0 / 1.515, 1.0 / 1.522, 1.0 / 1.534);
+
+    vec3 refractedR = refract(rayDir, surfaceNormal, eta.r);
+    vec3 refractedG = refract(rayDir, surfaceNormal, eta.g);
+    vec3 refractedB = refract(rayDir, surfaceNormal, eta.b);
+
+    // Grazing-angle Fresnel mirror reflection balanced against concentrated caustics
+    float fresnel = pow(1.0 - clamp(dot(-rayDir, surfaceNormal), 0.0, 1.0), 5.0);
+    vec3 dispersedSpectrum = vec3(
+        sampleFloorCaustic(refractedR),
+        sampleFloorCaustic(refractedG),
+        sampleFloorCaustic(refractedB)
+    );
+    return mix(dispersedSpectrum, vec3(0.95, 0.98, 1.0), fresnel * 0.65);
+}</code></pre></div>
+<p>Here, <code>smin(..., viscosity)</code> literally parameterizes molten surface tension, while separating <code>refractedR</code>, <code>refractedG</code>, and <code>refractedB</code> traces the optical choreography once regulated intuitively by adding lead oxide or plant-ash soda inside fifteenth-century <em>fornaci</em>.</p>
+<h2>4. Contemporary Practice & Scientific Case Studies</h2>
+<p>Three decisive milestones across Renaissance craft history, robotic additive manufacturing, and real-time GPU light simulation illustrate the unbroken thread running through refractive glass.</p>
+<figure class="article-figure"><img src="/images/cam-ufleme-caustics-raymarching.jpg" alt="Fine-art optical refraction photograph of a fluted Venetian crystal vessel casting sharp rainbow dispersion caustics across dark basalt stone" loading="lazy"/><figcaption><strong>Optical Refraction & Caustics Study: Spectral caustic networks projected through fluted Murano crystal overlaid with fine optical ray-path vectors</strong><span class="credit">Visual: Craft&Code Optical Art Selection</span></figcaption></figure>
+<h3>Case Study 1: Angelo Barovier & Renaissance <em>Cristallo</em> Purification (Murano, c. 1450)</h3>
+<p><strong>Angelo Barovier</strong>'s purification of <em>cristallo</em> constitutes a foundational triumph of pre-industrial materials engineering. By dissolving Levant <em>rochetta</em> ash in boiling water, skimming off insoluble salts, and dosing the molten sand mixture with trace manganese dioxide to oxidize green iron tints, Barovier transformed murky tinted silica into flawless optical glass. His chemical refinement turned furnace craft into an instrument of scientific inquiry—providing the exact clear lens medium required for precision optics two centuries later.</p>
+<h3>Case Study 2: Neri Oxman & Mediated Matter Group — <em>G3DP Optically Transparent Glass</em> (MIT Media Lab, 2015–2018)</h3>
+<p>At MIT Media Lab, architect and designer <strong>Neri Oxman</strong>'s Mediated Matter Group engineered <strong>G3DP</strong>, uniting 1100°C furnace crucible fluidity directly with CNC G-Code motion control. An upper kiln reservoir held molten soda-lime glass while a heated ceramic nozzle metered precise viscous streams onto an enclosed printing platform, keeping each deposited coil thermally fused yet dimensionally faithful.</p>
+<p>The resulting architectural columns preserve delicate ribbed compression striations reminiscent of hand-trailed <em>vetro a filigrana</em>, while each mathematically plotted rib wall functions physically as an architectural lens—casting predetermined <strong>caustic solar networks</strong> across gallery floors as sunlight traverses the room.</p>
+<h3>Case Study 3: Inigo Quilez & Real-Time Signed Distance Optical Rendering (2013–2024)</h3>
+<p>Pioneered by computer graphics researcher <strong>Inigo Quilez</strong> and the international Shadertoy creative coding community, <strong>real-time SDF raymarching</strong> abandoned discrete triangular polygon meshes in favor of pure continuous mathematical equations evaluated directly on GPUs. Computing curved vessel normals via analytical gradients enables real-time simulation of refractive interior bounces and undulating caustic light webs at sixty frames per second—translating centuries of tactile Murano knowledge into pure light equations.</p>
+<h2>5. Critical Synthesis: Resistance of Matter, Horizons of Code</h2>
+<p>A fragment shader can iterate millions of optical ray intersections cleanly at zero risk of thermal shock, burns, or shattered hours of labor. Digital glass never droops off the blowpipe, never scorches a wooden mold, and never explodes overnight during uneven cooling. Code liberates designers to explore unbuildable geometries and optimize caustic focus instantaneously before a single gram of silica ever enters fire.</p>
+<p>Yet the physical glasshouse refuses to be rendered obsolete precisely because of <strong>material risk and thermodynamic irreversibility</strong>. Gravity and cooling curves teach a sculptor how light actually inhabits volume—humbling software abstraction against real weight, sweat, and crystalline fragility. Where optical code predicts, molten glass anchors intuition in physical consequence.</p>
+<div class="curatorial-box"><span class="badge">Curatorial Note</span>
+<p>Both the Venetian <em>maestro</em> squinting through furnace glare at rotating amber silica and the graphics coder balancing <code>eta</code> dispersion channels inside GLSL serve the same invisible architect: <strong>Snell's Law bending light cleanly at the boundary between matter and void.</strong></p>
+</div>
+<hr class="editorial-divider">
+<h3>Bibliography & Further Reading</h3>
+<ol>
+<li><strong>Zecchin, Luigi.</strong> <em>Vetro e vetrai di Murano: Studi sulla storia del vetro</em> (3 Vols.). Arsenale Editrice, Venice, 1987–1990.</li>
+<li><strong>McCray, W. Patrick.</strong> <em>Glassmaking in Renaissance Venice: The Fragile Craft</em>. Ashgate Publishing, Aldershot, 1999.</li>
+<li><strong>Klein, J., Stern, M., Franchin, G., Kayser, M., Inamura, C., Dave, S., Weaver, J. C., Houk, P., Colombo, P., Yang, M., & Oxman, N.</strong> "Additive Manufacturing of Optically Transparent Glass." <em>3D Printing and Additive Manufacturing</em>, Vol. 2, No. 3, 2015, pp. 92–105.</li>
+<li><strong>Bayramoğlu, Fuat.</strong> <em>Türk Cam Sanatı ve Beykoz İşleri</em>. Türkiye İş Bankası Kültür Yayınları, Istanbul, 1974.</li>
+<li><strong>Pharr, Matt, Jakob, Wenzel, & Humphreys, Greg.</strong> <em>Physically Based Rendering: From Theory to Implementation</em> (4th ed.). MIT Press, 2023.</li>
+<li><strong>Quilez, Inigo.</strong> <em>Distance Functions & Smooth Minimum Mathematics for Real-Time Raymarching</em>. Technical Monograph Archive, 2008–2024.</li>
+</ol>
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/cam-ufleme-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar (Admin / Localhost Only) -->
+<div id="editor-toolbar" class="editor-toolbar" style="display:none;">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  // Only display editor controls to the author (localhost or admin)
+  document.addEventListener('DOMContentLoaded', function() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+    if (isAdmin) {
+      var tb = document.getElementById('editor-toolbar');
+      if (tb) tb.style.display = 'flex';
+      var imgTrig = document.getElementById('img-change-trigger');
+      if (imgTrig) imgTrig.style.display = 'inline-flex';
+    }
+  });
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Craft&Code</strong> — Kadim Zanaat & Çağdaş Sanat Araştırmaları
+      </div>
+      <div>
+        <span class="lang-tr">Geleneksel ile güncelin kesiştiği bağımsız araştırma yayını.</span>
+        <span class="lang-en" style="display:none;">An independent publication at the intersection of craft and computation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-msg">✅ Değişiklikler başarıyla kaydedildi!</div>
+
+  <script>
+    var currentLang = localStorage.getItem('craft_code_lang') || 'tr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('craft_code_lang', lang);
+      
+      document.querySelectorAll('.lang-tr').forEach(function(el) {
+        el.style.display = (lang === 'tr') ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = (lang === 'en') ? '' : 'none';
+      });
+
+      var btnTr = document.getElementById('btn-tr');
+      var btnEn = document.getElementById('btn-en');
+      if (btnTr && btnEn) {
+        if (lang === 'tr') {
+          btnTr.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnTr.classList.remove('active');
+        }
+      }
+      document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLang);
+
+      // Studio button is completely hidden from public visitors
+      var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+      if (isAdmin) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) sBtn.style.display = 'inline-flex';
+      }
+    });
+
+    // Secret shortcut: Pressing Ctrl+Shift+S (or Cmd+Shift+S) toggles Studio button
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) {
+          sBtn.style.display = (sBtn.style.display === 'none') ? 'inline-flex' : 'none';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
