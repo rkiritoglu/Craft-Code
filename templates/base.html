@@ -21,6 +21,37 @@
       </div>
 
       <nav class="main-nav">
+        <!-- Searchable Topics Dropdown Menu -->
+        <div class="topics-dropdown" id="topics-dropdown">
+          <button type="button" class="topics-trigger" id="topics-trigger" aria-expanded="false" aria-haspopup="true" onclick="toggleTopicsMenu(event)">
+            <span class="topics-icon">🔍</span>
+            <span class="lang-tr">Konular</span>
+            <span class="lang-en" style="display:none;">Topics</span>
+            <span class="topics-count" id="topics-count-badge">{{TOPICS_COUNT}}</span>
+            <span class="topics-chevron">▾</span>
+          </button>
+
+          <div class="topics-menu" id="topics-menu" role="menu">
+            <div class="topics-search-wrap">
+              <input
+                type="search"
+                id="topics-search-input"
+                class="topics-search-input"
+                placeholder="Konu, zanaat veya etiket ara..."
+                autocomplete="off"
+                oninput="filterTopicsMenu(this.value)"
+              >
+            </div>
+            <div class="topics-list" id="topics-list">
+              {{TOPICS_MENU_ITEMS}}
+            </div>
+            <div class="topics-empty" id="topics-empty" style="display:none;">
+              <span class="lang-tr">Eşleşen konu bulunamadı.</span>
+              <span class="lang-en" style="display:none;">No matching topics found.</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
         <a href="{{BASE_PATH}}/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
           <span>⚡</span>
@@ -80,11 +111,90 @@
         }
       }
       document.documentElement.lang = lang;
+
+      var searchInput = document.getElementById('topics-search-input');
+      if (searchInput) {
+        searchInput.placeholder = (lang === 'tr')
+          ? 'Konu, zanaat veya etiket ara...'
+          : 'Search topics, crafts, or tags...';
+      }
+    }
+
+    function normalizeSearchText(str) {
+      return (str || '')
+        .toLocaleLowerCase('tr')
+        .replace(/ç/g, 'c')
+        .replace(/ğ/g, 'g')
+        .replace(/ı/g, 'i')
+        .replace(/ö/g, 'o')
+        .replace(/ş/g, 's')
+        .replace(/ü/g, 'u')
+        .replace(/â/g, 'a')
+        .replace(/î/g, 'i')
+        .replace(/û/g, 'u')
+        .trim();
+    }
+
+    function toggleTopicsMenu(event) {
+      if (event) event.stopPropagation();
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      var input = document.getElementById('topics-search-input');
+      if (!dropdown || !trigger) return;
+
+      var willOpen = !dropdown.classList.contains('open');
+      dropdown.classList.toggle('open', willOpen);
+      trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+
+      if (willOpen && input) {
+        setTimeout(function() {
+          input.focus();
+          input.select();
+        }, 30);
+      }
+    }
+
+    function closeTopicsMenu() {
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      if (dropdown) dropdown.classList.remove('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function filterTopicsMenu(rawQuery) {
+      var q = normalizeSearchText(rawQuery);
+      var items = document.querySelectorAll('#topics-list .topics-item');
+      var visibleCount = 0;
+
+      items.forEach(function(item) {
+        var haystack = item.getAttribute('data-search') || '';
+        var match = !q || haystack.indexOf(q) !== -1;
+        item.style.display = match ? '' : 'none';
+        if (match) visibleCount += 1;
+      });
+
+      var emptyEl = document.getElementById('topics-empty');
+      if (emptyEl) {
+        emptyEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
     }
 
     function toggleLanguage() {
       setLanguage(currentLang === 'tr' ? 'en' : 'tr');
     }
+
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('topics-dropdown');
+      if (dropdown && dropdown.classList.contains('open') && !dropdown.contains(e.target)) {
+        closeTopicsMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeTopicsMenu();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
       setLanguage(currentLang);

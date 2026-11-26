@@ -21,6 +21,44 @@
       </div>
 
       <nav class="main-nav">
+        <!-- Searchable Topics Dropdown Menu -->
+        <div class="topics-dropdown" id="topics-dropdown">
+          <button type="button" class="topics-trigger" id="topics-trigger" aria-expanded="false" aria-haspopup="true" onclick="toggleTopicsMenu(event)">
+            <span class="topics-icon">🔍</span>
+            <span class="lang-tr">Konular</span>
+            <span class="lang-en" style="display:none;">Topics</span>
+            <span class="topics-count" id="topics-count-badge">8</span>
+            <span class="topics-chevron">▾</span>
+          </button>
+
+          <div class="topics-menu" id="topics-menu" role="menu">
+            <div class="topics-search-wrap">
+              <input
+                type="search"
+                id="topics-search-input"
+                class="topics-search-input"
+                placeholder="Konu, zanaat veya etiket ara..."
+                autocomplete="off"
+                oninput="filterTopicsMenu(this.value)"
+              >
+            </div>
+            <div class="topics-list" id="topics-list">
+              <a class="topics-item" href="/yazi/dokuma-tezgahindan-koda.html" role="menuitem" data-search="dokuma tezgahindan koda delikli kartlardan algoritmalara: dokuma tezgahi ve generatif sanatin kadim kokleri from punched cards to algorithms: woven binary logic and the ancient roots of generative code anadolu culfaliklarindan basile bouchon ve joseph marie jacquard&#x27;in delikli kart zincirine; cozgu-atki matris cebirinden ada lovelace&#x27;a ve cagdas tekstil bilgisayarlarina. from anatolian pedal looms and joseph marie jacquard&#x27;s perforated card loops to binary weave matrix algebra, ada lovelace&#x27;s notes, and tactile embroidered computers. hesaplamali sanat genellikle 20. yuzyilin bir icadi olarak gorulur. oysa kodun ilk somut sintaksi silikon ciplerde degil; ahsap dokuma tezgahlarinda, cozgu ile atkinin &#x27;yukari (1)&#x27; ve &#x27;asagi (0)&#x27; ikili geriliminde dogdu. computational art is routinely mistaken for a purely twentieth-century silicon invention. yet binary hardware syntax actually emerged atop wooden handlooms—woven between warp tension &#x27;up (1)&#x27; and weft over &#x27;down (0)&#x27;. dokuma jacquard orgu matrisi generatif sanat yeni medya weaving jacquard loom matrix algebra generative art new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Dokuma</span><span class="lang-en" style="display:none;">Weaving</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri</span>    <span class="lang-en" style="display:none;">From Punched Cards to Algorithms: Woven Binary Logic and the Ancient Roots of Generative Code</span>  </div></a>
+<a class="topics-item" href="/yazi/ebru-ve-sivi-algoritmalar.html" role="menuitem" data-search="ebru ve sivi algoritmalar sivi algoritmalar: ebru sanatinin kaos matematigi ve generatif akiskanlar liquid algorithms: the chaotic mathematics of ebru and generative fluid dynamics kitre ve sigir oduyle programlanan osmanli ebru teknesinden, sebek mehmed efendi ve necmeddin okyay gelenegine; lu ve jaffer&#x27;in sikistirilamaz akis denklemlerinden veri heykellerine. from gum tragacanth and ox gall inside ottoman marbling vats—from sebek mehmed efendi to necmeddin okyay—to lu &amp; jaffer&#x27;s incompressible fluid advection equations. ebru, bilinen en kadim generatif sanat pratigidir. ebru ustasi boyayi zorlamaz; kitrenin viskozitesini, odun yuzey gerilimini ve taragin deplasman parametrelerini ayarlayarak deseni akiskanlar mekaniginin hesaplamasina birakir. ebru marbling may be humanity&#x27;s oldest generative art engine. rather than forcing paint mechanically, the ebru master configures viscosity, gall surfactant tension, and comb shear vectors, leaving living fluid mechanics to compute the form. ebru kitre akiskan dinamigi generatif sanat yeni medya ebru marbling kitre fluid dynamics generative art new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Ebru</span><span class="lang-en" style="display:none;">Ebru Marbling</span></span>    <span class="topics-item-time"><span class="lang-tr">9 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar</span>    <span class="lang-en" style="display:none;">Liquid Algorithms: The Chaotic Mathematics of Ebru and Generative Fluid Dynamics</span>  </div></a>
+<a class="topics-item" href="/yazi/kintsugi-ve-dijital-kusur.html" role="menuitem" data-search="kintsugi ve dijital kusur kirigin poetikasi: kintsugi, dijital kusur ve veri onarimi the poetics of the fracture: kintsugi, digital glitch, and data mending muromachi donemi japon cay kaselerindeki ki-urushi recinesi, muro nem kurlemesi ve 24 ayar kinpun altin serpme ustaligindan; glitch estetigine ve 3 boyutlu ag sinir onarim algoritmalarina. from ki-urushi tree sap polymerization inside humid muro cabinets and 24-karat kinpun gold dusting in fifteenth-century kyoto to half-edge 3d mesh seam reconstruction and glitch theory. endustriyel cag &#x27;kusursuz ve yarasiz&#x27; yuzeyler dayatirken; hem 15. yuzyil japon kintsugi zanaati hem de elestirel medya sanatindaki glitch ve 3d veri onarim algoritmalari, kirigi ve hatayi nesnenin en durust hafizasi olarak parlatir. while industrial consumer culture treats cracks and digital corruption as disposable defects, fifteenth-century japanese kintsugi craft and computational glitch-repair algorithms illuminate broken boundaries as the most honest archive an object carries. kintsugi urushi glitch art 3d mesh onarimi yeni medya kintsugi urushi lacquer glitch art mesh repair new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Kintsugi</span><span class="lang-en" style="display:none;">Kintsugi</span></span>    <span class="topics-item-time"><span class="lang-tr">9 dk</span><span class="lang-en" style="display:none;">9 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</span>    <span class="lang-en" style="display:none;">The Poetics of the Fracture: Kintsugi, Digital Glitch, and Data Mending</span>  </div></a>
+<a class="topics-item" href="/yazi/cam-ufleme-ve-isik-kirilmasi.html" role="menuitem" data-search="cam ufleme ve isik kirilmasi atesin viskozitesi: venedik cam zanaati ve algoritmik isik kirilmasi (raymarching) viscosity of fire: venetian glassblowing and algorithmic caustics murano firinlarinda 1100 derecede nefes ve yercekimiyle donen erimis silika kristalinden, glsl shader kodlarindaki snell kirilma yasasina ve foton kostik (caustics) simulasyonlarina. from 1100°c molten silica spun on murano steel blowpipes with wet pearwood blocks to snell refraction equations and glsl raymarching shaders. cam ufleme zanaati kati ile sivi arasindaki amorf esikte isleyen en akiskan fiziksel hesaplamadir. murano ustalarinin yercekimi ve yuzey gerilimiyle yazdigi optik kurallar, bugun bilgisayar grafiklerinde raymarching ve kromatik dagilim shader&#x27;lariyla kodlaniyor. glassblowing operates at the amorphous threshold between liquid chaos and crystalline fracture. the gravitational and refractive laws negotiated inside venetian fornaci mirror real-time glsl raymarching and optical caustics. cam zanaati murano raymarching glsl shader yeni medya glassblowing murano raymarching glsl shader new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Cam Zanaatı</span><span class="lang-en" style="display:none;">Glassblowing</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</span>    <span class="lang-en" style="display:none;">Viscosity of Fire: Venetian Glassblowing and Algorithmic Caustics</span>  </div></a>
+<a class="topics-item" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" role="menuitem" data-search="hat sanati ve robotik kaligrafi kamis kalemin nefesi: hat sanatinin geometrisi ve robotik kaligrafi the breath of the reed: calligraphic geometry and robotic scribes abbasi ve osmanli hat ekollerindeki kamis kalem kat acisi, aharli kagit ve nokta tabanli parametrik oran sisteminden; donald knuth&#x27;un metafont algoritmasina ve robotik kaligrafi duetlerine. from diagonal kat bevels, diamond nokta ratios, and burnished aharli paper in ottoman calligraphy ateliers to donald knuth&#x27;s metafont and human-robot ink duets. i̇slam ve osmanli hat sanati, harflerin elastik akisinin ardinda matematiksel bir &#x27;nokta&#x27; modulu ve siki bir kat acisi geometrisi barindirir. kamis kalemin bilek fizigi, bugun robotik cizim kollarina ve parametrik tipografi kodlarina dogrudan model sunuyor. behind the fluid grace of islamic and ottoman calligraphy lies an exacting geometric proportional matrix anchored by the reed pen&#x27;s diagonal cut and diamond dot module—an intuition today formalized directly into bezier pen math and robotic plotters. hat sanati kamis kalem aklam-i sitte robotik kaligrafi yeni medya calligraphy reed pen aklam-i sitte robotic plotters new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Hat Sanatı</span><span class="lang-en" style="display:none;">Calligraphy</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</span>    <span class="lang-en" style="display:none;">The Breath of the Reed: Calligraphic Geometry and Robotic Scribes</span>  </div></a>
+<a class="topics-item" href="/yazi/kundekari-ve-parametrik-ahsap.html" role="menuitem" data-search="kundekari ve parametrik ahsap civisiz geometri: selcuklu kundekari zanaati ve robotik ahsap eklemleri civisiz geometri: selcuk kundekari dogramaciligi ve robotik ahsap yapilar konya alaeddin ve beysehir esrefoglu camilerindeki civisiz, yazisiz zivana-lamba gecme ekraninin; higroskopik tolerans hesabina ve 7 eksenli robotik ahsap dogramaciligina. konya ve beysehir&#x27;deki civisiz, tutkalsiz kirmali anadolu selcuklu ahsap dogramalarindan, higroskopik tolerans calismalarina ve 7 eksenli robotik kereste frezeleme sistemlerine kadar. tutkal ve civi kullanmadan ahsabin nefes almasini saglayan zivanali kundekari zanaati; parametrik robotik ahsap strukturleri ve tolerans algoritmalariyla canlaniyor. tutkal ve civi kullanmadan ahsabin nefes almasini saglayan zivanali kundekari zanaati; parametrik robotik ahsap strukturleri ve tolerans algoritmalariyla canlaniyor. ahsap kundekari selcuklu robotik dograma parametrik mimarlik yeni medya kundekari timber joinery robotic cnc parametric architecture new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Ahşap Kündekâri</span><span class="lang-en" style="display:none;">Kundekari</span></span>    <span class="topics-item-time"><span class="lang-tr">8 dk</span><span class="lang-en" style="display:none;">8 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri</span>    <span class="lang-en" style="display:none;">Çivisiz Geometri: Selçuk Kundekari Doğramacılığı ve Robotik Ahşap Yapılar</span>  </div></a>
+<a class="topics-item" href="/yazi/kok-boyacilik-ve-biyo-tasarim.html" role="menuitem" data-search="kok boyacilik ve biyo tasarim topragin molekuler rengi: kadim kok boyacilik ve bakteriyel pigment kodlamasi molecular earth: ancient natural dyeing and bacterial pigment algorithms anadolu kazanlarindaki sap ve demir mordanindan, ph duyarli streptomyces coelicolor kolonilerine ve reaksiyon-difuzyon algoritmalarina uzanan molekuler renk grameri. from anatolian alum and iron mordants in hammered copper cauldrons to ph-sensitive streptomyces coelicolor colonies and reaction-diffusion code. kok boyacilik yalnizca dogadan renk toplamak degil; bitki kromoforlarini metal iyonlariyla programlayan kadim bir malzeme kimyasidir. bugun sentetik biyoloji ve biyo-algoritmalar ayni sozdizimini canli bakterilerle yaziyor. traditional natural dyeing is not the naive boiling of plants; it is a rigorous molecular grammar programming botanical chromophores with metal salts. contemporary bio-design translates this exact cauldron syntax into living bacterial pigment computation. dogal pigment kok boya biyo-tasarim generatif kod yeni medya natural pigment madder dyeing bio-design generative code new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Doğal Pigment</span><span class="lang-en" style="display:none;">Natural Pigment</span></span>    <span class="topics-item-time"><span class="lang-tr">11 dk</span><span class="lang-en" style="display:none;">11 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması</span>    <span class="lang-en" style="display:none;">Molecular Earth: Ancient Natural Dyeing and Bacterial Pigment Algorithms</span>  </div></a>
+<a class="topics-item" href="/yazi/selcuklu-cini-ve-3d-baski.html" role="menuitem" data-search="selcuklu cini ve 3d baski parametrik cini: selcuklu girih geometrisi ve robotik kil parametric faience: seljuk girih geometry and robotic clay fabrication konya karatay ve sivas gok medrese tas isciligindeki el kesimi cini mozaikler ile topkapi tomari&#x27;nin 5 girih karosundan; yari-kristal altin oran kodlarina ve 3 boyutlu robotik seramik cephelere. from hand-beveled turquoise and cobalt ceramic tesserae across anatolian seljuk portals and the topkapi scroll to quasicrystal golden-ratio subdivision and 3d robotic clay facades. anadolu selcuklu cini ustalarinin pergel, cizgec ve bes gizli girih karosuyla kurdugu periyodik olmayan (yari-kristal) yildiz ormeleri; bugun algoritmik alt-bolumleme ve robotik kil ekstruzyonuna dogrudan yapisal gramer sunuyor. five centuries before penrose tilings, anatolian seljuk tilemasters invented non-periodic quasicrystalline geometry using five hidden girih polygon modules—a mathematical syntax now reborn in recursive fabrication scripts and 3d-printed architectural clay. selcuklu cini girih geometrisi yari-kristal robotik kil mimari seljuk tilework girih geometry quasicrystals robotic clay architecture">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Selçuklu Çini</span><span class="lang-en" style="display:none;">Seljuk Tilework</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">9 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil</span>    <span class="lang-en" style="display:none;">Parametric Faience: Seljuk Girih Geometry and Robotic Clay Fabrication</span>  </div></a>
+            </div>
+            <div class="topics-empty" id="topics-empty" style="display:none;">
+              <span class="lang-tr">Eşleşen konu bulunamadı.</span>
+              <span class="lang-en" style="display:none;">No matching topics found.</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
         <a href="/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
           <span>⚡</span>
@@ -620,11 +658,90 @@ vec3 traceVenetianCrystal(vec3 rayOrigin, vec3 rayDir, vec3 surfaceNormal) {
         }
       }
       document.documentElement.lang = lang;
+
+      var searchInput = document.getElementById('topics-search-input');
+      if (searchInput) {
+        searchInput.placeholder = (lang === 'tr')
+          ? 'Konu, zanaat veya etiket ara...'
+          : 'Search topics, crafts, or tags...';
+      }
+    }
+
+    function normalizeSearchText(str) {
+      return (str || '')
+        .toLocaleLowerCase('tr')
+        .replace(/ç/g, 'c')
+        .replace(/ğ/g, 'g')
+        .replace(/ı/g, 'i')
+        .replace(/ö/g, 'o')
+        .replace(/ş/g, 's')
+        .replace(/ü/g, 'u')
+        .replace(/â/g, 'a')
+        .replace(/î/g, 'i')
+        .replace(/û/g, 'u')
+        .trim();
+    }
+
+    function toggleTopicsMenu(event) {
+      if (event) event.stopPropagation();
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      var input = document.getElementById('topics-search-input');
+      if (!dropdown || !trigger) return;
+
+      var willOpen = !dropdown.classList.contains('open');
+      dropdown.classList.toggle('open', willOpen);
+      trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+
+      if (willOpen && input) {
+        setTimeout(function() {
+          input.focus();
+          input.select();
+        }, 30);
+      }
+    }
+
+    function closeTopicsMenu() {
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      if (dropdown) dropdown.classList.remove('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function filterTopicsMenu(rawQuery) {
+      var q = normalizeSearchText(rawQuery);
+      var items = document.querySelectorAll('#topics-list .topics-item');
+      var visibleCount = 0;
+
+      items.forEach(function(item) {
+        var haystack = item.getAttribute('data-search') || '';
+        var match = !q || haystack.indexOf(q) !== -1;
+        item.style.display = match ? '' : 'none';
+        if (match) visibleCount += 1;
+      });
+
+      var emptyEl = document.getElementById('topics-empty');
+      if (emptyEl) {
+        emptyEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
     }
 
     function toggleLanguage() {
       setLanguage(currentLang === 'tr' ? 'en' : 'tr');
     }
+
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('topics-dropdown');
+      if (dropdown && dropdown.classList.contains('open') && !dropdown.contains(e.target)) {
+        closeTopicsMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeTopicsMenu();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
       setLanguage(currentLang);

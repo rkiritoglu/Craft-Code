@@ -354,6 +354,56 @@ def build_site(include_drafts=True):
     articles_list = list(articles_map.values())
     articles_list.sort(key=lambda x: str(x.get("date", "")), reverse=True)
 
+    def _fold_search(text):
+        t = str(text or "").lower()
+        tr_map = str.maketrans({
+            "ç": "c", "ğ": "g", "ı": "i", "i": "i", "İ": "i",
+            "ö": "o", "ş": "s", "ü": "u", "â": "a", "î": "i", "û": "u",
+        })
+        return t.translate(tr_map)
+
+    topics_menu_items = []
+    for art in articles_list:
+        slug = art["slug"]
+        tr_data = art.get("tr", {})
+        en_data = art.get("en", {})
+        url = f"{BASE_PATH}/yazi/{slug}.html"
+        tr_title = tr_data.get("title", slug)
+        en_title = en_data.get("title", tr_title)
+        tr_tags = tr_data.get("tags", [])
+        en_tags = en_data.get("tags", [])
+        tr_cat = tr_tags[0] if tr_tags else "ARAŞTIRMA"
+        en_cat = en_tags[0] if en_tags else "RESEARCH"
+
+        search_blob = " ".join([
+            slug.replace("-", " "),
+            tr_title,
+            en_title,
+            tr_data.get("subtitle", ""),
+            en_data.get("subtitle", ""),
+            tr_data.get("summary", ""),
+            en_data.get("summary", ""),
+            " ".join(tr_tags),
+            " ".join(en_tags),
+        ])
+        folded_blob = html.escape(_fold_search(search_blob), quote=True)
+
+        topics_menu_items.append(
+            f'<a class="topics-item" href="{url}" role="menuitem" data-search="{folded_blob}">'
+            f'  <div class="topics-item-meta">'
+            f'    <span class="topics-item-tag"><span class="lang-tr">{html.escape(tr_cat)}</span><span class="lang-en" style="display:none;">{html.escape(en_cat)}</span></span>'
+            f'    <span class="topics-item-time"><span class="lang-tr">{tr_data.get("reading_time", 5)} dk</span><span class="lang-en" style="display:none;">{en_data.get("reading_time", 5)} min</span></span>'
+            f'  </div>'
+            f'  <div class="topics-item-title">'
+            f'    <span class="lang-tr">{html.escape(tr_title)}</span>'
+            f'    <span class="lang-en" style="display:none;">{html.escape(en_title)}</span>'
+            f'  </div>'
+            f'</a>'
+        )
+
+    base_tpl = base_tpl.replace("{{TOPICS_MENU_ITEMS}}", "\n".join(topics_menu_items))
+    base_tpl = base_tpl.replace("{{TOPICS_COUNT}}", str(len(articles_list)))
+
     out_articles_dir = DIST_DIR / "yazi"
     out_articles_dir.mkdir(parents=True, exist_ok=True)
 

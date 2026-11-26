@@ -4,3 +4,6 @@ __pycache__/
 .system_generated/
 models/
 .venv/
+public/videos/
+dist/videos/
+*.mp4

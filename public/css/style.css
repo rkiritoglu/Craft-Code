@@ -121,7 +121,165 @@ header.site-header {
 nav.main-nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.85rem;
+}
+
+/* Searchable Topics Dropdown Menu */
+.topics-dropdown {
+  position: relative;
+}
+
+.topics-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 0.35rem 0.78rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.topics-trigger:hover,
+.topics-dropdown.open .topics-trigger {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.topics-count {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--highlight-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 0.05rem 0.4rem;
+  border-radius: 10px;
+}
+
+.topics-chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.topics-dropdown.open .topics-chevron {
+  transform: rotate(180deg);
+}
+
+.topics-menu {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  width: min(400px, calc(100vw - 2rem));
+  max-height: 70vh;
+  display: none;
+  flex-direction: column;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.topics-dropdown.open .topics-menu {
+  display: flex;
+}
+
+.topics-search-wrap {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.topics-search-input {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.topics-search-input:focus {
+  border-color: var(--accent);
+}
+
+.topics-list {
+  overflow-y: auto;
+  padding: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.topics-item {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background 0.15s ease;
+}
+
+.topics-item:hover {
+  background: var(--highlight-bg);
+  color: var(--text-primary);
+}
+
+.topics-item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.topics-item-tag {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.topics-item-time {
+  color: var(--text-muted);
+}
+
+.topics-item-title {
+  font-family: var(--font-serif);
+  font-size: 0.94rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.topics-empty {
+  padding: 1.25rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .topics-menu {
+    right: auto;
+    left: 0;
+  }
 }
 
 /* Language Switcher Button (In-Browser Seamless Switch) */

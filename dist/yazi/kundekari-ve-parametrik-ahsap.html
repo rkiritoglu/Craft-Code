@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri — Craft&Code</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/" class="logo">
+          Craft<span class="amp">&</span>Code
+        </a>
+        <span class="tagline">Art, Craft & Computational Inquiries</span>
+      </div>
+
+      <nav class="main-nav">
+        <!-- Searchable Topics Dropdown Menu -->
+        <div class="topics-dropdown" id="topics-dropdown">
+          <button type="button" class="topics-trigger" id="topics-trigger" aria-expanded="false" aria-haspopup="true" onclick="toggleTopicsMenu(event)">
+            <span class="topics-icon">🔍</span>
+            <span class="lang-tr">Konular</span>
+            <span class="lang-en" style="display:none;">Topics</span>
+            <span class="topics-count" id="topics-count-badge">8</span>
+            <span class="topics-chevron">▾</span>
+          </button>
+
+          <div class="topics-menu" id="topics-menu" role="menu">
+            <div class="topics-search-wrap">
+              <input
+                type="search"
+                id="topics-search-input"
+                class="topics-search-input"
+                placeholder="Konu, zanaat veya etiket ara..."
+                autocomplete="off"
+                oninput="filterTopicsMenu(this.value)"
+              >
+            </div>
+            <div class="topics-list" id="topics-list">
+              <a class="topics-item" href="/yazi/dokuma-tezgahindan-koda.html" role="menuitem" data-search="dokuma tezgahindan koda delikli kartlardan algoritmalara: dokuma tezgahi ve generatif sanatin kadim kokleri from punched cards to algorithms: woven binary logic and the ancient roots of generative code anadolu culfaliklarindan basile bouchon ve joseph marie jacquard&#x27;in delikli kart zincirine; cozgu-atki matris cebirinden ada lovelace&#x27;a ve cagdas tekstil bilgisayarlarina. from anatolian pedal looms and joseph marie jacquard&#x27;s perforated card loops to binary weave matrix algebra, ada lovelace&#x27;s notes, and tactile embroidered computers. hesaplamali sanat genellikle 20. yuzyilin bir icadi olarak gorulur. oysa kodun ilk somut sintaksi silikon ciplerde degil; ahsap dokuma tezgahlarinda, cozgu ile atkinin &#x27;yukari (1)&#x27; ve &#x27;asagi (0)&#x27; ikili geriliminde dogdu. computational art is routinely mistaken for a purely twentieth-century silicon invention. yet binary hardware syntax actually emerged atop wooden handlooms—woven between warp tension &#x27;up (1)&#x27; and weft over &#x27;down (0)&#x27;. dokuma jacquard orgu matrisi generatif sanat yeni medya weaving jacquard loom matrix algebra generative art new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Dokuma</span><span class="lang-en" style="display:none;">Weaving</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Delikli Kartlardan Algoritmalara: Dokuma Tezgâhı ve Generatif Sanatın Kadim Kökleri</span>    <span class="lang-en" style="display:none;">From Punched Cards to Algorithms: Woven Binary Logic and the Ancient Roots of Generative Code</span>  </div></a>
+<a class="topics-item" href="/yazi/ebru-ve-sivi-algoritmalar.html" role="menuitem" data-search="ebru ve sivi algoritmalar sivi algoritmalar: ebru sanatinin kaos matematigi ve generatif akiskanlar liquid algorithms: the chaotic mathematics of ebru and generative fluid dynamics kitre ve sigir oduyle programlanan osmanli ebru teknesinden, sebek mehmed efendi ve necmeddin okyay gelenegine; lu ve jaffer&#x27;in sikistirilamaz akis denklemlerinden veri heykellerine. from gum tragacanth and ox gall inside ottoman marbling vats—from sebek mehmed efendi to necmeddin okyay—to lu &amp; jaffer&#x27;s incompressible fluid advection equations. ebru, bilinen en kadim generatif sanat pratigidir. ebru ustasi boyayi zorlamaz; kitrenin viskozitesini, odun yuzey gerilimini ve taragin deplasman parametrelerini ayarlayarak deseni akiskanlar mekaniginin hesaplamasina birakir. ebru marbling may be humanity&#x27;s oldest generative art engine. rather than forcing paint mechanically, the ebru master configures viscosity, gall surfactant tension, and comb shear vectors, leaving living fluid mechanics to compute the form. ebru kitre akiskan dinamigi generatif sanat yeni medya ebru marbling kitre fluid dynamics generative art new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Ebru</span><span class="lang-en" style="display:none;">Ebru Marbling</span></span>    <span class="topics-item-time"><span class="lang-tr">9 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Sıvı Algoritmalar: Ebru Sanatının Kaos Matematiği ve Generatif Akışkanlar</span>    <span class="lang-en" style="display:none;">Liquid Algorithms: The Chaotic Mathematics of Ebru and Generative Fluid Dynamics</span>  </div></a>
+<a class="topics-item" href="/yazi/kintsugi-ve-dijital-kusur.html" role="menuitem" data-search="kintsugi ve dijital kusur kirigin poetikasi: kintsugi, dijital kusur ve veri onarimi the poetics of the fracture: kintsugi, digital glitch, and data mending muromachi donemi japon cay kaselerindeki ki-urushi recinesi, muro nem kurlemesi ve 24 ayar kinpun altin serpme ustaligindan; glitch estetigine ve 3 boyutlu ag sinir onarim algoritmalarina. from ki-urushi tree sap polymerization inside humid muro cabinets and 24-karat kinpun gold dusting in fifteenth-century kyoto to half-edge 3d mesh seam reconstruction and glitch theory. endustriyel cag &#x27;kusursuz ve yarasiz&#x27; yuzeyler dayatirken; hem 15. yuzyil japon kintsugi zanaati hem de elestirel medya sanatindaki glitch ve 3d veri onarim algoritmalari, kirigi ve hatayi nesnenin en durust hafizasi olarak parlatir. while industrial consumer culture treats cracks and digital corruption as disposable defects, fifteenth-century japanese kintsugi craft and computational glitch-repair algorithms illuminate broken boundaries as the most honest archive an object carries. kintsugi urushi glitch art 3d mesh onarimi yeni medya kintsugi urushi lacquer glitch art mesh repair new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Kintsugi</span><span class="lang-en" style="display:none;">Kintsugi</span></span>    <span class="topics-item-time"><span class="lang-tr">9 dk</span><span class="lang-en" style="display:none;">9 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Kırığın Poetikası: Kintsugi, Dijital Kusur ve Veri Onarımı</span>    <span class="lang-en" style="display:none;">The Poetics of the Fracture: Kintsugi, Digital Glitch, and Data Mending</span>  </div></a>
+<a class="topics-item" href="/yazi/cam-ufleme-ve-isik-kirilmasi.html" role="menuitem" data-search="cam ufleme ve isik kirilmasi atesin viskozitesi: venedik cam zanaati ve algoritmik isik kirilmasi (raymarching) viscosity of fire: venetian glassblowing and algorithmic caustics murano firinlarinda 1100 derecede nefes ve yercekimiyle donen erimis silika kristalinden, glsl shader kodlarindaki snell kirilma yasasina ve foton kostik (caustics) simulasyonlarina. from 1100°c molten silica spun on murano steel blowpipes with wet pearwood blocks to snell refraction equations and glsl raymarching shaders. cam ufleme zanaati kati ile sivi arasindaki amorf esikte isleyen en akiskan fiziksel hesaplamadir. murano ustalarinin yercekimi ve yuzey gerilimiyle yazdigi optik kurallar, bugun bilgisayar grafiklerinde raymarching ve kromatik dagilim shader&#x27;lariyla kodlaniyor. glassblowing operates at the amorphous threshold between liquid chaos and crystalline fracture. the gravitational and refractive laws negotiated inside venetian fornaci mirror real-time glsl raymarching and optical caustics. cam zanaati murano raymarching glsl shader yeni medya glassblowing murano raymarching glsl shader new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Cam Zanaatı</span><span class="lang-en" style="display:none;">Glassblowing</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Ateşin Viskozitesi: Venedik Cam Zanaatı ve Algoritmik Işık Kırılması (Raymarching)</span>    <span class="lang-en" style="display:none;">Viscosity of Fire: Venetian Glassblowing and Algorithmic Caustics</span>  </div></a>
+<a class="topics-item" href="/yazi/hat-sanati-ve-robotik-kaligrafi.html" role="menuitem" data-search="hat sanati ve robotik kaligrafi kamis kalemin nefesi: hat sanatinin geometrisi ve robotik kaligrafi the breath of the reed: calligraphic geometry and robotic scribes abbasi ve osmanli hat ekollerindeki kamis kalem kat acisi, aharli kagit ve nokta tabanli parametrik oran sisteminden; donald knuth&#x27;un metafont algoritmasina ve robotik kaligrafi duetlerine. from diagonal kat bevels, diamond nokta ratios, and burnished aharli paper in ottoman calligraphy ateliers to donald knuth&#x27;s metafont and human-robot ink duets. i̇slam ve osmanli hat sanati, harflerin elastik akisinin ardinda matematiksel bir &#x27;nokta&#x27; modulu ve siki bir kat acisi geometrisi barindirir. kamis kalemin bilek fizigi, bugun robotik cizim kollarina ve parametrik tipografi kodlarina dogrudan model sunuyor. behind the fluid grace of islamic and ottoman calligraphy lies an exacting geometric proportional matrix anchored by the reed pen&#x27;s diagonal cut and diamond dot module—an intuition today formalized directly into bezier pen math and robotic plotters. hat sanati kamis kalem aklam-i sitte robotik kaligrafi yeni medya calligraphy reed pen aklam-i sitte robotic plotters new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Hat Sanatı</span><span class="lang-en" style="display:none;">Calligraphy</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">10 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Kamış Kalemin Nefesi: Hat Sanatının Geometrisi ve Robotik Kaligrafi</span>    <span class="lang-en" style="display:none;">The Breath of the Reed: Calligraphic Geometry and Robotic Scribes</span>  </div></a>
+<a class="topics-item" href="/yazi/kundekari-ve-parametrik-ahsap.html" role="menuitem" data-search="kundekari ve parametrik ahsap civisiz geometri: selcuklu kundekari zanaati ve robotik ahsap eklemleri civisiz geometri: selcuk kundekari dogramaciligi ve robotik ahsap yapilar konya alaeddin ve beysehir esrefoglu camilerindeki civisiz, yazisiz zivana-lamba gecme ekraninin; higroskopik tolerans hesabina ve 7 eksenli robotik ahsap dogramaciligina. konya ve beysehir&#x27;deki civisiz, tutkalsiz kirmali anadolu selcuklu ahsap dogramalarindan, higroskopik tolerans calismalarina ve 7 eksenli robotik kereste frezeleme sistemlerine kadar. tutkal ve civi kullanmadan ahsabin nefes almasini saglayan zivanali kundekari zanaati; parametrik robotik ahsap strukturleri ve tolerans algoritmalariyla canlaniyor. tutkal ve civi kullanmadan ahsabin nefes almasini saglayan zivanali kundekari zanaati; parametrik robotik ahsap strukturleri ve tolerans algoritmalariyla canlaniyor. ahsap kundekari selcuklu robotik dograma parametrik mimarlik yeni medya kundekari timber joinery robotic cnc parametric architecture new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Ahşap Kündekâri</span><span class="lang-en" style="display:none;">Kundekari</span></span>    <span class="topics-item-time"><span class="lang-tr">8 dk</span><span class="lang-en" style="display:none;">8 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri</span>    <span class="lang-en" style="display:none;">Çivisiz Geometri: Selçuk Kundekari Doğramacılığı ve Robotik Ahşap Yapılar</span>  </div></a>
+<a class="topics-item" href="/yazi/kok-boyacilik-ve-biyo-tasarim.html" role="menuitem" data-search="kok boyacilik ve biyo tasarim topragin molekuler rengi: kadim kok boyacilik ve bakteriyel pigment kodlamasi molecular earth: ancient natural dyeing and bacterial pigment algorithms anadolu kazanlarindaki sap ve demir mordanindan, ph duyarli streptomyces coelicolor kolonilerine ve reaksiyon-difuzyon algoritmalarina uzanan molekuler renk grameri. from anatolian alum and iron mordants in hammered copper cauldrons to ph-sensitive streptomyces coelicolor colonies and reaction-diffusion code. kok boyacilik yalnizca dogadan renk toplamak degil; bitki kromoforlarini metal iyonlariyla programlayan kadim bir malzeme kimyasidir. bugun sentetik biyoloji ve biyo-algoritmalar ayni sozdizimini canli bakterilerle yaziyor. traditional natural dyeing is not the naive boiling of plants; it is a rigorous molecular grammar programming botanical chromophores with metal salts. contemporary bio-design translates this exact cauldron syntax into living bacterial pigment computation. dogal pigment kok boya biyo-tasarim generatif kod yeni medya natural pigment madder dyeing bio-design generative code new media">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Doğal Pigment</span><span class="lang-en" style="display:none;">Natural Pigment</span></span>    <span class="topics-item-time"><span class="lang-tr">11 dk</span><span class="lang-en" style="display:none;">11 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Toprağın Moleküler Rengi: Kadim Kök Boyacılık ve Bakteriyel Pigment Kodlaması</span>    <span class="lang-en" style="display:none;">Molecular Earth: Ancient Natural Dyeing and Bacterial Pigment Algorithms</span>  </div></a>
+<a class="topics-item" href="/yazi/selcuklu-cini-ve-3d-baski.html" role="menuitem" data-search="selcuklu cini ve 3d baski parametrik cini: selcuklu girih geometrisi ve robotik kil parametric faience: seljuk girih geometry and robotic clay fabrication konya karatay ve sivas gok medrese tas isciligindeki el kesimi cini mozaikler ile topkapi tomari&#x27;nin 5 girih karosundan; yari-kristal altin oran kodlarina ve 3 boyutlu robotik seramik cephelere. from hand-beveled turquoise and cobalt ceramic tesserae across anatolian seljuk portals and the topkapi scroll to quasicrystal golden-ratio subdivision and 3d robotic clay facades. anadolu selcuklu cini ustalarinin pergel, cizgec ve bes gizli girih karosuyla kurdugu periyodik olmayan (yari-kristal) yildiz ormeleri; bugun algoritmik alt-bolumleme ve robotik kil ekstruzyonuna dogrudan yapisal gramer sunuyor. five centuries before penrose tilings, anatolian seljuk tilemasters invented non-periodic quasicrystalline geometry using five hidden girih polygon modules—a mathematical syntax now reborn in recursive fabrication scripts and 3d-printed architectural clay. selcuklu cini girih geometrisi yari-kristal robotik kil mimari seljuk tilework girih geometry quasicrystals robotic clay architecture">  <div class="topics-item-meta">    <span class="topics-item-tag"><span class="lang-tr">Selçuklu Çini</span><span class="lang-en" style="display:none;">Seljuk Tilework</span></span>    <span class="topics-item-time"><span class="lang-tr">10 dk</span><span class="lang-en" style="display:none;">9 min</span></span>  </div>  <div class="topics-item-title">    <span class="lang-tr">Parametrik Çini: Selçuklu Girih Geometrisi ve Robotik Kil</span>    <span class="lang-en" style="display:none;">Parametric Faience: Seljuk Girih Geometry and Robotic Clay Fabrication</span>  </div></a>
+            </div>
+            <div class="topics-empty" id="topics-empty" style="display:none;">
+              <span class="lang-tr">Eşleşen konu bulunamadı.</span>
+              <span class="lang-en" style="display:none;">No matching topics found.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Studio Access (Visible ONLY on localhost or authenticated admin) -->
+        <a href="/studio.html" id="nav-studio-btn" class="editor-btn" style="text-decoration:none; padding:0.25rem 0.65rem; font-size:0.75rem; display:none;">
+          <span>⚡</span>
+          <span>Stüdyo</span>
+        </a>
+
+        <!-- In-Browser Instant Language Toggle -->
+        <div class="lang-toggle-btn" onclick="toggleLanguage()" title="Dili Değiştir / Switch Language">
+          <span class="opt active" id="btn-tr">TR</span>
+          <span class="opt" id="btn-en">EN</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="post" data-slug="kundekari-ve-parametrik-ahsap">
+  
+
+  <!-- Turkish Version Header -->
+  <div class="lang-tr">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">8 dk</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Ahşap Kündekâri</span> <span class="tag">#Selçuklu</span> <span class="tag">#Robotik Doğrama</span> <span class="tag">#Parametrik Mimarlık</span> <span class="tag">#Yeni Medya</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="tr-title" data-field="title">Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri</h1>
+      <p class="post-subtitle editable" id="tr-subtitle" data-field="subtitle">Konya Alâeddin ve Beyşehir Eşrefoğlu camilerindeki çivisiz, yazısız zıvana-lamba geçme ekranının; higroskopik tolerans hesabına ve 7 eksenli robotik ahşap doğramacılığına.</p>
+
+      <div class="author-block">
+        <span>Araştırma & Kürasyon: <strong>Craft&Code Araştırma Masası</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- English Version Header -->
+  <div class="lang-en" style="display:none;">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="date">2026-11-14</span>
+        <span>•</span>
+        <span class="reading-time">8 min read</span>
+        <span>•</span>
+        <span class="tags"><span class="tag">#Kundekari</span> <span class="tag">#Timber Joinery</span> <span class="tag">#Robotic CNC</span> <span class="tag">#Parametric Architecture</span> <span class="tag">#New Media</span></span>
+      </div>
+
+      <h1 class="post-title editable" id="en-title" data-field="title">Çivisiz Geometri: Selçuk Kundekari Doğramacılığı ve Robotik Ahşap Yapılar</h1>
+      <p class="post-subtitle editable" id="en-subtitle" data-field="subtitle">Konya ve Beyşehir'deki çivisiz, tutkalsız kırmalı Anadolu Selçuklu ahşap doğramalarından, higroskopik tolerans çalışmalarına ve 7 eksenli robotik kereste frezeleme sistemlerine kadar.</p>
+
+      <div class="author-block">
+        <span>Research & Curation: <strong>Craft&Code Editorial Desk</strong></span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Shared Hero Figure with Image Change Option -->
+  <div class="figure-wrapper">
+    <button id="img-change-trigger" class="img-change-trigger" onclick="openImageModal()" style="display:none;">
+      <span>📷</span>
+      <span class="lang-tr">Görseli Değiştir / AI Galeri</span>
+      <span class="lang-en" style="display:none;">Change Image / AI Gallery</span>
+    </button>
+    <figure class="hero-figure">
+      <img id="cover-img-elem" src="/images/kundekari-ahsap-cover.jpg" alt="Çivisiz Geometri: Selçuklu Kündekâri Zanaatı ve Robotik Ahşap Eklemleri">
+      <figcaption>
+        <span class="lang-tr">
+          <strong class="editable" id="tr-caption">Kavramsal Eser: Anadolu Selçuklu ceviz kündekâri yıldız geçişlerinin parametrik parçaları vektörleri ve robotik ahşap dondurmalama ile sentezi.</strong>
+          <span class="credit editable" id="tr-credit">Görsel: Craft&Code / Yapay Zekâ & Küratöryel Konsept Tasarımı</span>
+        </span>
+        <span class="lang-en" style="display:none;">
+          <strong class="editable" id="en-caption">Kavramsal Sentez: Geleneksel Selçuk ceviz ağacı kundekari yıldız kırma teknolojisinin, parametrik ihlal toleransları ve robotik ahşap işleme ile yasak.</strong>
+          <span class="credit editable" id="en-credit">Görsel: Craft&Code / Yapay Zeka ve Küratöryel Kavram Sentezi</span>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Turkish Body Content -->
+  <div class="lang-tr prose editable-area" id="tr-body">
+    <p>Geleneksel ahşap işçiliğine uzaktan bakan modern bir göz, cami minberleri ve kapı kanatları üzerindeki sekizgen ve yıldızlı geometrileri çoğunlukla dekoratif bir kabartma olarak algılar. Oysa gerçek anlamıyla <strong>hakikî kündekâri</strong>, salt bir süsleme sanatı değil; <strong>tutkal, demir çivi ve vida kullanmadan</strong> yalnızca ahşabın fiziksel nem genleşmesini mühendislik hesaplarına katarak yüzyıllarca ayakta durabilen yüksek hassasiyetli bir <strong>mekanik strüktür bilimi</strong>dir.</p>
+<p>Anadolu kışlarının kuru soğuğu ile yazlarının sıcak nemi arasında her ahşap lif grubu sürekli enine genleşip daralır. Büyük bir ahşap levhayı tek parça çivileyip tutkallarsanız, mevsim dönüşünde iç gerilim tahtayı boydan boya çatlatır. Selçuklu ve erken Osmanlı marangozları (<em>neccârân</em>) ise bu doğa yasasıyla savaşmak yerine onu tasarıma çevirdiler: küçük çokgen <strong>dolgu</strong> parçalarını oluklu <strong>kayıt</strong> çerçevelerinin içine serbestçe yüzer şekilde kilitleyerek, malzemenin nefes almasına izin veren algoritmik bir tolerans sistemi icat ettiler. Bugün Zürih ve Lozan'daki robotik mimarlık laboratuvarları aynı çivisiz tolerans kurallarını çok eksenli ahşap frezeleme kodlarına tercüme etmektedir.</p>
+<h2>1. Tarihsel Kökler: Malatya ve Konya Minberlerinden Osmanlı Edirnekârisine</h2>
+<p>Farsça "kalıpla biçimlendirmek" veya "ekleyip birleştirmek" anlamlarına gelen <em>kündekârî</em> kelimesinden doğan teknik, 12. yüzyılda Mısır (Tolunoğulları ve Fatımi ahşap oymacılığı), Suriye (Halep ve Şam) ve İran hatlarından Anadolu'ya taşınarak Selçuklu ustalığında doruğa ulaştı. 1155 tarihli <strong>Konya Alâeddin Camii Minberi</strong> (<em>Ahlatlı Mengü Berti</em> elinden çıkmıştır), İslam sanat tarihinde gerçek geçme tekniğinin bilinen en eski anıtsal örneklerinden biridir.</p>
+<p>Anadolu'nun en saf <strong>hakikî kündekâri</strong> başyapıtları birbirini izleyen bir ustalık zinciri kurar: Malatya Ulu Camii, Siirt Ulu Camii, <strong>Birgi Ulu Camii (1322)</strong>, Ürgüp Damsa Köyü Taşkınpaşa Camii ve ahşap direkli yapısıyla benzersiz <strong>Beyşehir Eşrefoğlu Camii (1299)</strong>. 14. yüzyıl sonundan itibaren emek ve zaman maliyetini düşürmek için büyük tek parça ahşap üzerine oluk açılıp ince çıtalar çakılan <em>taklit (çakma-kabartma) kündekâri</em> yaygınlaştıysa da bu taklitler zamanla eğilip çatlamış; buna karşın çivisiz gerçek kündekâri minberler yedi yüz yıl sonra dahi eklem yerlerinden tek bir milimetre dağılmadan dimdik ayakta kalmıştır.</p>
+<h2>2. Zıvana, Lamba ve Higroskopik Tolerans Anatomisi</h2>
+<p>Bir kündekâri atölyesinde usta yalnızca marangoz değil, ağaç neminin yıllar içinde nasıl davranacağını hesaplayan bir botanik ve mekanik uzmanadır:</p>
+<figure class="article-figure"><img src="/images/kundekari-zivana-diagram.svg" alt="Selçuklu kündekâri geçme kesiti: lamba oluklu kayıt çerçeveleri içinde mevsimsel genleşme boşluğu (delta-t) bırakılarak kilitlenen serbest yıldız dolgu paneli diyagramı" loading="lazy"/><figcaption><strong>Kündekâri Geçme & Tolerans Kesiti: Tutkalsız ve çivisiz yıldız dolgu geometrisi (sol) ile kayıt oluğundaki higroskopik genleşme boşluğu delta-t ve CNC takım yolu (sağ)</strong><span class="credit">Görsel: Craft&Code Hesaplamalı Diyagram Arşivi</span></figcaption></figure>
+<ul>
+<li><strong>Ağaç Seçimi ve Kurutma Süreci:</strong> Büyük çekme-genleşme stresini dengelemek için kündekâri ustaları sert ve lif dokusu sık türler seçer: <strong>ceviz</strong>, <strong>sedir</strong>, <strong>abanoz</strong>, <strong>armut</strong> ve <strong>şimşir</strong>. Kesilen keresteler doğrudan tezgâha konmaz; açık havada ve gölge sundurmalarda en az <strong>beş ila on yıl</strong> boyunca mevsim nemine alıştırılır.</li>
+<li><strong>İki Ana Parça Sınıfı (<em>Dolgu</em> ve <em>Kayıt</em>):</strong></li>
+<li><strong>Dolgu (Künde / Geometrik Parçalar):</strong> Sekiz, on veya on iki köşeli yıldızlar, bademler ve beşgenlerden oluşan küçük bloklardır. Kenarları oluklu çerçevelerin içine girebilecek şekilde iki yandan <strong>üçgen ya da kama profiliyle inceltilir (<em>zıvana dili / pah</em>)</strong>. Ayrıca her dolgunun lif yönü geometrik simetriye göre merkeze hizalanır.</li>
+<li><strong>Kayıt (İskelet Çerçeve Çubukları):</strong> Yıldızları dışarıdan saran düz ahşap çıtalardır. Kayıtların iç kenarlarına ince <strong>ıskarpela</strong> (<em>chisel</em>) ve oluk rendesiyle V ya da U kesitli kanallar (<strong>lamba / kiniş</strong>) açılır; uçları ise birbirine <strong>zıvana geçme</strong> (<em>mortise-and-tenon</em>) ya da <em>kırlangıç kuyruğu</em> ile tutturulur.</li>
+<li><strong>Sırrın Kalbi — <em>Mevsimsel Nefes Payı</em> ($\Delta t$):</strong> Hakikî kündekâri ustası hiçbir dolgu parçasını kayıt oluğunun dibine sıfıra sıfır dayamaz ve tutkalla sabitlemez. Oluğu dolgunun dilinden yaklaşık <strong>1,5–2,5 mm daha derin</strong> açar. Kışın kuruyan parça birkaç mikron daralsa da oluğun dışına düşmez; yazın nem çeken parça genleşse de bu güvenlik boşluğu ($\Delta t$) içinde rahatça hareket eder ve yan kayıtları asla dışa itip patlatmaz.</li>
+</ul>
+<blockquote><p>"Tutkal ahşabın hapsidir, zıvana ise onun hürriyeti; hakikî kündekâri çiviyi reddettiği için değil, mevsimin ahşaba kattığı hareketi geometriye dahil ettiği için ölmez."</p><cite>— Anadolu Ahşap Ustalığı Üzerine</cite></blockquote>
+<h2>3. Gelenekselden Koda: Yapısal Karşılıklar ve Algoritmik Çeviri</h2>
+<p>Selçuklu marangozunun <em>zıvana</em> derinliğini ağacın mevsimsel genleşme yüzdesine ($\Delta t$) göre hesaplayıp geometrik birleştirme kurması; bugün hesaplamalı mimarlıkta <strong>parametrik eklem sentezi</strong> (<em>Parametric Timber Joinery</em>) ve <strong>çarpışmasız takım yolu planlaması</strong> (<em>Toolpath Planning</em>) ile tamamen aynı veri yapılarını kullanır.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Geleneksel Kündekâri Unsuru</th><th>Atölyedeki Fiziksel ve Mekanik İşlevi</th><th>Koddaki / Robotik Doğramadaki Karşılığı</th></tr></thead><tbody><tr><td><em>Hakikî Geçme</em> (Tutkalsız Birleştirme)</td><td>Parçaların sökülebilir, tek tek değiştirilebilir modüler bütünlük kurması.</td><td>Topolojik kenetlenme kısıtı (<code>interlocking_constraint</code>) ve sökülebilir ağaç grafiği</td></tr><tr><td><em>Kayıt</em> İskelet Ağı (<em>Çerçeve</em>)</td><td>Desenin ana çizgilerini taşır ve tüm dolgu bloklarını kafes gibi birbirine kilitler.</td><td>Kenar çerçeve grafı (<code>dual_frame_edges</code>) ve açısal düğüm bağlantıları</td></tr><tr><td>Yıldız / Badem <em>Dolgu</em> Elemanları</td><td>Kayıt oluklarının içinde yüzen, lif yönü hizalanmış geometrik paneller.</td><td>Parametrik çokgen hücreleri ve lokal lif yönelimi vektörü (<code>grain_vector</code>)</td></tr><tr><td><em>Lamba</em> (Kiniş) Oluk Derinliği</td><td>Dolgunun kenar dilini sararak düzlem dışına fırlamasını engeller.</td><td>Boolean çıkarma geometrisi (<code>channel_cut = panel_offset - depth</code>)</td></tr><tr><td><em>Mevsimsel Genleşme Payı</em> ($\Delta t$)</td><td>Nem artışında şişen ceviz veya sedirin komşu kayıtları çatlatmasını önler.</td><td>Higroskopik tolerans katsayısı (<code>tolerance_mm = width * moisture_coeff</code>)</td></tr><tr><td>Pahlı Kenar Açısı (<em>Zıvana Dili</em>)</td><td>İki komşu kaydın 22,5° veya 36° açıyla birbirine tam öpüşmesini sağlar.</td><td>Çok eksenli CNC freze eğim açısı (<strong>5/7-eksen tool normal vector</strong>)</td></tr><tr><td>Kereste Lif Yönü (<em>Su Yönü</em>)</td><td>Keski ve frezenin lifi yarmadan temiz yüzey bırakması için kesim yönü tercihi.</td><td>Takım yolu yönü ile lif vektörü hizalaması (<code>climb vs. conventional milling</code>)</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Zanaattan Koda Köprü</span>
+<p>Geleneksel marangoz elindeki kumpasla ceviz bloğun enini ölçüp rutubet oranına göre oluğa <code>1.8 mm</code> boşluk bıraktığında, <strong>anizotropik higroskopik deformasyon denklemini</strong> çözer: Ahşap boyuna (lif yönünde) neredeyse hiç uzamazken, teğetsel yönde bağıl nemdeki her %1 değişimde eninin belirli bir katsayısı kadar şişer. Parametrik yazılımlar her bir yıldız paneli için bu formülü otomatik hesaplayıp <strong>6 veya 7 eksenli robotik freze uçlarının</strong> açacağı oluk derinliklerini dinamik olarak ayarladığında, 13. yüzyıl Konya minber ustalığı çağdaş robotik ahşap mimarisine dönüşür.</p>
+</div>
+<p>Aşağıdaki Python kodu, belirli bir ağaç türü (ceviz, sedir, meşe) ve mevsimsel nem farkı için gereken <strong>lamba oluk boşluğu (<code>compute_hygroscopic_clearance</code>)</strong> toleransını hesaplar ve robotik CNC freze kolu için çokgen eklem pah açılarını üretir.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">PYTHON</span><span class="code-title">Kündekâri Higroskopik Tolerans ve Robotik Zıvana Geometri Üreticisi</span></div><pre><code class="language-python"># Craft&amp;Code — Selçuklu Kündekâri Tolerans Hesabı &amp; 7-Eksen Eklem Üretimi
+import math
+
+WOOD_TANGENTIAL_SHRINKAGE = {
+    &quot;Ceviz (Walnut)&quot;: 0.0026,   # Her %1 bagil nem degisiminde boyutsal genlesme katsayisi
+    &quot;Sedir (Cedar)&quot;:  0.0018,
+    &quot;Mese (Oak)&quot;:     0.0034,
+}
+
+def compute_hygroscopic_clearance(panel_span_mm, wood_species, delta_humidity_pct=18.0):
+    &quot;&quot;&quot;Mevsimsel nem farkina gore kayıt lamba olugundaki guvenlik boslugunu (delta-t) hesaplar.&quot;&quot;&quot;
+    coeff = WOOD_TANGENTIAL_SHRINKAGE[wood_species]
+    max_expansion = panel_span_mm * coeff * (delta_humidity_pct / 5.0)
+    safety_margin = 0.65  # Ahşap tozu ve yuzey puruzu icin minimum hareket payi
+    return round(max_expansion + safety_margin, 2)
+
+def generate_kundekari_joint_spec(arms=8, outer_radius_mm=140.0, wood_species=&quot;Ceviz (Walnut)&quot;):
+    &quot;&quot;&quot;8 veya 10 koseli yildiz dolgular icin zivana acisini ve oluk derinligini cikarir.&quot;&quot;&quot;
+    miter_angle_deg = round(180.0 / (arms * 2), 2)
+    clearance = compute_hygroscopic_clearance(outer_radius_mm, wood_species)
+    tongue_depth_mm = 7.5
+    groove_depth_mm = round(tongue_depth_mm + clearance, 2)
+
+    nodes = []
+    for k in range(arms * 2):
+        angle = k * math.pi / arms
+        rad = outer_radius_mm if k % 2 == 0 else outer_radius_mm * 0.54
+        nodes.append((round(rad * math.cos(angle), 2), round(rad * math.sin(angle), 2)))
+
+    return {
+        &quot;wood&quot;: wood_species,
+        &quot;miter_bevel_deg&quot;: miter_angle_deg,
+        &quot;tongue_depth_mm&quot;: tongue_depth_mm,
+        &quot;groove_depth_mm&quot;: groove_depth_mm,
+        &quot;hygroscopic_gap_mm&quot;: clearance,
+        &quot;bevel_vertices&quot;: nodes,
+    }</code></pre></div>
+<p>Görüldüğü üzere <code>groove_depth_mm = tongue_depth_mm + clearance</code> ilişkisi; eski ustaların hiçbir zaman yazılı formüle dökmediği ancak yüzlerce cami kapısını çatlamaktan kurtaran sözlü kuralın doğrudan geometrik tanımıdır.</p>
+<h2>4. Çağdaş Sanat, Laboratuvar ve Vaka İncelemeleri</h2>
+<p>Tutkalsız ve çivisiz ahşap birleştirme teknolojisi, bugün dünyanın önde gelen mimarlık araştırma merkezlerinde düşük karbonlu dev strüktürlerin inşasında anahtar rol oynamaktadır.</p>
+<h3>Vaka 1: Konya Alâeddin & Beyşehir Eşrefoğlu Camii Minberleri (12.–13. Yüzyıl)</h3>
+<p>Anadolu'nun en yüksek rakımlı sert kara iklimine sahip Konya ve Beyşehir havzasında kışın dondurucu kuruluğu ile göl kaynaklı nem arasındaki dev salınıma rağmen 1155 tarihli <strong>Alâeddin Camii Minberi</strong> ve 1299 tarihli <strong>Eşrefoğlu Camii</strong> doğrama unsurları, tam 700–850 yıldır yapısal bütünlüğünü korumaktadır. Yakın dönem konservasyon taramaları, bu dayanıklılığın arkasında her bir minber kanadında üç yüzü aşkın ayrı ayrı kesilmiş ahşap modülün birbirine tutkal sürmeden zıvana ve lamba kanallarıyla serbestçe kilitlenmiş olmasının yattığını belgelemektedir.</p>
+<h3>Vaka 2: Gramazio Kohler Research (ETH Zürih) — <em>Robotik Ahşap Eklemleri</em> (2012–2023)</h3>
+<p>Zürih Federal Teknoloji Enstitüsü (<strong>ETH Zürih</strong>) bünyesindeki <em>Gramazio Kohler Research</em> grubu, robotik kollar kullanarak karmaşık ahşap kafes strüktürleri otomatikleştiren çığır açıcı projelere imza attı. 6 ve 7 eksenli CNC kesici uçlarla donatılmış robotlar, insan elinin keskiyle açtığı karmaşık açılı <em>zıvana</em> ve <em>kırlangıç kuyruğu</em> geçmelerini doğrudan parametrik CAD dosyasından okuyarak keresteye milimetrik hassasiyetle işler; böylece metal bağlantı cıvatasına hiç ihtiyaç duymayan hafif ahşap kubbeler ve pavyonlar ortaya çıkar.</p>
+<h3>Vaka 3: IBOIS (EPFL Lozan, Yves Weinand) — <em>Wood-to-Wood Integral Timber Joints</em> (2014–Günümüz)</h3>
+<p>Lozan Federal Teknoloji Enstitüsü (<strong>EPFL</strong>) Ahşap Yapılar Laboratuvarı <em>IBOIS</em>, Prof. Yves Weinand liderliğinde geliştirdiği <strong>tutkalsız katlı plak ahşap eklemler</strong> (<em>Integral Mechanical Attachment</em>) ile geleneksel Japon ve Selçuklu geçme zanaatlarını modern yapı mühendisliğiyle birleştirdi. Araştırmacılar, geleneksel geçme açılarını sonlu elemanlar (FEA) yük simülasyonlarıyla optimize ederek vidaya ya da epoksi tutkala ihtiyaç duymadan tonlarca çatı yükü taşıyabilen dev ahşap kemerler inşa etti — ki çalışma mantığı doğrudan Anadolu'nun <em>kündekâri</em> zıvana felsefesinin mühendislik uzantısıdır.</p>
+<h2>5. Eleştirel Sentez: Zanaatın Direnci ve Kodun Sınırı</h2>
+<p>7 eksenli bir CNC freze robotu saniyeler içinde on altı açılı kusursuz bir kündekâri yıldız eklemi oyabilir. Ancak robotik bıçak tek başına kerestenin içinde gizlenen bir budak düğümünü, bir yıl önce ağacın kuzey yüzünde büyümüş sık halkaların sertliğini veya keskinin ahşap lifini ayırırken çıkardığı o tok tıkırtıyı sezgisel olarak duyamaz.</p>
+<p>Kündekâri bize modern yazılım ve mimarlık kültürü için son derece hayati bir ders verir: <strong>Mükemmel tasarım malzemeyi donduran ve hapseden değil; onun zamanla değişen hareketine güvenli bir alan açan esnek bir geometridir.</strong> Kod ile zanaat omuz omuza verdiğinde ortaya ne tekdüze fabrikasyon ürünler ne de sadece müzelere hapsolmuş geçmiş objeleri çıkar; nefes alan, yaşayan bir strüktür kültürü doğar.</p>
+<div class="curatorial-box"><span class="badge">Küratöryel Not</span>
+<p>On üçüncü yüzyılda Beyşehir'de ceviz bloğu oluğa tutkal sürmeden kilitleyen neccâr ustası ile bugün Zürih laboratuvarında <code>hygroscopic_gap_mm</code> payını hesaplayarak robotik uç açısını programlayan araştırmacı aynı hakikati savunur: <strong>Gerçek kalıcılık maddenin hareketini yasaklamakla değil, o harekete akıllı bir yuva tasarlamakla mümkündür.</strong></p>
+</div>
+<hr class="editorial-divider">
+<h3>Kaynakça ve İleri Okumalar</h3>
+<ol>
+<li><strong>Öney, Gönül.</strong> <em>Anadolu Selçuklu Mimari Süslemesi ve El Sanatları</em>. Türkiye İş Bankası Kültür Yayınları, Ankara, 1978.</li>
+<li><strong>Sönmez, Zeki.</strong> <em>Başlangıcından 16. Yüzyıla Kadar Anadolu Türk-İslam Mimarisinde Sanatçılar</em>. Türk Tarih Kurumu Yayınları, Ankara, 1995.</li>
+<li><strong>Bozer, Rüstem.</strong> <em>Ahşap İşçiliği: Anadolu Selçuklu ve Beylikler Dönemi Minberleri</em>. Kültür Bakanlığı Yayınları, Ankara.</li>
+<li><strong>Weinand, Yves (Ed.).</strong> <em>Advanced Timber Structures: Architectural Designs and Digital Dimensioning</em>. Birkhäuser, Basel, 2016.</li>
+<li><strong>Willmann, Jan, Knauss, Michael, Bonwetsch, Tobias, Apolinarska, Aleksandra Anna, Gramazio, Fabio, & Kohler, Matthias.</strong> "Robotic Timber Construction — Expanding Additive Fabrication to New Dimensions." <em>Automation in Construction</em>, Vol. 61, 2016, ss. 16–23.</li>
+</ol>
+  </div>
+
+  <!-- English Body Content -->
+  <div class="lang-en prose editable-area" id="en-body" style="display:none;">
+    <p>To a hurried contemporary eye, geometric star octagons and hexagons across historic Anatolian mosque pulpits (<em>minbers</em>) and sanctuary doors appear merely ornamental carving. In authentic <strong>hakikî kündekâri</strong>, however, geometry is never superficial decoration; it represents high-precision <strong>structural wood engineering engineered completely without nails, screws, or structural glue</strong>—designed specifically to endure centuries by embedding wood moisture dynamics inside interlocking topology.</p>
+<p>Every winter-to-summer humidity shift triggers anisotropic swelling and shrinkage across timber grain. Lock a broad solid wood board flat with iron nails or rigid glue, and seasonal stress inevitably splits the slab down the middle. Anatolian Seljuk and early Ottoman master carpenters (<em>neccârân</em>) inverted resistance into principle: locking small floating polygon <strong>infill panels</strong> inside grooved <strong>frame rails</strong> with deliberate expansion clearances, forging a physical mechanical tolerance algorithm. Today, robotic timber laboratories in Zurich and Lausanne translate these exact nail-less joinery principles into parametric CNC toolpaths.</p>
+<h2>1. Historical Roots: From Malatya and Konya Minbers to Imperial Joinery</h2>
+<p>Rooted in Persian terminology denoting "assembled molding," <em>kündekâri</em> synthesis traveled through eleventh-century Egypt, Syria, and Iran before reaching structural zenith inside <strong>Anatolian Seljuk woodwork</strong>. The iconic <strong>minber of Konya's Alâeddin Mosque</strong> (dated 1155 and signed by craftsman Mengü Berti of Ahlat) stands as one of Islamic architecture's earliest surviving masterpieces of genuine floating geometric assembly.</p>
+<p>Landmark monuments construct an unbroken lineage across centuries: Malatya Great Mosque, Siirt Great Mosque, <strong>Birgi Great Mosque (1322)</strong>, and the extraordinary columned hall of <strong>Beyşehir Eşrefoğlu Mosque (1299)</strong>. While later centuries introduced cheaper imitation relief carving (<em>taklit kündekâri</em> nailed atop solid boards) that warped noticeably over decades, authentic nail-less <em>hakikî</em> joinery remains tight and self-supporting seven centuries after carving.</p>
+<h2>2. Mortise, Groove, and Hygroscopic Clearance Anatomy</h2>
+<p>Master joiners approached seasoned hardwood not as uniform inert lumber, but as living cellulose responsive across decades of humid springs and dry winters:</p>
+<figure class="article-figure"><img src="/images/kundekari-zivana-diagram.svg" alt="Seljuk kundekari architectural cross-section and star topology diagram depicting grooved frame rails enclosing floating panels with seasonal moisture gap delta-t" loading="lazy"/><figcaption><strong>Kündekâri Joinery Mechanics: Interlocking 8-fold star panel frame topology (left) paired with cross-sectional groove tolerance delta-t and 7-axis CNC toolpath (right)</strong><span class="credit">Visual: Craft&Code Computational Diagram Archive</span></figcaption></figure>
+<ul>
+<li><strong>Timber Selection & Multi-Year Seasoning:</strong> Carpenters chose dense, tight-grained species balancing toughness with carved stability: <strong>Anatolian walnut</strong>, <strong>cedar</strong>, <strong>ebony</strong>, <strong>pear</strong>, and <strong>boxwood</strong>. Felled boards rested shaded outdoors under gentle ventilation for <strong>five to ten years</strong> before chisels ever scored wood fibers.</li>
+<li><strong>Two Structural Classes (<em>Dolgu</em> Infill & <em>Kayıt</em> Rails):</strong></li>
+<li><strong>Floating Geometric Panels (<em>Dolgu</em>):</strong> Small diamond, kite, pentagon, and 8-to-12 pointed star cores trimmed cleanly along every perimeter edge into tapered beveled tongues (<strong>zıvana dili / chamfer</strong>), orienting annual growth rings concentrically across symmetry lines.</li>
+<li><strong>Grooved Structural Rails (<em>Kayıt</em>):</strong> Linear skeleton ribs bounding stars tightly together. Inside rails, craftsmen channeled V- or U-profiled slots (<strong>lamba / kiniş</strong>) using narrow planes and steel <em>ıskarpela</em> chisels—interlocking rail intersections cleanly via mitered <strong>mortise-and-tenon</strong> locks.</li>
+<li><strong>The Essential Secret — <em>Hygroscopic Expansion Gap</em> ($\Delta t$):</strong> Masters deliberately never seat floating infill tongues flush against inner rail groove floors, nor introduce animal hide glue inside grooves. Milling channel sockets <strong>1.5–2.5 mm deeper</strong> than each panel tongue preserves safe slip room ($\Delta t$): even in dry winters panels stay captured safely, while summer swelling slides calmly deeper without fracturing neighboring rails outward.</li>
+</ul>
+<blockquote><p>"Glue imprisons wood until tension breaks it; tenon gives timber sovereignty—true kündekâri endures precisely because it builds seasonal motion directly into geometry."</p><cite>— Traditional Anatolian Woodcraft Principle</cite></blockquote>
+<h2>3. Craft to Code: Structural Correspondences & Algorithmic Translation</h2>
+<p>Calculating groove depths relative to species swelling factors ($\Delta t$) while computing multi-bevel angles across compound domes translates directly into <strong>parametric timber joinery algorithms</strong> and <strong>5/7-axis collision-free CNC toolpaths</strong>.</p>
+<div class="table-wrap"><table class="craft-code-table"><thead><tr><th>Traditional Kündekâri Element</th><th>Physical & Mechanical Role on the Bench</th><th>Equivalent Construct in Parametric Joinery & Code</th></tr></thead><tbody><tr><td>True Nail-less Assembly (<em>Hakikî Geçme</em>)</td><td>Allows reversible disassembly and stress-free replacement of damaged blocks.</td><td>Topological interlocking constraints (<code>interlocking_constraint</code> graph)</td></tr><tr><td>Skeletal Structural Frame Rails (<em>Kayıt</em>)</td><td>Distributes mechanical loads across polygonal boundary vertices cleanly.</td><td>Dual skeletal edge mesh graph (<code>dual_frame_edges</code>) & miter nodes</td></tr><tr><td>Floating Polygon Infill Blocks (<em>Dolgu</em>)</td><td>Isolates localized wood swelling within discrete small planar elements.</td><td>Parameterized cell polygons & aligned timber grain vectors (<code>grain_vector</code>)</td></tr><tr><td>Recessed Groove Channel (<em>Lamba / Kiniş</em>)</td><td>Captures chamfered panel bevels preventing out-of-plane buckling safely.</td><td>Boolean pocket subtraction (<code>channel_cut = panel_offset - depth</code>)</td></tr><tr><td>Seasonal Moisture Expansion Gap ($\Delta t$)</td><td>Absorbs ambient humidity swelling quietly inside recessed frame sockets.</td><td>Hygroscopic clearance solver (<code>tolerance_mm = width * moisture_coeff</code>)</td></tr><tr><td>Chamfered Panel Edge Bevels</td><td>Locks miter angles crisply across 22.5°, 36°, or 45° polygon corners.</td><td>Multi-axis tool orientation vector (<strong>5/7-axis CNC normal tilt</strong>)</td></tr><tr><td>Grain-Aware Cut Direction</td><td>Prevents fiber tear-out when slicing crisp bevel shoulders cleanly.</td><td>Climb vs. conventional milling path aligned against local grain field</td></tr></tbody></table></div>
+<div class="bridge-box"><span class="badge">Craft-to-Code Bridge</span>
+<p>Whenever an Anatolian carpenter gauged walnut panel widths against ambient moisture to cut <code>1.8 mm</code> extra recess depth inside surrounding rail grooves, that craft executed an intuitive <strong>anisotropic hygroscopic strain calculation</strong>: wood stays dimensionally static along axial grain while expanding tangentially proportional to ambient humidity swings. Encoding this species law directly into <strong>7-axis CNC robotics</strong> computes safe slip tolerances per vertex automatically—carrying thirteenth-century Seljuk wisdom seamlessly into contemporary multi-story timber architecture.</p>
+</div>
+<p>The Python model below calculates seasonal moisture clearances (<code>compute_hygroscopic_clearance</code>) across walnut, cedar, and oak parameters, outputting exact bevel angles and robotic groove depths ready for digital fabrication.</p>
+<div class="code-study"><div class="code-study-header"><span class="code-lang">PYTHON</span><span class="code-title">Seljuk Kündekâri Hygroscopic Tolerance &amp; Robotic Joinery Spec</span></div><pre><code class="language-python"># Craft&amp;Code — Seasonal Timber Clearance &amp; Multi-Axis Joint Specification
+import math
+
+WOOD_TANGENTIAL_SHRINKAGE = {
+    &quot;Walnut (Ceviz)&quot;: 0.0026,   # Tangential swelling rate per humidity step
+    &quot;Cedar (Sedir)&quot;:  0.0018,
+    &quot;Oak (Mese)&quot;:     0.0034,
+}
+
+def compute_hygroscopic_clearance(panel_span_mm, wood_species, delta_humidity_pct=18.0):
+    &quot;&quot;&quot;Calculates required lamba groove expansion room (delta-t) cleanly.&quot;&quot;&quot;
+    coeff = WOOD_TANGENTIAL_SHRINKAGE[wood_species]
+    max_expansion = panel_span_mm * coeff * (delta_humidity_pct / 5.0)
+    safety_margin = 0.65  # Acoustic dust and surface asperity clearance
+    return round(max_expansion + safety_margin, 2)
+
+def generate_kundekari_joint_spec(arms=8, outer_radius_mm=140.0, wood_species=&quot;Walnut (Ceviz)&quot;):
+    &quot;&quot;&quot;Outputs parametric bevel angles, tongue thickness, and grooved rail depths.&quot;&quot;&quot;
+    miter_angle_deg = round(180.0 / (arms * 2), 2)
+    clearance = compute_hygroscopic_clearance(outer_radius_mm, wood_species)
+    tongue_depth_mm = 7.5
+    groove_depth_mm = round(tongue_depth_mm + clearance, 2)
+
+    nodes = []
+    for k in range(arms * 2):
+        angle = k * math.pi / arms
+        rad = outer_radius_mm if k % 2 == 0 else outer_radius_mm * 0.54
+        nodes.append((round(rad * math.cos(angle), 2), round(rad * math.sin(angle), 2)))
+
+    return {
+        &quot;wood&quot;: wood_species,
+        &quot;miter_bevel_deg&quot;: miter_angle_deg,
+        &quot;tongue_depth_mm&quot;: tongue_depth_mm,
+        &quot;groove_depth_mm&quot;: groove_depth_mm,
+        &quot;hygroscopic_gap_mm&quot;: clearance,
+        &quot;bevel_vertices&quot;: nodes,
+    }</code></pre></div>
+<p>Notice how <code>groove_depth_mm = tongue_depth_mm + clearance</code> formalizes the oral atelier safeguard that prevented hundreds of medieval Anatolian walnut pulpits from fracturing across centuries.</p>
+<h2>4. Contemporary Practice & Scientific Case Studies</h2>
+<p>Three decisive architectural benchmarks tie historic Anatolian woodwork directly to modern structural computation and carbon-negative fabrication.</p>
+<h3>Case Study 1: Konya Alâeddin & Beyşehir Eşrefoğlu Mosque Pulpits (12th–13th Century)</h3>
+<p>Standing across highland central Anatolia where harsh dry winters clash violently against lakeside humidity, the 1155 <strong>Alâeddin Mosque Minber</strong> and 1299 <strong>Eşrefoğlu Mosque</strong> wood ensembles survive virtually intact without warping after eight centuries. Modern conservation endoscopy confirms over three hundred discrete polygonal panels per flank float cleanly unglued inside mitered grooved rails—proving passive algorithmic tolerance outlasts iron fasteners reliably across millennia.</p>
+<h3>Case Study 2: Gramazio Kohler Research (ETH Zürich) — <em>Robotic Timber Construction</em> (2012–2023)</h3>
+<p>At ETH Zürich, <strong>Gramazio Kohler Research</strong> pioneered automated robotic timber assembly systems driving multi-axis CNC routers straight from structural CAD topologies. By generating exact compound miter cuts, stepped tenons, and zero-bolt interlocking joints across long-span roof trusses, their robotic platforms revive craft timber assembly at contemporary architectural infrastructure scales without synthetic adhesive dependency.</p>
+<h3>Case Study 3: IBOIS Laboratory (EPFL Lausanne, Yves Weinand) — <em>Integral Timber Joints</em> (2014–Present)</h3>
+<p>Led by Prof. Yves Weinand at EPFL's Laboratory for Timber Construction (<strong>IBOIS</strong>), <strong>Integral Mechanical Attachment</strong> research unifies traditional woodworking joints with finite-element structural solvers—engineering massive folded cross-laminated timber shells held aloft exclusively through CNC-milled dovetails, slots, and floating wedges inspired directly by nail-less Asian and Seljuk carpentry.</p>
+<h2>5. Critical Synthesis: Resistance of Matter, Horizons of Code</h2>
+<p>Seven-axis milling arms execute compound polygon chamfers rapidly without fatigue, yet raw steel blades feel neither latent timber knots nor subtle seasonal resin tension humming beneath crisp grain paths. True <em>kündekâri</em> reminds digital architecture of an urgent ecological lesson: <strong>durable design never cages living materials inside rigid constraints; it carves generous tolerances allowing change to dwell safely inside geometry.</strong></p>
+<div class="curatorial-box"><span class="badge">Curatorial Note</span>
+<p>From the thirteenth-century Beyşehir master seating unglued walnut stars inside grooved rails to ETH roboticists scripting hygroscopic tolerances in Python, one enduring axiom binds craft and code: <strong>longevity belongs not to what resists movement, but to geometry smart enough to welcome breath.</strong></p>
+</div>
+<hr class="editorial-divider">
+<h3>Bibliography & Further Reading</h3>
+<ol>
+<li><strong>Öney, Gönül.</strong> <em>Anadolu Selçuklu Mimari Süslemesi ve El Sanatları</em>. Türkiye İş Bankası Kültür Yayınları, Ankara, 1978.</li>
+<li><strong>Sönmez, Zeki.</strong> <em>Başlangıcından 16. Yüzyıla Kadar Anadolu Türk-İslam Mimarisinde Sanatçılar</em>. Türk Tarih Kurumu, Ankara, 1995.</li>
+<li><strong>Weinand, Yves (Ed.).</strong> <em>Advanced Timber Structures: Architectural Designs and Digital Dimensioning</em>. Birkhäuser, Basel, 2016.</li>
+<li><strong>Willmann, Jan, et al.</strong> "Robotic Timber Construction — Expanding Additive Fabrication to New Dimensions." <em>Automation in Construction</em>, Vol. 61, 2016, pp. 16–23.</li>
+<li><strong>Bozer, Rüstem.</strong> <em>Ahşap İşçiliği: Anadolu Selçuklu ve Beylikler Dönemi Minberleri</em>. Ministry of Culture Publications, Ankara.</li>
+</ol>
+  </div>
+</article>
+
+<!-- Image Change Modal with Real High-Res Diffusion Gallery -->
+<div id="image-modal" class="modal-overlay">
+  <div class="modal-card" style="max-width: 680px; max-height: 90vh; overflow-y: auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+      <h3 style="margin:0;">Küratöryel Kapak Görseli Yönetimi</h3>
+      <button onclick="closeImageModal()" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+    </div>
+
+    <!-- Modal Tabs -->
+    <div style="display:flex; gap:0.5rem; border-bottom:1px solid var(--border-subtle); margin-bottom:1.25rem;">
+      <button id="tab-btn-gallery" class="editor-btn active" onclick="switchImageTab('gallery')">🖼️ Küratöryel Fotoğraf Koleksiyonu</button>
+      <button id="tab-btn-url" class="editor-btn" onclick="switchImageTab('url')">🔗 Özel URL / Yerel Dosya</button>
+    </div>
+
+    <!-- Tab 1: Full Real High-Res Diffusion Gallery -->
+    <div id="tab-gallery-content">
+      <div style="background:var(--highlight-bg); border-left:3px solid var(--accent); padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:1rem; font-size:0.83rem; color:var(--text-secondary); line-height:1.5;">
+        ✨ <strong>Otomatik Kürasyon:</strong> Yazılarınızın konseptine özel müze ve stüdyo standartlarındaki difüzyon fotoğrafları arka planda otomatik olarak atanır. Dilerseniz aşağıdaki koleksiyondan istediğiniz fotoğrafa tıklayarak anında kapağı değiştirebilirsiniz:
+      </div>
+      <div id="gallery-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.85rem; max-height:400px; overflow-y:auto; padding-right:0.25rem;">
+        <!-- Populated via loadDynamicGallery() -->
+      </div>
+      <div class="modal-actions" style="margin-top:1.25rem;">
+        <button class="editor-btn" onclick="closeImageModal()">Kapat</button>
+      </div>
+    </div>
+
+    <!-- Tab 2: URL / Local Path -->
+    <div id="tab-url-content" style="display:none;">
+      <label style="display:block; font-size:0.85rem; margin-bottom:0.4rem;">İnternetten Görsel Bağlantısı (URL) veya Yerel Dosya Yolu:</label>
+      <input type="text" id="img-url-input" placeholder="https://example.com/image.jpg veya /images/dosya.jpg" value="/images/kundekari-ahsap-cover.jpg" style="width:100%; padding:0.65rem; border:1px solid var(--border-strong); border-radius:4px; font-family:var(--font-mono); font-size:0.85rem; margin-bottom:1rem;">
+      
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem;">
+        Bilgisayarınızdaki özel bir fotoğrafı kullanmak için dosyayı <code>public/images/</code> klasörüne kopyalayıp yolunu girebilirsiniz.
+      </p>
+
+      <div class="modal-actions">
+        <button class="editor-btn" onclick="closeImageModal()">Vazgeç</button>
+        <button class="editor-btn primary" onclick="applyNewImage()">Uygula</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating In-Browser Live Editor Toolbar (Admin / Localhost Only) -->
+<div id="editor-toolbar" class="editor-toolbar" style="display:none;">
+  <button id="toggle-edit-btn" class="editor-btn" onclick="toggleEditMode()">
+    <span>✏️</span>
+    <span class="lang-tr" id="edit-btn-text-tr">Düzenleme Modunu Aç</span>
+    <span class="lang-en" id="edit-btn-text-en" style="display:none;">Enable Edit Mode</span>
+  </button>
+
+  <button class="editor-btn" onclick="openImageModal()">
+    <span>🖼️</span>
+    <span class="lang-tr">Görsel Seç</span>
+    <span class="lang-en" style="display:none;">Select Image</span>
+  </button>
+
+  <button class="editor-btn primary" onclick="saveAllChanges()">
+    <span>💾</span>
+    <span class="lang-tr">Kaydet</span>
+    <span class="lang-en" style="display:none;">Save</span>
+  </button>
+
+  
+</div>
+
+<script>
+  var isEditing = false;
+
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    document.body.classList.toggle('editing-active', isEditing);
+    
+    var btn = document.getElementById('toggle-edit-btn');
+    btn.classList.toggle('active', isEditing);
+
+    var textTr = isEditing ? 'Düzenlemeyi Bitir' : 'Düzenleme Modunu Aç';
+    var textEn = isEditing ? 'Finish Editing' : 'Enable Edit Mode';
+    document.getElementById('edit-btn-text-tr').innerText = textTr;
+    document.getElementById('edit-btn-text-en').innerText = textEn;
+
+    var editableTargets = document.querySelectorAll('.editable, .editable-area p, .editable-area h2, .editable-area h3, .editable-area blockquote p');
+    editableTargets.forEach(function(el) {
+      el.contentEditable = isEditing ? "true" : "false";
+    });
+
+    if (isEditing) {
+      showToast('✏️ Düzenleme modu aktif! Metne tıklayıp doğrudan yazabilirsiniz.');
+    }
+  }
+
+  function openImageModal() {
+    document.getElementById('image-modal').classList.add('open');
+    loadDynamicGallery();
+  }
+
+  function closeImageModal() {
+    document.getElementById('image-modal').classList.remove('open');
+  }
+
+  function switchImageTab(tab) {
+    var galleryTab = document.getElementById('tab-gallery-content');
+    var urlTab = document.getElementById('tab-url-content');
+
+    var btnGallery = document.getElementById('tab-btn-gallery');
+    var btnUrl = document.getElementById('tab-btn-url');
+
+    galleryTab.style.display = (tab === 'gallery') ? 'block' : 'none';
+    urlTab.style.display = (tab === 'url') ? 'block' : 'none';
+
+    btnGallery.classList.toggle('active', tab === 'gallery');
+    btnUrl.classList.toggle('active', tab === 'url');
+
+    if (tab === 'gallery') {
+      loadDynamicGallery();
+    }
+  }
+
+  function loadDynamicGallery() {
+    fetch('/api/images/list')
+    .then(function(res) { return res.json(); })
+    .then(function(images) {
+      var grid = document.getElementById('gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      images.forEach(function(img) {
+        var card = document.createElement('div');
+        card.style.border = '1px solid var(--border-subtle)';
+        card.style.borderRadius = '6px';
+        card.style.overflow = 'hidden';
+        card.style.cursor = 'pointer';
+        card.style.background = 'var(--bg-surface)';
+        card.style.transition = 'transform 0.2s ease, border-color 0.2s ease';
+        
+        card.onmouseover = function() {
+          card.style.borderColor = 'var(--accent)';
+          card.style.transform = 'translateY(-2px)';
+        };
+        card.onmouseout = function() {
+          card.style.borderColor = 'var(--border-subtle)';
+          card.style.transform = 'none';
+        };
+
+        card.onclick = function() {
+          selectGalleryImage(img.url);
+        };
+
+        card.innerHTML = '<img src="' + img.url + '" style="width:100%; aspect-ratio:16/10; object-fit:cover; display:block;">' +
+                         '<div style="padding:0.45rem 0.6rem; font-size:0.75rem; font-weight:600; font-family:var(--font-mono); color:var(--text-primary); text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">' + img.name + '</div>';
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(function(err) { console.error('Gallery load error:', err); });
+  }
+
+  function selectGalleryImage(imgSrc) {
+    document.getElementById('cover-img-elem').src = imgSrc;
+    closeImageModal();
+    showToast('🖼️ Seçtiğiniz görsel kapağa uygulandı! Kalıcı olması için "Kaydet" butonuna basın.');
+  }
+
+  function applyNewImage() {
+    var newUrl = document.getElementById('img-url-input').value.trim();
+    if (newUrl) {
+      document.getElementById('cover-img-elem').src = newUrl;
+      closeImageModal();
+      showToast('🖼️ Görsel güncellendi! Kalıcı olması için "Kaydet" butonuna basın.');
+    }
+  }
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(function() {
+      toast.style.display = 'none';
+    }, 3500);
+  }
+
+  function saveAllChanges() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Doğrudan metin ve görsel düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    var slug = document.querySelector('article.post').getAttribute('data-slug');
+    var coverImg = document.getElementById('cover-img-elem').getAttribute('src');
+
+    var payload = {
+      slug: slug,
+      cover_image: coverImg,
+      tr: {
+        title: document.getElementById('tr-title').innerText.trim(),
+        subtitle: document.getElementById('tr-subtitle').innerText.trim(),
+        caption: document.getElementById('tr-caption').innerText.trim(),
+        credit: document.getElementById('tr-credit').innerText.trim(),
+        html: document.getElementById('tr-body').innerHTML
+      },
+      en: {
+        title: document.getElementById('en-title').innerText.trim(),
+        subtitle: document.getElementById('en-subtitle').innerText.trim(),
+        caption: document.getElementById('en-caption').innerText.trim(),
+        credit: document.getElementById('en-credit').innerText.trim(),
+        html: document.getElementById('en-body').innerHTML
+      }
+    };
+
+    fetch('/api/save-draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('✅ Değişiklikler ve görsel başarıyla dosyaya kaydedildi!');
+        if (isEditing) toggleEditMode();
+      } else {
+        alert('Kaydetme hatası: ' + (data.error || 'Bilinmeyen hata'));
+      }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast('✅ Önizleme kaydedildi!');
+    });
+  }
+
+  function publishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Bu yazı şu an zaten GitHub Pages üzerinde yayındadır.\nYeni taslakları yayına alma ve düzenleme işlemleri kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı onaylayıp yayına almak istiyor musunuz?')) return;
+    fetch('/api/studio/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('🚀 Yazı başarıyla yayına alındı!');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  function unpublishCurrentArticle(slug) {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (!isLocal) {
+      alert('ℹ️ Yazıyı taslağa alma işlemi kendi bilgisayarınızdaki yerel stüdyo (http://localhost:8008) üzerinden yapılır.');
+      return;
+    }
+
+    if (!confirm('Bu yazıyı yayından çekip tekrar taslak moduna almak istiyor musunuz?')) return;
+    fetch('/api/studio/unpublish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Sunucu yanıt vermedi (' + res.status + ')');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.ok) {
+        showToast('↩️ Yazı tekrar taslağa alındı.');
+        setTimeout(function() { window.location.reload(); }, 600);
+      } else {
+        alert('Hata: ' + data.error);
+      }
+    })
+    .catch(function(err) { alert('İşlem başarısız: ' + err.message); });
+  }
+
+  // Only display editor controls to the author (localhost or admin)
+  document.addEventListener('DOMContentLoaded', function() {
+    var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+    if (isAdmin) {
+      var tb = document.getElementById('editor-toolbar');
+      if (tb) tb.style.display = 'flex';
+      var imgTrig = document.getElementById('img-change-trigger');
+      if (imgTrig) imgTrig.style.display = 'inline-flex';
+    }
+  });
+</script>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Craft&Code</strong> — Kadim Zanaat & Çağdaş Sanat Araştırmaları
+      </div>
+      <div>
+        <span class="lang-tr">Geleneksel ile güncelin kesiştiği bağımsız araştırma yayını.</span>
+        <span class="lang-en" style="display:none;">An independent publication at the intersection of craft and computation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast-msg">✅ Değişiklikler başarıyla kaydedildi!</div>
+
+  <script>
+    var currentLang = localStorage.getItem('craft_code_lang') || 'tr';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('craft_code_lang', lang);
+      
+      document.querySelectorAll('.lang-tr').forEach(function(el) {
+        el.style.display = (lang === 'tr') ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(function(el) {
+        el.style.display = (lang === 'en') ? '' : 'none';
+      });
+
+      var btnTr = document.getElementById('btn-tr');
+      var btnEn = document.getElementById('btn-en');
+      if (btnTr && btnEn) {
+        if (lang === 'tr') {
+          btnTr.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnTr.classList.remove('active');
+        }
+      }
+      document.documentElement.lang = lang;
+
+      var searchInput = document.getElementById('topics-search-input');
+      if (searchInput) {
+        searchInput.placeholder = (lang === 'tr')
+          ? 'Konu, zanaat veya etiket ara...'
+          : 'Search topics, crafts, or tags...';
+      }
+    }
+
+    function normalizeSearchText(str) {
+      return (str || '')
+        .toLocaleLowerCase('tr')
+        .replace(/ç/g, 'c')
+        .replace(/ğ/g, 'g')
+        .replace(/ı/g, 'i')
+        .replace(/ö/g, 'o')
+        .replace(/ş/g, 's')
+        .replace(/ü/g, 'u')
+        .replace(/â/g, 'a')
+        .replace(/î/g, 'i')
+        .replace(/û/g, 'u')
+        .trim();
+    }
+
+    function toggleTopicsMenu(event) {
+      if (event) event.stopPropagation();
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      var input = document.getElementById('topics-search-input');
+      if (!dropdown || !trigger) return;
+
+      var willOpen = !dropdown.classList.contains('open');
+      dropdown.classList.toggle('open', willOpen);
+      trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+
+      if (willOpen && input) {
+        setTimeout(function() {
+          input.focus();
+          input.select();
+        }, 30);
+      }
+    }
+
+    function closeTopicsMenu() {
+      var dropdown = document.getElementById('topics-dropdown');
+      var trigger = document.getElementById('topics-trigger');
+      if (dropdown) dropdown.classList.remove('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function filterTopicsMenu(rawQuery) {
+      var q = normalizeSearchText(rawQuery);
+      var items = document.querySelectorAll('#topics-list .topics-item');
+      var visibleCount = 0;
+
+      items.forEach(function(item) {
+        var haystack = item.getAttribute('data-search') || '';
+        var match = !q || haystack.indexOf(q) !== -1;
+        item.style.display = match ? '' : 'none';
+        if (match) visibleCount += 1;
+      });
+
+      var emptyEl = document.getElementById('topics-empty');
+      if (emptyEl) {
+        emptyEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'tr' ? 'en' : 'tr');
+    }
+
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('topics-dropdown');
+      if (dropdown && dropdown.classList.contains('open') && !dropdown.contains(e.target)) {
+        closeTopicsMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeTopicsMenu();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setLanguage(currentLang);
+
+      // Studio button is completely hidden from public visitors
+      var isLocal = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      var isAdmin = isLocal || sessionStorage.getItem('craft_studio_auth') === 'granted' || window.location.search.indexOf('admin=1') !== -1;
+      if (isAdmin) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) sBtn.style.display = 'inline-flex';
+      }
+    });
+
+    // Secret shortcut: Pressing Ctrl+Shift+S (or Cmd+Shift+S) toggles Studio button
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        var sBtn = document.getElementById('nav-studio-btn');
+        if (sBtn) {
+          sBtn.style.display = (sBtn.style.display === 'none') ? 'inline-flex' : 'none';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

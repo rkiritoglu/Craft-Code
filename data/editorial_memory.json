@@ -1,12 +1,12 @@
 {
   "covered_slugs": [
-    "cam-ufleme-ve-isik-kirilmasi",
-    "selcuklu-cini-ve-3d-baski",
     "kok-boyacilik-ve-biyo-tasarim",
-    "kintsugi-ve-dijital-kusur",
-    "from-looms-to-code",
     "ebru-ve-sivi-algoritmalar",
+    "cam-ufleme-ve-isik-kirilmasi",
     "hat-sanati-ve-robotik-kaligrafi",
+    "selcuklu-cini-ve-3d-baski",
+    "kundekari-ve-parametrik-ahsap",
+    "kintsugi-ve-dijital-kusur",
     "dokuma-tezgahindan-koda"
   ],
   "covered_keywords": [
@@ -16,7 +16,6 @@
     "tekstil"
   ],
   "active_proposals": [
-    "kundekari-robotik-ahsap",
     "dovme-bakir-ses"
   ]
 }
